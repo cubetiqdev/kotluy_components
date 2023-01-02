@@ -11,3 +11,4 @@ export 'components/pie_chart/pie_chart.dart';
 export 'components/loading_overlay/loading_overlay.dart';
 export 'console/console.dart';
 export 'components/splash_screen/splash_screen_custom.dart';
+export 'components/onboard/onboard.dart';
