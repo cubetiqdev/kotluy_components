@@ -4,8 +4,21 @@ import 'package:sizer/sizer.dart';
 
 class OnBoardCustom extends StatefulWidget {
   final List<CPage> page;
+  final Text? textButton;
+  final Icon? iconButton;
+  final Color? buttonColor;
+  final Color? indicatorColor;
+  final double? buttonHeight;
 
-  const OnBoardCustom({super.key, required this.page});
+  const OnBoardCustom({
+    super.key,
+    required this.page,
+    this.textButton,
+    this.iconButton,
+    this.buttonColor,
+    this.indicatorColor,
+    this.buttonHeight,
+  });
 
   @override
   State<OnBoardCustom> createState() => _OnBoardState();
@@ -50,8 +63,9 @@ class _OnBoardState extends State<OnBoardCustom> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       color: (index == _currentPage)
-                          ? Colors.deepPurple[400]
-                          : Colors.deepPurple.withOpacity(0.5)));
+                          ? widget.indicatorColor ?? Colors.deepPurple[400]
+                          : widget.indicatorColor?.withOpacity(0.5) ??
+                              Colors.deepPurple.withOpacity(0.5)));
             })),
         InkWell(
           onTap: () {
@@ -62,26 +76,29 @@ class _OnBoardState extends State<OnBoardCustom> {
           child: AnimatedContainer(
             alignment: Alignment.center,
             duration: const Duration(milliseconds: 300),
-            height: 15.w,
+            height: widget.buttonHeight ?? 15.w,
             width: (_currentPage == (widget.page.length - 1)) ? 200 : 75,
             decoration: BoxDecoration(
-                color: Colors.deepPurple[400],
+                color: widget.buttonColor ?? Colors.deepPurple[400],
                 borderRadius: BorderRadius.circular(35)),
             child: (_currentPage == (widget.page.length - 1))
-                ? const FittedBox(
-                    child: Text(
-                      "Get Started",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
+                ? FittedBox(
+                    child: widget.textButton ??
+                        // ignore: prefer_const_constructors
+                        Text(
+                          "Get Started",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
                   )
-                : const Icon(
-                    Icons.navigate_next,
-                    size: 50,
-                    color: Colors.white,
-                  ),
+                : widget.iconButton ??
+                    const Icon(
+                      Icons.navigate_next,
+                      size: 50,
+                      color: Colors.white,
+                    ),
           ),
         ),
       ],
@@ -93,8 +110,20 @@ class CPage extends StatelessWidget {
   final String? title;
   final String? description;
   final String? image;
+  final TextStyle? titleTextStyle;
+  final TextStyle? descriptionTextStyle;
+  final double? imageWidth;
+  final double? imageHeight;
 
-  const CPage({Key? key, this.description, this.title, this.image})
+  const CPage(
+      {Key? key,
+      required this.description,
+      required this.title,
+      required this.image,
+      this.titleTextStyle,
+      this.descriptionTextStyle,
+      this.imageWidth,
+      this.imageHeight})
       : super(key: key);
 
   @override
@@ -111,14 +140,15 @@ class CPage extends StatelessWidget {
             children: <Widget>[
               Image.asset(
                 image ?? "",
-                width: width * 0.7,
+                width: imageWidth ?? width * 0.7,
+                height: imageHeight,
               ),
               const SizedBox(
                 height: 60,
               ),
               Text(
                 title ?? "",
-                style:
+                style: titleTextStyle ??
                     const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -128,12 +158,13 @@ class CPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: Text(
                   description ?? "",
-                  style: const TextStyle(
-                    height: 1.3,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                    letterSpacing: 0.7,
-                  ),
+                  style: descriptionTextStyle ??
+                      const TextStyle(
+                        height: 1.3,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14,
+                        letterSpacing: 0.7,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               ),
