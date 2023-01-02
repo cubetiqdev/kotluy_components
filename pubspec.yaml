@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fluttertoast: ^8.1.2
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:
