@@ -69,43 +69,49 @@ class _OnBoardState extends State<OnBoardCustom> {
                           : widget.indicatorColor?.withOpacity(0.5) ??
                               Colors.deepPurple.withOpacity(0.5)));
             })),
-        InkWell(
-          onTap: () {
-            _controller?.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOutQuint);
-          },
-          child: AnimatedContainer(
-            alignment: Alignment.center,
-            duration: const Duration(milliseconds: 300),
-            height: widget.buttonHeight ?? 15.w,
-            width: (_currentPage == (widget.page.length - 1)) ? 200 : 75,
-            decoration: BoxDecoration(
-                color: widget.buttonColor ?? Colors.deepPurple[400],
-                borderRadius: BorderRadius.circular(35)),
-            child: (_currentPage == (widget.page.length - 1))
-                ? GestureDetector(
-                    onTap: widget.onTap,
-                    child: FittedBox(
-                      child: widget.textButton ??
-                          // ignore: prefer_const_constructors
-                          Text(
-                            "Get Started",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
+        (_currentPage == (widget.page.length - 1))
+            ? InkWell(
+                onTap: widget.onTap,
+                child: AnimatedContainer(
+                  alignment: Alignment.center,
+                  duration: const Duration(milliseconds: 300),
+                  height: 6.5.h,
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurple[400],
+                      borderRadius: BorderRadius.circular(35)),
+                  child: const FittedBox(
+                    child: Text(
+                      "Get Started",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
-                  )
-                : widget.iconButton ??
-                    const Icon(
-                      Icons.navigate_next,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-          ),
-        ),
+                  ),
+                ),
+              )
+            : InkWell(
+                onTap: () {
+                  _controller?.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOutQuint);
+                },
+                child: AnimatedContainer(
+                  alignment: Alignment.center,
+                  duration: const Duration(milliseconds: 300),
+                  height: 6.5.h,
+                  width: 75,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurple[400],
+                      borderRadius: BorderRadius.circular(35)),
+                  child: const Icon(
+                    Icons.navigate_next,
+                    size: 50,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
       ],
     );
   }
