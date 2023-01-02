@@ -9,6 +9,7 @@ class OnBoardCustom extends StatefulWidget {
   final Color? buttonColor;
   final Color? indicatorColor;
   final double? buttonHeight;
+  final void Function()? onTap;
 
   const OnBoardCustom({
     super.key,
@@ -18,6 +19,7 @@ class OnBoardCustom extends StatefulWidget {
     this.buttonColor,
     this.indicatorColor,
     this.buttonHeight,
+    this.onTap,
   });
 
   @override
@@ -82,16 +84,19 @@ class _OnBoardState extends State<OnBoardCustom> {
                 color: widget.buttonColor ?? Colors.deepPurple[400],
                 borderRadius: BorderRadius.circular(35)),
             child: (_currentPage == (widget.page.length - 1))
-                ? FittedBox(
-                    child: widget.textButton ??
-                        // ignore: prefer_const_constructors
-                        Text(
-                          "Get Started",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                ? GestureDetector(
+                    onTap: widget.onTap,
+                    child: FittedBox(
+                      child: widget.textButton ??
+                          // ignore: prefer_const_constructors
+                          Text(
+                            "Get Started",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
                           ),
-                        ),
+                    ),
                   )
                 : widget.iconButton ??
                     const Icon(
