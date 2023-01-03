@@ -78,7 +78,7 @@ class _OnBoardState extends State<OnBoardCustom> {
                   height: 6.5.h,
                   width: 200,
                   decoration: BoxDecoration(
-                      color: Colors.deepPurple[400],
+                      color: widget.buttonColor ?? Colors.deepPurple[400],
                       borderRadius: BorderRadius.circular(35)),
                   child: const FittedBox(
                     child: Text(
@@ -103,7 +103,7 @@ class _OnBoardState extends State<OnBoardCustom> {
                   height: 6.5.h,
                   width: 75,
                   decoration: BoxDecoration(
-                      color: Colors.deepPurple[400],
+                      color: widget.buttonColor ?? Colors.deepPurple[400],
                       borderRadius: BorderRadius.circular(35)),
                   child: const Icon(
                     Icons.navigate_next,
