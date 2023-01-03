@@ -14,3 +14,4 @@ export 'components/splash_screen/splash_screen_custom.dart';
 export 'components/onboard/onboard.dart';
 export 'components/text_field_custom/text_field_custom.dart';
 export 'components/social_media_button/social_media_button.dart';
+export 'utils/base_model.dart';
