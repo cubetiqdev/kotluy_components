@@ -11,6 +11,7 @@ class SocialMediaButton extends StatelessWidget {
   final Color? iconColor;
   final Color? fontColor;
   final Color? buttonColor;
+  final bool t;
   const SocialMediaButton(
       {Key? key,
       this.fallbackText,
@@ -19,7 +20,8 @@ class SocialMediaButton extends StatelessWidget {
       this.image = "",
       this.iconColor,
       this.fontColor,
-      this.buttonColor})
+      this.buttonColor,
+      this.t = false})
       : super(key: key);
 
   @override
@@ -46,7 +48,7 @@ class SocialMediaButton extends StatelessWidget {
           const SizedBox(width: 10),
           CTextCustoms(
             min: 12,
-            t: true,
+            t: t,
             text: title,
             fallbackText: fallbackText,
             style: TextStyle(color: fontColor ?? Colors.black),
