@@ -9,18 +9,24 @@ class AnimationProgressButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double? width;
   final String title;
-  final String fieldText;
   final double padHorizontal;
   final double padVertical;
+  final Color? backgroundColor;
+  final Color? borderColor;
+  final TextStyle? textStyle;
+  final double? height;
   AnimationProgressButton({
     this.state = ButtonState.init,
     required this.title,
-    required this.fieldText,
     this.width,
     this.padHorizontal = 15.0,
     this.padVertical = 10.0,
     required this.onPressed,
     Key? key,
+    this.backgroundColor,
+    this.borderColor,
+    this.textStyle,
+    this.height,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
@@ -38,13 +44,15 @@ class AnimationProgressButton extends StatelessWidget {
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
         width: state == ButtonState.init ? this.width ?? width : 100,
-        height: 57,
+        height: height ?? 57,
         child: isNotInit
             ? buildSmallButton(isDone)
             : buildButton(
                 title,
-                fieldText,
                 onPressed,
+                backgroundColor,
+                borderColor,
+                textStyle,
               ),
       ),
     );
@@ -72,27 +80,29 @@ Widget buildSmallButton(bool isDone) {
   );
 }
 
-Widget buildButton(String title, String field, VoidCallback onPressed) =>
+Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
+        Color? borderColor, TextStyle? textStyle) =>
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: const Color(0xffEF4748),
+        backgroundColor: backgroundColor ?? const Color(0xffEF4748),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6.0),
         ),
         side: BorderSide(
           width: 1,
-          color: const Color(0xffEF4748),
+          color: borderColor ?? const Color(0xffEF4748),
         ),
       ),
       child: Text(
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: "Poppins",
-          fontSize: 14,
-          letterSpacing: 0.5,
-          color: Colors.white,
-        ),
+        style: textStyle ??
+            TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: "Poppins",
+              fontSize: 14,
+              letterSpacing: 0.5,
+              color: Colors.white,
+            ),
         title,
         textAlign: TextAlign.center,
       ),

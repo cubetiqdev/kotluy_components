@@ -4,7 +4,7 @@ import 'package:component_sdk/constant/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TextFieldPasswordCustom extends StatelessWidget {
+class TextFormFieldCustom extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool hidePassword;
@@ -20,7 +20,7 @@ class TextFieldPasswordCustom extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
 
-  const TextFieldPasswordCustom(
+  const TextFormFieldCustom(
       {super.key,
       this.onTap,
       this.validator,
