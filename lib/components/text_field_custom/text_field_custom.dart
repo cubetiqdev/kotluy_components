@@ -19,6 +19,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
+  final String? hintText;
 
   const TextFormFieldCustom(
       {super.key,
@@ -35,7 +36,8 @@ class TextFormFieldCustom extends StatelessWidget {
       this.borderColor,
       this.suffixIcon,
       this.inputFormatters,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class TextFormFieldCustom extends StatelessWidget {
         obscureText: hidePassword,
         controller: controller,
         decoration: InputDecoration(
+          hintText: hintText,
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: ThemeColor.ERROR_MAIN,
           enabledBorder: OutlineInputBorder(
