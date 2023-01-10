@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  country_picker: ^2.0.19
+  country_pickers: ^2.0.0
   flutter:
     sdk: flutter
 
