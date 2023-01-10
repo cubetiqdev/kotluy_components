@@ -10,4 +10,5 @@ class FileIcons {
   static const notification = "assets/icon/notification.png";
   static const settings = "assets/icon/settings.png";
   static const user = "assets/icon/user.png";
+  static const default_user = "assets/icon/default_user.png";
 }
