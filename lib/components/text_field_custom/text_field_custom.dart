@@ -21,6 +21,11 @@ class TextFormFieldCustom extends StatelessWidget {
   final bool readOnly;
   final String? hintText;
   final String? labelText;
+  final Widget? prefix;
+  final Widget? prefixIcon;
+  final Color? prefixIconColor;
+  final String? prefixText;
+  final TextStyle? prefixStlye;
 
   const TextFormFieldCustom(
       {super.key,
@@ -39,7 +44,12 @@ class TextFormFieldCustom extends StatelessWidget {
       this.inputFormatters,
       this.readOnly = false,
       this.hintText,
-      this.labelText});
+      this.labelText,
+      this.prefix,
+      this.prefixIcon,
+      this.prefixIconColor,
+      this.prefixText,
+      this.prefixStlye});
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +106,11 @@ class TextFormFieldCustom extends StatelessWidget {
               ),
             ),
           ),
+          prefix: prefix,
+          prefixIcon: prefixIcon,
+          prefixIconColor: prefixIconColor,
+          prefixText: prefixText,
+          prefixStyle: prefixStlye,
         ),
         keyboardType: TextInputType.text,
         style: TextStyle(fontSize: 12),
