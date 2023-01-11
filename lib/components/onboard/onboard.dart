@@ -4,14 +4,14 @@ import 'package:sizer/sizer.dart';
 
 class OnBoardCustom extends StatefulWidget {
   final List<CustomPage> page;
+  final double? height;
   final Text? textButtonSkip;
   final Text? textButtonStart;
   final Icon? iconButtonPrevious;
   final Icon? iconButtonNext;
   final Color? buttonColor;
   final Color? indicatorColor;
-  final double? buttonHeight;
-  final void Function()? onTap;
+  final void Function()? onTapStart;
 
   const OnBoardCustom({
     super.key,
@@ -20,10 +20,10 @@ class OnBoardCustom extends StatefulWidget {
     this.iconButtonPrevious,
     this.buttonColor,
     this.indicatorColor,
-    this.buttonHeight,
-    this.onTap,
+    this.onTapStart,
     this.iconButtonNext,
     this.textButtonStart,
+    this.height,
   });
 
   @override
@@ -53,7 +53,7 @@ class _OnBoardState extends State<OnBoardCustom> {
     return Column(
       children: [
         SizedBox(
-          height: 70.h,
+          height: widget.height ?? 70.h,
           child: PageView.builder(
             onPageChanged: onchanged,
             controller: _controller,
@@ -114,7 +114,7 @@ class _OnBoardState extends State<OnBoardCustom> {
             ),
             (_currentPage == (widget.page.length - 1))
                 ? InkWell(
-                    onTap: widget.onTap,
+                    onTap: widget.onTapStart,
                     child: widget.textButtonStart ??
                         Text(
                           "Get Start!",
@@ -148,11 +148,13 @@ class CustomPage extends StatelessWidget {
   final String? title;
   final String? description;
   final String? image;
+  final double? imageHeight;
+  final double? imageWidth;
   final double? titleFontSize;
   final double? descriptionFontSize;
+  final Color? titleFontColor;
   final Color? backGroundColor;
   final Color? fontColor;
-  final Color? titleFontColor;
 
   const CustomPage(
       {Key? key,
@@ -163,7 +165,9 @@ class CustomPage extends StatelessWidget {
       this.description,
       this.title,
       required this.image,
-      this.descriptionFontSize})
+      this.descriptionFontSize,
+      this.imageHeight,
+      this.imageWidth})
       : super(key: key);
 
   @override
@@ -180,7 +184,8 @@ class CustomPage extends StatelessWidget {
             children: <Widget>[
               Image.asset(
                 image ?? "",
-                width: width * 1,
+                height: imageHeight,
+                width: imageWidth ?? width * 1,
               ),
               const SizedBox(
                 height: 60,
