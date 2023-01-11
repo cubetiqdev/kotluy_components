@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class OnBoardCustom extends StatefulWidget {
-  final List<CPage> page;
-  final Text? textButton;
-  final Icon? iconButton;
+  final List<CustomPage> page;
+  final Text? textButtonSkip;
+  final Text? textButtonStart;
+  final Icon? iconButtonPrevious;
+  final Icon? iconButtonNext;
   final Color? buttonColor;
   final Color? indicatorColor;
   final double? buttonHeight;
@@ -14,12 +16,14 @@ class OnBoardCustom extends StatefulWidget {
   const OnBoardCustom({
     super.key,
     required this.page,
-    this.textButton,
-    this.iconButton,
+    this.textButtonSkip,
+    this.iconButtonPrevious,
     this.buttonColor,
     this.indicatorColor,
     this.buttonHeight,
     this.onTap,
+    this.iconButtonNext,
+    this.textButtonStart,
   });
 
   @override
@@ -28,6 +32,13 @@ class OnBoardCustom extends StatefulWidget {
 
 class _OnBoardState extends State<OnBoardCustom> {
   int _currentPage = 0;
+
+  @override
+  void dispose() {
+    _currentPage = 0;
+    _controller?.dispose();
+    super.dispose();
+  }
 
   PageController? _controller = PageController();
 
@@ -54,70 +65,86 @@ class _OnBoardState extends State<OnBoardCustom> {
           ),
         ),
         Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List<Widget>.generate(widget.page.length, (int index) {
-              return AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  height: 10,
-                  width: (index == _currentPage) ? 30 : 10,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 30),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: (index == _currentPage)
-                          ? widget.indicatorColor ?? Colors.deepPurple[400]
-                          : widget.indicatorColor?.withOpacity(0.5) ??
-                              Colors.deepPurple.withOpacity(0.5)));
-            })),
-        (_currentPage == (widget.page.length - 1))
-            ? InkWell(
-                onTap: widget.onTap,
-                child: AnimatedContainer(
-                  alignment: Alignment.center,
-                  duration: const Duration(milliseconds: 300),
-                  height: 6.5.h,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: widget.buttonColor ?? Colors.deepPurple[400],
-                      borderRadius: BorderRadius.circular(35)),
-                  child: const FittedBox(
-                    child: Text(
-                      "Get Started",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            : InkWell(
-                onTap: () {
-                  _controller?.nextPage(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            (_currentPage < (widget.page.length - 1) && _currentPage == 0)
+                ? InkWell(
+                    onTap: () {
+                      _controller?.jumpToPage(widget.page.length - 1);
+                    },
+                    child: widget.textButtonSkip ??
+                        Text(
+                          "Skip",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                  )
+                : InkWell(
+                    onTap: () {
+                      _controller?.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOutQuint);
+                    },
+                    child: widget.iconButtonPrevious ??
+                        Icon(
+                          Icons.navigate_before,
+                          size: 35.sp,
+                          color: Colors.black,
+                        )),
+            Row(
+              children: List<Widget>.generate(
+                widget.page.length,
+                (int index) {
+                  return AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOutQuint);
+                      height: 10,
+                      width: (index == _currentPage) ? 30 : 10,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 30),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: (index == _currentPage)
+                              ? widget.indicatorColor ?? Colors.black
+                              : widget.indicatorColor?.withOpacity(0.5) ??
+                                  Colors.black.withOpacity(0.5)));
                 },
-                child: AnimatedContainer(
-                  alignment: Alignment.center,
-                  duration: const Duration(milliseconds: 300),
-                  height: 6.5.h,
-                  width: 75,
-                  decoration: BoxDecoration(
-                      color: widget.buttonColor ?? Colors.deepPurple[400],
-                      borderRadius: BorderRadius.circular(35)),
-                  child: const Icon(
-                    Icons.navigate_next,
-                    size: 50,
-                    color: Colors.white,
-                  ),
-                ),
               ),
+            ),
+            (_currentPage == (widget.page.length - 1))
+                ? InkWell(
+                    onTap: widget.onTap,
+                    child: widget.textButtonStart ??
+                        Text(
+                          "Get Start!",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                  )
+                : InkWell(
+                    onTap: () {
+                      _controller?.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOutQuint);
+                    },
+                    child: widget.iconButtonNext ??
+                        Icon(
+                          Icons.navigate_next,
+                          size: 35.sp,
+                          color: Colors.black,
+                        ),
+                  ),
+          ],
+        ),
       ],
     );
   }
 }
 
-class CPage extends StatelessWidget {
+class CustomPage extends StatelessWidget {
   final String? title;
   final String? description;
   final String? image;
@@ -126,7 +153,7 @@ class CPage extends StatelessWidget {
   final double? imageWidth;
   final double? imageHeight;
 
-  const CPage(
+  const CustomPage(
       {Key? key,
       required this.description,
       required this.title,
