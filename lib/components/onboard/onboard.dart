@@ -148,46 +148,50 @@ class CustomPage extends StatelessWidget {
   final String? title;
   final String? description;
   final String? image;
-  final TextStyle? titleTextStyle;
-  final TextStyle? descriptionTextStyle;
-  final double? imageWidth;
-  final double? imageHeight;
+  final double? titleFontSize;
+  final double? descriptionFontSize;
+  final Color? backGroundColor;
+  final Color? fontColor;
+  final Color? titleFontColor;
 
   const CustomPage(
       {Key? key,
-      required this.description,
-      required this.title,
+      this.titleFontColor,
+      this.titleFontSize,
+      this.fontColor,
+      this.backGroundColor,
+      this.description,
+      this.title,
       required this.image,
-      this.titleTextStyle,
-      this.descriptionTextStyle,
-      this.imageWidth,
-      this.imageHeight})
+      this.descriptionFontSize})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          color: Colors.white,
+          color: backGroundColor ?? Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
                 image ?? "",
-                width: imageWidth ?? width * 0.7,
-                height: imageHeight,
+                width: width * 1,
               ),
               const SizedBox(
                 height: 60,
               ),
               Text(
+                overflow: TextOverflow.ellipsis,
                 title ?? "",
-                style: titleTextStyle ??
-                    const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: titleFontSize ?? 28,
+                    fontWeight: FontWeight.bold,
+                    color: titleFontColor ?? Colors.black),
               ),
               const SizedBox(
                 height: 20,
@@ -196,13 +200,13 @@ class CustomPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: Text(
                   description ?? "",
-                  style: descriptionTextStyle ??
-                      const TextStyle(
-                        height: 1.3,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
-                        letterSpacing: 0.7,
-                      ),
+                  style: TextStyle(
+                    height: 1.3,
+                    fontWeight: FontWeight.normal,
+                    fontSize: descriptionFontSize ?? 14,
+                    letterSpacing: 0.7,
+                    color: fontColor ?? Colors.black,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
