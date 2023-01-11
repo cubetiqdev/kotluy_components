@@ -58,7 +58,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                   itemFilter: (c) =>
                       widget.countries?.contains(c.isoCode) ?? true,
                   sortComparator: (Country a, Country b) =>
-                      a.isoCode.compareTo(b.isoCode),
+                      a.name.compareTo(b.name),
                   onValuePicked: widget.onValuePicked,
                 ),
                 SizedBox(width: 10),
