@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CTextCustoms extends StatelessWidget {
   final bool? softWrap;
@@ -14,7 +15,6 @@ class CTextCustoms extends StatelessWidget {
   // allow to use translate for the text above.
   final bool t;
   final String? fallbackText;
-  final Map<String, String>? params;
 
   const CTextCustoms({
     this.text = "",
@@ -26,15 +26,11 @@ class CTextCustoms extends StatelessWidget {
     this.overflow,
     this.t = true,
     this.fallbackText,
-    this.params,
     this.softWrap,
   });
-  String fallBackText(BuildContext context, String text, String? fallBack,
-      Map<String, String>? param) {
+  String fallBackText(BuildContext context, String text, String? fallBack) {
     try {
-      // return FlutterI18n.translate(context, text,
-      //     fallbackKey: fallBack, translationParams: param);
-      return '';
+      return fallBack!.tr;
     } catch (error) {
       return fallBack ?? text;
     }
@@ -43,7 +39,7 @@ class CTextCustoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      t ? fallBackText(context, text, fallbackText, params) : text,
+      t ? fallBackText(context, text, fallbackText) : text,
       style: style,
       textAlign: textAlign,
       maxLines: maxLines,

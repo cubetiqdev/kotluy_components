@@ -106,7 +106,6 @@ void showToastError(FToast? fToast, String? tile,
           child: CTextCustoms(
             min: 12,
             text: tile ?? "",
-            params: param,
             style: TextStyle(color: ThemeColor.DARK_D1, fontSize: 13),
             fallbackText: fallBack ?? "Oops!",
           ),
