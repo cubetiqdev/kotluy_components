@@ -10,7 +10,6 @@ class BarChartCustom extends StatefulWidget {
       this.yLineStyle,
       this.showXLine,
       this.showYLine,
-      this.spaceBetweenItem,
       this.labelAlign,
       this.xLabelStyle,
       this.yLabelStyle,
@@ -26,7 +25,7 @@ class BarChartCustom extends StatefulWidget {
       this.spaceXLinetoChart,
       this.spaceYLinetoChart,
       this.showLabelInside,
-      this.gap,
+      this.gap = 10,
       this.backgroundColor,
       this.labelInsideStyle,
       this.valueLabelStyle,
@@ -38,7 +37,7 @@ class BarChartCustom extends StatefulWidget {
 
   final double? max;
   final List<BarDataCustom> listData;
-  final double? gap;
+  final double gap;
   final BorderSide? xLineStyle;
   final BorderSide? yLineStyle;
   final bool? showXLine;
@@ -61,7 +60,6 @@ class BarChartCustom extends StatefulWidget {
   final double? maxHeight;
   final double minWidth;
   final double? maxWidth;
-  final double? spaceBetweenItem;
   final double? spaceXLabeltoChart;
   final double? spaceYLabeltoChart;
   final double? spaceXLinetoChart;
@@ -185,7 +183,7 @@ class _BarCustomState extends State<BarChartCustom> {
                         (index) {
                           BarDataCustom item = widget.listData[index];
                           return Padding(
-                            padding: EdgeInsets.only(right: widget.gap ?? 10),
+                            padding: EdgeInsets.only(right: widget.gap),
                             child: ConstrainedBox(
                               constraints: BoxConstraints(
                                   minHeight: widget.minHeight,
@@ -196,10 +194,7 @@ class _BarCustomState extends State<BarChartCustom> {
                                     widget.minHeight,
                                 width: (constraintsChart.maxWidth /
                                         widget.listData.length) -
-                                    (widget.spaceBetweenItem ??
-                                        ((constraintsChart.maxWidth /
-                                                widget.listData.length) *
-                                            0.1)),
+                                    widget.gap,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       top: 25, bottom: 20),
@@ -363,18 +358,24 @@ class _BarItemValueView extends StatelessWidget {
               ),
             ),
             if (showxLabelInside ?? false)
-              barDataCustom.labelCustom ??
-                  Align(
-                    alignment: labelAlign ?? Alignment.topCenter,
-                    child: Padding(
-                      padding: labelPadding ?? const EdgeInsets.all(4),
-                      child: Text(
-                        barDataCustom.label,
-                        style:
-                            labelInsideStyle ?? barDataCustom.labelInsideStyle,
+              InkWell(
+                splashColor: barDataCustom.splashColor,
+                onTap: barDataCustom.onTap == null
+                    ? null
+                    : () => barDataCustom.onTap!(),
+                child: barDataCustom.labelCustom ??
+                    Align(
+                      alignment: labelAlign ?? Alignment.topCenter,
+                      child: Padding(
+                        padding: labelPadding ?? const EdgeInsets.all(4),
+                        child: Text(
+                          barDataCustom.label,
+                          style: labelInsideStyle ??
+                              barDataCustom.labelInsideStyle,
+                        ),
                       ),
                     ),
-                  ),
+              ),
           ],
         ),
       ),
