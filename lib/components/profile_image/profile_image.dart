@@ -95,8 +95,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: NetworkImage(
-                            'https://icons8.com/icon/wxn3clxfMe6B/user'),
+                        image: AssetImage(FileIcons.default_user),
                         fit: BoxFit.cover,
                       ),
                     ),

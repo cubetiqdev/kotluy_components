@@ -26,4 +26,5 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/icon/default_user.jpg
     - assets/icon/
