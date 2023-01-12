@@ -95,7 +95,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(FileIcons.default_user),
+                        image: AssetImage(FileIcons.user),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -194,7 +194,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(FileIcons.default_user),
+                        image: AssetImage(FileIcons.user),
                         fit: BoxFit.cover,
                       )),
                 )),
