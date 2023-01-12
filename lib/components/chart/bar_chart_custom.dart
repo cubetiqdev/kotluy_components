@@ -26,11 +26,14 @@ class BarChartCustom extends StatefulWidget {
       this.spaceXLinetoChart,
       this.spaceYLinetoChart,
       this.showLabelInside,
-      this.columnConstrain,
       this.gap,
       this.backgroundColor,
       this.labelInsideStyle,
-      this.valueLabelStyle})
+      this.valueLabelStyle,
+      this.minHeight = 100,
+      this.maxHeight,
+      this.minWidth = 100,
+      this.maxWidth})
       : super(key: key);
 
   final double? max;
@@ -54,7 +57,10 @@ class BarChartCustom extends StatefulWidget {
   final Duration? loadingDuration;
   final EdgeInsetsGeometry? labelPadding;
   final BorderRadius? radiusBar;
-  final BoxConstraints? columnConstrain;
+  final double minHeight;
+  final double? maxHeight;
+  final double minWidth;
+  final double? maxWidth;
   final double? spaceBetweenItem;
   final double? spaceXLabeltoChart;
   final double? spaceYLabeltoChart;
@@ -181,12 +187,13 @@ class _BarCustomState extends State<BarChartCustom> {
                           return Padding(
                             padding: EdgeInsets.only(right: widget.gap ?? 10),
                             child: ConstrainedBox(
-                              constraints: widget.columnConstrain ??
-                                  const BoxConstraints(
-                                      minHeight: 100, minWidth: 100),
+                              constraints: BoxConstraints(
+                                  minHeight: widget.minHeight,
+                                  minWidth: widget.minWidth),
                               child: SizedBox(
-                                height: (item.value.abs() / max) *
-                                    constraintsChart.maxHeight,
+                                height: ((item.value.abs() / max) *
+                                        constraintsChart.maxHeight) +
+                                    widget.minHeight,
                                 width: (constraintsChart.maxWidth /
                                         widget.listData.length) -
                                     (widget.spaceBetweenItem ??
