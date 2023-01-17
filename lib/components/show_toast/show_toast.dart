@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:component_sdk/components/text/custom_text_component.dart';
 import 'package:component_sdk/constant/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -32,10 +31,8 @@ showToast(FToast? fToast, String? tile, {String fallBack = ""}) {
           width: 10,
         ),
         Flexible(
-          child: CTextCustoms(
-            min: 12,
-            text: "$tile",
-            fallbackText: fallBack,
+          child: Text(
+            "$tile",
             style: TextStyle(color: ThemeColor.DARK_D1, fontSize: 13),
           ),
         ),
@@ -63,9 +60,8 @@ void showMessageToast(
         color: ThemeColor.PRIMARY_Subtle,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: CTextCustoms(
-        min: 12,
-        text: tile,
+      child: Text(
+        tile,
         style: TextStyle(color: ThemeColor.PRIMARY_MAIN),
         maxLines: 1,
       ));
@@ -103,11 +99,9 @@ void showToastError(FToast? fToast, String? tile,
           width: 10,
         ),
         Flexible(
-          child: CTextCustoms(
-            min: 12,
-            text: tile ?? "",
+          child: Text(
+            tile ?? "",
             style: TextStyle(color: ThemeColor.DARK_D1, fontSize: 13),
-            fallbackText: fallBack ?? "Oops!",
           ),
         ),
       ],
@@ -187,9 +181,8 @@ void onTapExit(
         color: ThemeColor.ERROR_LIGHTER,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: CTextCustoms(
-        min: 14,
-        text: tile,
+      child: Text(
+        tile,
         style: TextStyle(color: ThemeColor.LIGHT_WHITE),
         maxLines: 1,
       ));

@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:component_sdk/components/text/custom_text_component.dart';
 import 'package:component_sdk/constant/colors/color.dart';
 import 'package:component_sdk/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +60,9 @@ class CustomDropDown<T> extends StatelessWidget {
             )),
       ),
       style: KLabelTextNormal12,
-      hint: CTextCustoms(
-        text: hintText ?? '',
+      hint: Text(
+        hintText ?? '',
         style: KLabelTextNormal12,
-        fallbackText: hintFieldText,
       ),
       value: value,
       dropdownColor: dropdownColor,

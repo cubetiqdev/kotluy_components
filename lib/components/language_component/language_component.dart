@@ -6,8 +6,6 @@ import 'package:component_sdk/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../components/text/custom_text_component.dart';
-
 class LanguageWithFlags extends StatelessWidget {
   final String? language;
   final String? countryFlags;
@@ -42,10 +40,8 @@ class LanguageWithFlags extends StatelessWidget {
               imageWidth: 15.w,
               borderRadius: 0,
             ),
-            title: CTextCustoms(
-              min: 12,
-              text: language ?? "",
-              fallbackText: language,
+            title: Text(
+              language ?? "",
               style: KLabelTextDemiBold14.copyWith(color: ThemeColor.DARK_D1),
             ),
             trailing: select == true
