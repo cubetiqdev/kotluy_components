@@ -8,7 +8,7 @@ class ButtonChooseLanguage extends StatelessWidget {
   final String? icon;
   final Color? colorSelect;
   final Color? colorText;
-  final Color? colorICon;
+  final Color? colorIcon;
   final Color? borderColor;
   final GestureTapCallback? onTap;
   const ButtonChooseLanguage(
@@ -19,7 +19,7 @@ class ButtonChooseLanguage extends StatelessWidget {
       this.onTap,
       this.colorSelect,
       this.colorText,
-      this.colorICon,
+      this.colorIcon,
       this.borderColor});
   @override
   Widget build(BuildContext context) {
@@ -54,12 +54,11 @@ class ButtonChooseLanguage extends StatelessWidget {
               style: KLabelTextMedium14.copyWith(
                   color: colorText ?? ThemeColor.LIGHT_WHITE),
             ),
-            Image.asset(
-              icon!,
-              width: 31.0,
-              height: 20.0,
-              color: colorICon ?? ThemeColor.DARK_D4,
-            ),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: colorIcon ?? ThemeColor.DARK_D4,
+              size: 20,
+            )
           ],
         ),
       ),
