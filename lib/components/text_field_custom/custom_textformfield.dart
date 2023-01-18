@@ -12,8 +12,8 @@ class CTextFormField extends StatelessWidget {
   final Color? borderColor;
   final double? borderRadius;
   final Color? focusBorderColor;
-  final double borderWidth;
-  final double focusBorderWidth;
+  final double? borderWidth;
+  final double? focusBorderWidth;
   final double? focusBorderRadius;
   final String? helperText;
   final String? errorText;
@@ -58,8 +58,8 @@ class CTextFormField extends StatelessWidget {
       this.hintColor = ThemeColor.DARK_D3,
       this.helperText,
       this.focusBorderRadius,
-      this.focusBorderWidth = 2.0,
-      this.borderWidth = 2.0,
+      this.focusBorderWidth,
+      this.borderWidth,
       this.focusBorderColor,
       this.hintText,
       this.labelText,
@@ -110,7 +110,7 @@ class CTextFormField extends StatelessWidget {
               ? OutlineInputBorder(
                   borderSide: BorderSide(
                     color: focusBorderColor ?? ThemeColor.DARK_D1,
-                    width: focusBorderWidth,
+                    width: focusBorderWidth ?? borderWidth ?? 1,
                   ),
                   borderRadius: BorderRadius.circular(focusBorderRadius ?? 0.0),
                 )
@@ -122,7 +122,7 @@ class CTextFormField extends StatelessWidget {
               ? OutlineInputBorder(
                   borderSide: BorderSide(
                     color: borderColor ?? ThemeColor.DARK_D1,
-                    width: borderWidth,
+                    width: borderWidth ?? 1,
                   ),
                   borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
                 )
