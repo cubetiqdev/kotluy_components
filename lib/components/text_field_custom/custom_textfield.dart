@@ -32,8 +32,13 @@ class CTextField extends StatelessWidget {
   final double? contentPadding;
   final double? paddingHorizontal;
   final double? paddingVertical;
+  final int? maxLines;
+  final int? maxLenght;
+
   CTextField(
       {super.key,
+      this.maxLenght,
+      this.maxLines,
       this.format,
       this.paddingHorizontal,
       this.paddingVertical,
@@ -71,6 +76,8 @@ class CTextField extends StatelessWidget {
         vertical: paddingVertical ?? 0,
       ),
       child: TextField(
+        maxLines: maxLines,
+        maxLength: maxLenght,
         inputFormatters: format,
         obscureText: isPassword,
         keyboardType: keyboardType,
