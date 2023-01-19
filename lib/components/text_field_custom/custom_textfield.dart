@@ -72,7 +72,7 @@ class CTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: paddingHorizontal ?? 20,
+        horizontal: paddingHorizontal ?? 10,
         vertical: paddingVertical ?? 0,
       ),
       child: TextField(
