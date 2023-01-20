@@ -34,10 +34,12 @@ class CTextFormField extends StatelessWidget {
   String? Function(String?)? validator;
   final int? maxLines;
   final int? maxLenght;
+  final double? fontSize;
 
   CTextFormField(
       {super.key,
       this.maxLines,
+      this.fontSize,
       this.maxLenght,
       this.format,
       this.validator,
@@ -77,6 +79,9 @@ class CTextFormField extends StatelessWidget {
         vertical: paddingVertical ?? 0,
       ),
       child: TextFormField(
+        style: TextStyle(
+          fontSize: fontSize ?? 12,
+        ),
         maxLines: maxLines,
         maxLength: maxLenght,
         validator: validator,
