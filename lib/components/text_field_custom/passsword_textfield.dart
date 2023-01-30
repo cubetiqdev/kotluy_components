@@ -16,6 +16,7 @@ class PasswordTextField extends StatelessWidget {
   final bool? noPadding;
   final GestureTapCallback? onTapTextField;
   final bool? enabled;
+  final String? hintText;
 
   PasswordTextField(
       {this.onTap,
@@ -28,7 +29,8 @@ class PasswordTextField extends StatelessWidget {
       this.onChanged,
       this.noPadding = false,
       this.onTapTextField,
-      this.enabled});
+      this.enabled,
+      this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class PasswordTextField extends StatelessWidget {
         obscureText: showPassword,
         controller: controller,
         decoration: InputDecoration(
+          hintText: hintText,
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: ThemeColor.ERROR_MAIN,
           enabledBorder: OutlineInputBorder(
