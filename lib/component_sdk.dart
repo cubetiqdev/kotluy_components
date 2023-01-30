@@ -15,4 +15,4 @@ export 'components/onboard/onboard.dart';
 export 'components/text_field_custom/text_field_custom.dart';
 export 'components/social_media_button/social_media_button.dart';
 export 'components/phone_text_field/phone_text_field.dart';
-export 'utils/base_model.dart';
+export 'utils/base_model.dart'; 
