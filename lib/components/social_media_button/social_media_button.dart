@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:component_sdk/components/text/custom_text_component.dart';
 import 'package:flutter/material.dart';
 
 class SocialMediaButton extends StatelessWidget {
@@ -60,11 +59,8 @@ class SocialMediaButton extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
-            CTextCustoms(
-              min: 12,
-              t: t,
-              text: title,
-              fallbackText: fallbackText,
+            Text(
+              title,
               style: TextStyle(color: fontColor ?? Colors.black),
             ),
           ],
