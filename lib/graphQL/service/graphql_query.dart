@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_string_interpolations, avoid_print
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class GraphQlService {
+class GraphQLQuery {
   final String url;
 
-  GraphQlService({required this.url});
+  GraphQLQuery({required this.url});
 
 //////////////////////////////////////////////////////////////////////////////////////////
   Future<dynamic> queryDataNoAuth(String query) async {
@@ -85,11 +87,13 @@ class GraphQlService {
       ),
     );
     if (result.hasException) {
-      print(result.exception);
+      return result.exception;
+      // print(result.exception);
     } else if (result.isLoading) {
       return Future.value(null);
     } else if (!result.hasException) {
-      print(result.data);
+      return result.data;
+      // print(result.data);
     }
   }
 
