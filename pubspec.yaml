@@ -18,6 +18,7 @@ dependencies:
   google_fonts: ^3.0.1
   pinput: ^2.2.21
   sizer: ^2.0.15
+  graphql_flutter: ^5.1.1
 
 dev_dependencies:
   flutter_test:
