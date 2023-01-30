@@ -88,12 +88,10 @@ class GraphQLQuery {
     );
     if (result.hasException) {
       return result.exception;
-      // print(result.exception);
     } else if (result.isLoading) {
       return Future.value(null);
     } else if (!result.hasException) {
       return result.data;
-      // print(result.data);
     }
   }
 
