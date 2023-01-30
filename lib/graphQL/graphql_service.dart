@@ -6,7 +6,7 @@ class GraphQlService {
   GraphQlService({required this.url});
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void queryDataNoAuth(String query) async {
+  Future<dynamic> queryDataNoAuth(String query) async {
     HttpLink httpLink = HttpLink(
       url,
     );
@@ -35,7 +35,7 @@ class GraphQlService {
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void queryDataWithAuth(
+  Future<dynamic> queryDataWithAuth(
       {required String query, required String accessToken}) async {
     HttpLink httpLink = HttpLink(
       url,
@@ -65,7 +65,7 @@ class GraphQlService {
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void mutationDataWithNoAuth({required String mutation}) async {
+  Future<dynamic> mutationDataWithNoAuth({required String mutation}) async {
     HttpLink httpLink = HttpLink(
       url,
     );
@@ -94,7 +94,7 @@ class GraphQlService {
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void mutationDataWithAuth(
+  Future<dynamic> mutationDataWithAuth(
       {required String mutation, required String accessToken}) async {
     HttpLink httpLink = HttpLink(
       url,
