@@ -1,14 +1,13 @@
-// ignore_for_file: unnecessary_string_interpolations, avoid_print
-
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class GraphQLQuery {
+class GraphQlService {
   final String url;
 
-  GraphQLQuery({required this.url});
+  GraphQlService({required this.url});
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  Future<dynamic> queryDataNoAuth(String query) async {
+  void queryDataNoAuth(
+      {required String query, required Function reponseData}) async {
     HttpLink httpLink = HttpLink(
       url,
     );
@@ -32,13 +31,23 @@ class GraphQLQuery {
     } else if (result.isLoading) {
       return;
     } else if (!result.hasException) {
-      print(result.data);
+      reponseData(result.data);
     }
   }
 
-//////////////////////////////////////////////////////////////////////////////////////////
-  Future<dynamic> queryDataWithAuth(
-      {required String query, required String accessToken}) async {
+  ///Example
+  ///
+  ///var response;
+  ///
+  ///callBack: (data) {
+  ///
+  /// response = YourResponseModel().fromMap(data['Field Name']);
+  ///
+  /// },
+  void queryDataWithAuth(
+      {required String query,
+      required String accessToken,
+      required Function reponseData}) async {
     HttpLink httpLink = HttpLink(
       url,
       defaultHeaders: <String, String>{'Authorization': 'Bearer $accessToken'},
@@ -62,12 +71,13 @@ class GraphQLQuery {
     } else if (result.isLoading) {
       return Future.value(null);
     } else if (!result.hasException) {
-      print(result.data);
+      reponseData(result.data);
     }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  Future<dynamic> mutationDataWithNoAuth({required String mutation}) async {
+  void mutationDataWithNoAuth(
+      {required String mutation, required Function reponseData}) async {
     HttpLink httpLink = HttpLink(
       url,
     );
@@ -87,17 +97,19 @@ class GraphQLQuery {
       ),
     );
     if (result.hasException) {
-      return result.exception;
+      print(result.exception);
     } else if (result.isLoading) {
       return Future.value(null);
     } else if (!result.hasException) {
-      return result.data;
+      reponseData(result.data);
     }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  Future<dynamic> mutationDataWithAuth(
-      {required String mutation, required String accessToken}) async {
+  void mutationDataWithAuth(
+      {required String mutation,
+      required String accessToken,
+      required Function reponseData}) async {
     HttpLink httpLink = HttpLink(
       url,
       defaultHeaders: <String, String>{'Authorization': 'Bearer $accessToken'},
@@ -122,7 +134,7 @@ class GraphQLQuery {
     } else if (result.isLoading) {
       return Future.value(null);
     } else if (!result.hasException) {
-      print(result.data);
+      reponseData(result.data);
     }
   }
 }
