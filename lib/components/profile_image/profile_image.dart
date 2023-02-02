@@ -21,6 +21,7 @@ class ProfileImageCustom extends StatelessWidget {
   final bool isServicePic;
   final ImageProvider<Object>? defaultImage;
   final Widget? editIcon;
+  final String? defaultIcon;
 
   const ProfileImageCustom(
       {Key? key,
@@ -37,7 +38,8 @@ class ProfileImageCustom extends StatelessWidget {
       this.borderWidth,
       this.onDefaultImageTap,
       this.defaultImage,
-      this.editIcon})
+      this.editIcon,
+      this.defaultIcon})
       : super(key: key);
 
   @override
@@ -95,7 +97,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(FileIcons.user),
+                        image: AssetImage(defaultIcon ?? ''),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -194,7 +196,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(FileIcons.user),
+                        image: AssetImage(defaultIcon ?? ''),
                         fit: BoxFit.cover,
                       )),
                 )),
