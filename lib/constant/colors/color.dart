@@ -3,11 +3,14 @@
 import 'dart:ui';
 
 class ThemeColor {
-  static const Color PRIMARY_MAIN = Color(0xff27AAE1);
-  static const Color NoColor = Color(0x00000000);
-  static const Color PRIMARY_DARKER = Color(0xff0E8ABE);
-  static const Color PRIMARY_LIGHTER = Color(0xff58C8F6);
+  static const Color PRIMARY_MAIN = Color(0xff174988);
+  static const Color PRIMARY_DARKER = Color(0xff00306F);
+  static const Color PRIMARY_LIGHTER = Color(0xff3163A2);
   static const Color PRIMARY_Subtle = Color(0xffE2F7FF);
+  static const Color SECONDARY_MAIN = Color(0xffb4852d);
+  static const Color SECONDARY_DARKER = Color(0xff9B6C14);
+  static const Color SECCONDARY_LIGHTER = Color(0xffE7B860);
+  static const Color SECONDARY_Subtle = Color(0xffFFFFF9);
   static const Color DARK_D1 = Color(0xff3A3A3C);
   static const Color DARK_Black = Color(0xff000000);
   static const Color DARK_D2 = Color(0xff525151);
@@ -34,4 +37,5 @@ class ThemeColor {
   static const Color INFO_DARKER = Color(0xff1143C3);
   static const Color INFO_LIGHTER = Color(0xff5786FF);
   static const Color INFO_Subtle = Color(0xff97CBFF);
+  static const Color NoColor = Color(0x00000000);
 }
