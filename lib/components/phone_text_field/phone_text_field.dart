@@ -19,6 +19,10 @@ class PhoneTextField extends StatefulWidget {
   final void Function(Country) onValuePicked;
   final Widget Function(Country)? itemBuilder;
   final String? hintText;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
+  final Color? borderColor;
+  final Color? hintTextColor;
   final List<TextInputFormatter>? inputFormatters;
 
   const PhoneTextField(
@@ -34,7 +38,11 @@ class PhoneTextField extends StatefulWidget {
       required this.onValuePicked,
       this.itemBuilder,
       this.hintText,
-      this.inputFormatters})
+      this.inputFormatters,
+      this.enabledBorderColor,
+      this.focusedBorderColor,
+      this.borderColor,
+      this.hintTextColor})
       : super(key: key);
 
   @override
@@ -82,20 +90,24 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                       fillColor: Colors.white,
                       hintText: widget.hintText ?? "000-000-000",
                       hintStyle: KLabelTextNormal14.copyWith(
-                          color: ThemeColor.DARK_D4),
+                          color: widget.hintTextColor ?? ThemeColor.DARK_D4),
                       enabledBorder: new OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: ThemeColor.DARK_D4),
+                        borderSide: BorderSide(
+                            color: widget.enabledBorderColor ??
+                                ThemeColor.DARK_D4),
                       ),
                       border: new OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                            color: ThemeColor.DARK_D4, width: 1),
+                        borderSide: BorderSide(
+                            color: widget.borderColor ?? ThemeColor.DARK_D4,
+                            width: 1),
                       ),
                       focusedBorder: new OutlineInputBorder(
                         borderRadius: new BorderRadius.circular(10),
-                        borderSide: const BorderSide(
-                          color: ThemeColor.PRIMARY_MAIN,
+                        borderSide: BorderSide(
+                          color: widget.focusedBorderColor ??
+                              ThemeColor.PRIMARY_MAIN,
                         ),
                       ),
                     ),
