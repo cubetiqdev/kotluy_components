@@ -10,7 +10,10 @@ class PasswordTextField extends StatelessWidget {
   final bool showPassword;
   final FormFieldSetter<String>? onSaved;
   final IconData? icon;
-  final Color? color;
+  final Color? iconColor;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
+  final Color? borderColor;
   final GestureTapCallback? onTap;
   final ValueChanged<String>? onChanged;
   final bool? noPadding;
@@ -25,12 +28,15 @@ class PasswordTextField extends StatelessWidget {
       this.showPassword = false,
       this.onSaved,
       this.icon,
-      this.color,
+      this.iconColor,
       this.onChanged,
       this.noPadding = false,
       this.onTapTextField,
       this.enabled,
-      this.hintText});
+      this.hintText,
+      this.enabledBorderColor,
+      this.focusedBorderColor,
+      this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +57,13 @@ class PasswordTextField extends StatelessWidget {
             borderRadius: new BorderRadius.circular(10.0),
             borderSide: BorderSide(
               width: 1,
-              color: ThemeColor.DARK_D4,
+              color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: ThemeColor.PRIMARY_MAIN, width: 1),
+            borderSide: BorderSide(
+                color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -69,7 +76,7 @@ class PasswordTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
               width: 1,
-              color: ThemeColor.DARK_D4,
+              color: borderColor ?? ThemeColor.DARK_D4,
             ),
           ),
           suffixIcon: InkWell(
@@ -78,7 +85,7 @@ class PasswordTextField extends StatelessWidget {
               padding: const EdgeInsets.only(right: 10),
               child: Icon(
                 icon,
-                color: color,
+                color: iconColor,
                 size: 20,
               ),
             ),
