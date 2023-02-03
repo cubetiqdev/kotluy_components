@@ -23,6 +23,8 @@ class PhoneTextField extends StatefulWidget {
   final Color? focusedBorderColor;
   final Color? borderColor;
   final Color? hintTextColor;
+  final Color? fillColor;
+  final Color? dropDownColor;
   final List<TextInputFormatter>? inputFormatters;
 
   const PhoneTextField(
@@ -42,7 +44,9 @@ class PhoneTextField extends StatefulWidget {
       this.enabledBorderColor,
       this.focusedBorderColor,
       this.borderColor,
-      this.hintTextColor})
+      this.hintTextColor,
+      this.fillColor,
+      this.dropDownColor})
       : super(key: key);
 
   @override
@@ -68,6 +72,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                   sortComparator: (Country a, Country b) =>
                       a.name.compareTo(b.name),
                   onValuePicked: widget.onValuePicked,
+                  dropdownColor: widget.dropDownColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -87,7 +92,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                       suffix: widget.suffixIcon ?? SizedBox.shrink(),
                       contentPadding: new EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
-                      fillColor: Colors.white,
+                      fillColor: widget.fillColor ?? Colors.white,
                       hintText: widget.hintText ?? "000-000-000",
                       hintStyle: KLabelTextNormal14.copyWith(
                           color: widget.hintTextColor ?? ThemeColor.DARK_D4),

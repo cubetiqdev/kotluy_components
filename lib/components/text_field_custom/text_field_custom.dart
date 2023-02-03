@@ -9,14 +9,16 @@ class TextFormFieldCustom extends StatelessWidget {
   final TextEditingController? controller;
   final bool hidePassword;
   final FormFieldSetter<String>? onSaved;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
+  final Color? borderColor;
   final IconData? suffixIcon;
-  final Color? color;
+  final Color? suffixColor;
   final GestureTapCallback? onTap;
   final ValueChanged<String>? onChanged;
   final bool? noPadding;
   final GestureTapCallback? onTapTextField;
   final bool? enabled;
-  final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
   final String? hintText;
@@ -34,12 +36,11 @@ class TextFormFieldCustom extends StatelessWidget {
       this.controller,
       this.hidePassword = false,
       this.onSaved,
-      this.color,
+      this.suffixColor,
       this.onChanged,
       this.noPadding = false,
       this.onTapTextField,
       this.enabled,
-      this.borderColor,
       this.suffixIcon,
       this.inputFormatters,
       this.readOnly = false,
@@ -49,7 +50,10 @@ class TextFormFieldCustom extends StatelessWidget {
       this.prefixIcon,
       this.prefixIconColor,
       this.prefixText,
-      this.prefixStlye});
+      this.prefixStlye,
+      this.enabledBorderColor,
+      this.focusedBorderColor,
+      this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +77,13 @@ class TextFormFieldCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
               width: 1,
-              color: ThemeColor.DARK_D4,
+              color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-                color: borderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
+                color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -92,7 +96,7 @@ class TextFormFieldCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
               width: 1,
-              color: ThemeColor.DARK_D4,
+              color: borderColor ?? ThemeColor.DARK_D4,
             ),
           ),
           suffixIcon: InkWell(
@@ -101,7 +105,7 @@ class TextFormFieldCustom extends StatelessWidget {
               padding: const EdgeInsets.only(right: 10),
               child: Icon(
                 suffixIcon,
-                color: color,
+                color: suffixColor,
                 size: 20,
               ),
             ),
