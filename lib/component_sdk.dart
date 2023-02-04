@@ -15,3 +15,5 @@ export 'components/social_media_button/social_media_button.dart';
 export 'components/phone_text_field/phone_text_field.dart';
 export 'utils/base_model.dart';
 export 'package:component_sdk/graphQL/service/graphql_query.dart';
+export 'components/pinput_button/pinput_button.dart';
+export 'components/pinput_button/pin_theme.dart';
