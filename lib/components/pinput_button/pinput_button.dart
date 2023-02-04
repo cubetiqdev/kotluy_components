@@ -10,24 +10,27 @@ class PinPutCustom extends StatefulWidget {
   final FocusNode? focusNode;
   final AndroidSmsAutofillMethod? androidSmsAutofillMethod;
   final bool? listenForMultipleSmsOnAndroid;
+  final Color? focusedPinThemeColor;
   final PinTheme? defaultPinTheme;
   final PinTheme? focusedPinTheme;
   final PinTheme? submittedPinTheme;
   final PinTheme? errorPinTheme;
-  const PinPutCustom(
-      {super.key,
-      this.length,
-      this.pinController,
-      this.focusNode,
-      this.androidSmsAutofillMethod,
-      this.listenForMultipleSmsOnAndroid,
-      this.defaultPinTheme,
-      this.validator,
-      this.onCompleted,
-      this.onChanged,
-      this.focusedPinTheme,
-      this.submittedPinTheme,
-      this.errorPinTheme});
+  const PinPutCustom({
+    super.key,
+    this.length,
+    this.pinController,
+    this.focusNode,
+    this.androidSmsAutofillMethod,
+    this.listenForMultipleSmsOnAndroid,
+    this.defaultPinTheme,
+    this.validator,
+    this.onCompleted,
+    this.onChanged,
+    this.focusedPinTheme,
+    this.submittedPinTheme,
+    this.errorPinTheme,
+    this.focusedPinThemeColor,
+  });
 
   @override
   State<PinPutCustom> createState() => _PinPutCustomState();
@@ -75,7 +78,7 @@ class _PinPutCustomState extends State<PinPutCustom> {
             margin: const EdgeInsets.only(bottom: 9),
             width: 22,
             height: 1,
-            color: focusedBorderColor,
+            color: widget.focusedPinThemeColor ?? focusedBorderColor,
           ),
         ],
       ),
@@ -83,7 +86,8 @@ class _PinPutCustomState extends State<PinPutCustom> {
           defaultPinTheme.copyWith(
             decoration: defaultPinTheme.decoration!.copyWith(
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: focusedBorderColor),
+              border: Border.all(
+                  color: widget.focusedPinThemeColor ?? focusedBorderColor),
             ),
           ),
       submittedPinTheme: widget.submittedPinTheme ??
@@ -91,7 +95,8 @@ class _PinPutCustomState extends State<PinPutCustom> {
             decoration: defaultPinTheme.decoration!.copyWith(
               color: fillColor,
               borderRadius: BorderRadius.circular(19),
-              border: Border.all(color: focusedBorderColor),
+              border: Border.all(
+                  color: widget.focusedPinThemeColor ?? focusedBorderColor),
             ),
           ),
       errorPinTheme: widget.errorPinTheme ??
