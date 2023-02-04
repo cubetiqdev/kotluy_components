@@ -11,6 +11,7 @@ class PinPutCustom extends StatefulWidget {
   final AndroidSmsAutofillMethod? androidSmsAutofillMethod;
   final bool? listenForMultipleSmsOnAndroid;
   final Color? focusedPinThemeColor;
+  final Color? borderColor;
   final PinTheme? defaultPinTheme;
   final PinTheme? focusedPinTheme;
   final PinTheme? submittedPinTheme;
@@ -30,6 +31,7 @@ class PinPutCustom extends StatefulWidget {
     this.submittedPinTheme,
     this.errorPinTheme,
     this.focusedPinThemeColor,
+    this.borderColor,
   });
 
   @override
@@ -55,7 +57,7 @@ class _PinPutCustomState extends State<PinPutCustom> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: borderColor),
+        border: Border.all(color: widget.borderColor ?? borderColor),
       ),
     );
     return Pinput(
