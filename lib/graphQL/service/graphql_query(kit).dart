@@ -78,13 +78,7 @@ class GraphQLQuery {
         ),
       ),
     );
-    if (result.hasException) {
-      return result.exception;
-    } else if (result.isLoading) {
-      return Future.value(null);
-    } else if (!result.hasException) {
-      return result.data;
-    }
+    return result;
   }
 
   Future<dynamic> mutationDataWithAuth(
