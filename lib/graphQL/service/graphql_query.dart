@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQlService {
