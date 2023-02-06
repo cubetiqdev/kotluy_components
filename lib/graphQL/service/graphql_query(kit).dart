@@ -61,7 +61,7 @@ class GraphQLQuery {
     }
   }
 
-  Future<dynamic> mutationDataWithNoAuth({required String mutation}) async {
+  Future<QueryResult> mutationDataWithNoAuth({required String mutation}) async {
     HttpLink httpLink = HttpLink(
       url,
     );
