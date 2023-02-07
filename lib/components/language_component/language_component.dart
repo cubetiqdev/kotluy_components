@@ -10,9 +10,15 @@ class LanguageWithFlags extends StatelessWidget {
   final String? language;
   final String? countryFlags;
   final bool? select;
+  final Color? color;
+  final Color? textColor;
 
   const LanguageWithFlags(
-      {this.language, this.countryFlags, this.select = false});
+      {this.language,
+      this.countryFlags,
+      this.select = false,
+      this.color,
+      this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class LanguageWithFlags extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
         decoration: BoxDecoration(
-          color: ThemeColor.LIGHT_WHITE,
+          color: color ?? ThemeColor.LIGHT_WHITE,
           borderRadius: BorderRadius.circular(10),
           boxShadow: <BoxShadow>[
             BoxShadow(
@@ -35,14 +41,15 @@ class LanguageWithFlags extends StatelessWidget {
         child: Center(
           child: ListTile(
             leading: ProfileImageCustom(
-              urlImage: countryFlags,
+              assetImage: countryFlags,
               imageHeight: 10.w,
               imageWidth: 15.w,
               borderRadius: 0,
             ),
             title: Text(
               language ?? "",
-              style: KLabelTextDemiBold14.copyWith(color: ThemeColor.DARK_D1),
+              style: KLabelTextDemiBold14.copyWith(
+                  color: textColor ?? ThemeColor.DARK_D1),
             ),
             trailing: select == true
                 ? Icon(

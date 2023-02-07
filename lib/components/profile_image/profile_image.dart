@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class ProfileImageCustom extends StatelessWidget {
-  final String? urlImage;
+  final String? assetImage;
   final double? imageWidth;
   final double? imageHeight;
   final double? borderRadius;
@@ -19,17 +19,17 @@ class ProfileImageCustom extends StatelessWidget {
   final bool isEdit;
   final File? imageFile;
   final bool isServicePic;
-  final ImageProvider<Object>? defaultImage;
+  final String? defaultImage;
   final Widget? editIcon;
   final String? defaultIcon;
 
   const ProfileImageCustom(
       {Key? key,
       this.imageFile,
+      this.assetImage,
       this.isServicePic = false,
       this.onTap,
       this.onTapEdit,
-      this.urlImage,
       this.isEdit = false,
       this.imageWidth,
       this.imageHeight,
@@ -81,7 +81,7 @@ class ProfileImageCustom extends StatelessWidget {
                   )),
             ],
           )
-        : urlImage == null || urlImage == ""
+        : assetImage == null || assetImage == ""
             ? Stack(
                 children: [
                   Container(
@@ -97,7 +97,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(defaultIcon ?? ''),
+                        image: AssetImage(defaultImage ?? ''),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -127,7 +127,7 @@ class ProfileImageCustom extends StatelessWidget {
                 ],
               )
             : CachedNetworkImage(
-                imageUrl: "$urlImage",
+                imageUrl: "$assetImage",
                 key: UniqueKey(),
                 width: imageWidth,
                 height: imageHeight,
@@ -196,7 +196,7 @@ class ProfileImageCustom extends StatelessWidget {
                             spreadRadius: 0.5),
                       ],
                       image: DecorationImage(
-                        image: AssetImage(defaultIcon ?? ''),
+                        image: AssetImage(assetImage ?? ''),
                         fit: BoxFit.cover,
                       )),
                 )),
