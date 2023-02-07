@@ -46,6 +46,7 @@ class PasswordTextField extends StatelessWidget {
         enabled: enabled,
         onTap: onTapTextField,
         onChanged: onChanged,
+        validator: validator,
         onSaved: onSaved,
         obscureText: showPassword,
         controller: controller,

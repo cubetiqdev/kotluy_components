@@ -64,6 +64,7 @@ class TextFormFieldCustom extends StatelessWidget {
         onTap: onTapTextField,
         onChanged: onChanged,
         onSaved: onSaved,
+        validator: validator,
         readOnly: readOnly,
         inputFormatters: inputFormatters,
         obscureText: hidePassword,
