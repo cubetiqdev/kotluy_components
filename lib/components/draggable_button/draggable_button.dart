@@ -94,7 +94,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         _top = _widgetSize.height / 2 + widget.securityTop;
         break;
       case Anchor.RIGHT_SECOND:
-        _left = _screenWidth - _widgetSize.width + widget.securityRight;
+        _left = _screenWidth - _widgetSize.width - widget.securityRight;
         _top = max(_widgetSize.height, targetOffset.dy + widget.securityTop);
         break;
       case Anchor.TOP_SECOND:
@@ -111,7 +111,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         _top = _screenHeight - _widgetSize.height - widget.securityBottom;
         break;
       case Anchor.RIGHT_FOURTH:
-        _left = _screenWidth - _widgetSize.width + widget.securityRight;
+        _left = _screenWidth - _widgetSize.width - widget.securityRight;
         _top = min(_screenHeight - _widgetSize.height - widget.securityBottom,
             targetOffset.dy);
         break;
