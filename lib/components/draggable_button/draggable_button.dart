@@ -12,12 +12,18 @@ class DraggableButton extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
   final double securityBottom;
+  final double securityTop;
+  final double securityLeft;
+  final double securityRight;
 
   const DraggableButton(
       {Key? key,
       required this.child,
       this.initPosition,
-      this.securityBottom: 0})
+      this.securityBottom = 0,
+      this.securityTop = 0,
+      this.securityLeft = 0,
+      this.securityRight = 0})
       : super(key: key);
 
   @override
@@ -79,23 +85,24 @@ class _DraggableButtonState extends State<DraggableButton> {
 
     switch (_getAnchor(targetOffset)) {
       case Anchor.LEFT_FIRST:
-        _left = _widgetSize.width / 2;
-        _top = max(_widgetSize.height / 2, targetOffset.dy);
+        _left = _widgetSize.width / 2 - 25 + widget.securityLeft;
+        _top =
+            max(_widgetSize.height / 2, targetOffset.dy + widget.securityTop);
         break;
       case Anchor.TOP_FIRST:
         _left = max(_widgetSize.width / 2, targetOffset.dx);
-        _top = _widgetSize.height / 2;
+        _top = _widgetSize.height / 2 + widget.securityTop;
         break;
       case Anchor.RIGHT_SECOND:
-        _left = _screenWidth - _widgetSize.width;
-        _top = max(_widgetSize.height, targetOffset.dy);
+        _left = _screenWidth - _widgetSize.width + widget.securityRight;
+        _top = max(_widgetSize.height, targetOffset.dy + widget.securityTop);
         break;
       case Anchor.TOP_SECOND:
         _left = min(_screenWidth - _widgetSize.width, targetOffset.dx);
-        _top = _widgetSize.height / 2;
+        _top = _widgetSize.height / 2 + widget.securityTop;
         break;
       case Anchor.LEFT_THIRD:
-        _left = _widgetSize.width / 2;
+        _left = _widgetSize.width / 2 - 25 + widget.securityLeft;
         _top = min(_screenHeight - _widgetSize.height - widget.securityBottom,
             targetOffset.dy);
         break;
@@ -104,7 +111,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         _top = _screenHeight - _widgetSize.height - widget.securityBottom;
         break;
       case Anchor.RIGHT_FOURTH:
-        _left = _screenWidth - _widgetSize.width;
+        _left = _screenWidth - _widgetSize.width + widget.securityRight;
         _top = min(_screenHeight - _widgetSize.height - widget.securityBottom,
             targetOffset.dy);
         break;
