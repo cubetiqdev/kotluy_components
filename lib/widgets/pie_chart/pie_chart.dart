@@ -1,6 +1,6 @@
-import 'package:component_sdk/components/pie_chart/chart_values_options.dart';
-import 'package:component_sdk/components/pie_chart/degree_options.dart';
-import 'package:component_sdk/components/pie_chart/legend_options.dart';
+import 'package:component_sdk/widgets/pie_chart/chart_values_options.dart';
+import 'package:component_sdk/widgets/pie_chart/degree_options.dart';
+import 'package:component_sdk/widgets/pie_chart/legend_options.dart';
 import 'package:flutter/material.dart';
 
 import 'chart_painter.dart';

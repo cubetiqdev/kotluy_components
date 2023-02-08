@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
-import 'package:component_sdk/components/circle_bottom_navigation/circle_bottom_navi_sdk.dart';
-import 'package:component_sdk/components/circle_bottom_navigation/model.dart';
-import 'package:component_sdk/components/pie_chart/chart_values_options.dart';
-import 'package:component_sdk/components/pie_chart/legend_options.dart';
-import 'package:component_sdk/components/pie_chart/pie_chart.dart';
+import 'package:component_sdk/widgets/circle_bottom_navigation/circle_bottom_navi_sdk.dart';
+import 'package:component_sdk/widgets/circle_bottom_navigation/model.dart';
+import 'package:component_sdk/widgets/pie_chart/chart_values_options.dart';
+import 'package:component_sdk/widgets/pie_chart/legend_options.dart';
+import 'package:component_sdk/widgets/pie_chart/pie_chart.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {

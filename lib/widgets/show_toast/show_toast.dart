@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sizer/sizer.dart';
 
-showToast(FToast? fToast, String? tile, {String fallBack = ""}) {
+showToast(FToast? fToast, String? tile) {
   Widget toast = Container(
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
     decoration: BoxDecoration(
@@ -39,7 +39,7 @@ showToast(FToast? fToast, String? tile, {String fallBack = ""}) {
       ],
     ),
   );
-  fToast?.showToast(
+  return fToast?.showToast(
     child: toast,
     gravity: ToastGravity.TOP,
     toastDuration: const Duration(seconds: 5),
@@ -65,15 +65,17 @@ void showMessageToast(
         style: TextStyle(color: ThemeColor.PRIMARY_MAIN),
         maxLines: 1,
       ));
-  fToast?.showToast(
+  return fToast?.showToast(
     child: toast,
     gravity: ToastGravity.TOP,
     toastDuration: const Duration(seconds: 5),
   );
 }
 
-void showToastError(FToast? fToast, String? tile,
-    {String? fallBack, Map<String, String>? param}) {
+void showToastError(
+  FToast? fToast,
+  String? tile,
+) {
   Widget toast = Container(
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
     decoration: BoxDecoration(
@@ -107,7 +109,7 @@ void showToastError(FToast? fToast, String? tile,
       ],
     ),
   );
-  fToast?.showToast(
+  return fToast?.showToast(
     child: toast,
     gravity: ToastGravity.TOP,
     toastDuration: const Duration(seconds: 5),
@@ -186,7 +188,7 @@ void onTapExit(
         style: TextStyle(color: ThemeColor.LIGHT_WHITE),
         maxLines: 1,
       ));
-  fToast?.showToast(
+  return fToast?.showToast(
     child: toast,
     toastDuration: Duration(seconds: 3),
     fadeDuration: Duration(seconds: 2),

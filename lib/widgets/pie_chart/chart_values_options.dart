@@ -1,4 +1,4 @@
-import 'package:component_sdk/components/pie_chart/utils.dart';
+import 'package:component_sdk/widgets/pie_chart/utils.dart';
 import 'package:flutter/material.dart';
 
 class ChartValuesOptions {
