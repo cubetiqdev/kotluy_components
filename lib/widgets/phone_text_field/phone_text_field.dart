@@ -61,8 +61,8 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
         padding:
             EdgeInsets.symmetric(horizontal: widget.noPadding == true ? 0 : 40),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CountryPickerDropdown(
               itemBuilder: widget.itemBuilder ?? _buildDropdownItem,

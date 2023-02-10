@@ -24,6 +24,7 @@ class TextFormFieldCustom extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final Widget? prefix;
+  final Widget? suffix;
   final Widget? prefixIcon;
   final Color? prefixIconColor;
   final String? prefixText;
@@ -53,7 +54,8 @@ class TextFormFieldCustom extends StatelessWidget {
       this.prefixStlye,
       this.enabledBorderColor,
       this.focusedBorderColor,
-      this.borderColor});
+      this.borderColor,
+      this.suffix});
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +102,7 @@ class TextFormFieldCustom extends StatelessWidget {
               color: borderColor ?? ThemeColor.DARK_D4,
             ),
           ),
+          suffix: suffix,
           suffixIcon: InkWell(
             onTap: onTap,
             child: Padding(
