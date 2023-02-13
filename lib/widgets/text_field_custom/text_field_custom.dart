@@ -80,13 +80,13 @@ class TextFormFieldCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
               width: 1,
-              color: enabledBorderColor ?? ThemeColor.DARK_D4,
+              color: enabledBorderColor ?? Colors.black,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-                color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
+            borderSide:
+                BorderSide(color: focusedBorderColor ?? Colors.black, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -99,7 +99,7 @@ class TextFormFieldCustom extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
               width: 1,
-              color: borderColor ?? ThemeColor.DARK_D4,
+              color: borderColor ?? Colors.black,
             ),
           ),
           suffix: suffix,

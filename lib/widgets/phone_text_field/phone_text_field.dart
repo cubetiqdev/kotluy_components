@@ -94,23 +94,21 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                   fillColor: widget.fillColor ?? Colors.white,
                   hintText: widget.hintText ?? "000-000-000",
                   hintStyle: KLabelTextNormal14.copyWith(
-                      color: widget.hintTextColor ?? ThemeColor.DARK_D4),
+                      color: widget.hintTextColor ?? Colors.black),
                   enabledBorder: new OutlineInputBorder(
                     borderRadius: new BorderRadius.circular(10),
                     borderSide: BorderSide(
-                        color: widget.enabledBorderColor ?? ThemeColor.DARK_D4),
+                        color: widget.enabledBorderColor ?? Colors.black),
                   ),
                   border: new OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                        color: widget.borderColor ?? ThemeColor.DARK_D4,
-                        width: 1),
+                        color: widget.borderColor ?? Colors.black, width: 1),
                   ),
                   focusedBorder: new OutlineInputBorder(
                     borderRadius: new BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color:
-                          widget.focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
+                      color: widget.focusedBorderColor ?? Colors.black,
                     ),
                   ),
                 ),
