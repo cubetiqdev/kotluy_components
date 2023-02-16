@@ -13,6 +13,8 @@ class AnimationProgressButton extends StatelessWidget {
   final double padVertical;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Color? loadingColor;
+  final Color? doneColor;
   final TextStyle? textStyle;
   final double? height;
   AnimationProgressButton({
@@ -27,6 +29,8 @@ class AnimationProgressButton extends StatelessWidget {
     this.borderColor,
     this.textStyle,
     this.height,
+    this.loadingColor,
+    this.doneColor,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
@@ -46,7 +50,7 @@ class AnimationProgressButton extends StatelessWidget {
         width: state == ButtonState.init ? this.width ?? width : 100,
         height: height ?? 57,
         child: isNotInit
-            ? buildSmallButton(isDone)
+            ? buildSmallButton(isDone, loadingColor, doneColor)
             : buildButton(
                 title,
                 onPressed,
@@ -59,8 +63,9 @@ class AnimationProgressButton extends StatelessWidget {
   }
 }
 
-Widget buildSmallButton(bool isDone) {
-  final colors = isDone ? Colors.green : Color(0xffEF4748);
+Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
+  final colors =
+      isDone ? doneColor ?? Colors.green : loadingColor ?? Color(0xffEF4748);
   return Container(
     decoration: BoxDecoration(
       shape: BoxShape.circle,
