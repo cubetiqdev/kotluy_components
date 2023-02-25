@@ -86,8 +86,8 @@ class _DraggableButtonState extends State<DraggableButton> {
     switch (_getAnchor(targetOffset)) {
       case Anchor.LEFT_FIRST:
         _left = _widgetSize.width / 2 - 25 + widget.securityLeft;
-        _top =
-            max(_widgetSize.height / 2, targetOffset.dy + widget.securityTop);
+        _top = max(
+            _widgetSize.height / 2, targetOffset.dy + widget.securityTop + 10);
         break;
       case Anchor.TOP_FIRST:
         _left = max(_widgetSize.width / 2, targetOffset.dx);
