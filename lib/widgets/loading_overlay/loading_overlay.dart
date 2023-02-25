@@ -43,8 +43,8 @@ class LoadingOverlayState extends State<LoadingOverlay> {
         if (_isLoading)
           Center(
             child: SizedBox(
-              width: 100,
-              height: 100,
+              width: 40,
+              height: 40,
               child: CircularProgressIndicator(),
             ),
           ),
