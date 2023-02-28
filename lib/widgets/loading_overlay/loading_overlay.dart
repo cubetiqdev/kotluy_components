@@ -49,8 +49,8 @@ class LoadingOverlayState extends State<LoadingOverlay> {
         if (_isLoading)
           Center(
             child: SizedBox(
-              width: widget.width ?? 40,
-              height: widget.height ?? 40,
+              width: widget.width ?? 100,
+              height: widget.height ?? 100,
               child: widget.loading ??
                   Lottie.asset('assets/animations/money_loading.json'),
             ),
