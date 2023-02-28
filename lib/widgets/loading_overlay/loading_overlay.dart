@@ -3,7 +3,12 @@
 import 'package:flutter/material.dart';
 
 class LoadingOverlay extends StatefulWidget {
-  const LoadingOverlay({Key? key, required this.child}) : super(key: key);
+  final double? height;
+  final double? width;
+  final Widget? loading;
+  const LoadingOverlay(
+      {Key? key, required this.child, this.height, this.width, this.loading})
+      : super(key: key);
 
   final Widget child;
 
@@ -43,9 +48,9 @@ class LoadingOverlayState extends State<LoadingOverlay> {
         if (_isLoading)
           Center(
             child: SizedBox(
-              width: 40,
-              height: 40,
-              child: CircularProgressIndicator(),
+              width: widget.width ?? 40,
+              height: widget.height ?? 40,
+              child: widget.loading ?? CircularProgressIndicator(),
             ),
           ),
       ],
