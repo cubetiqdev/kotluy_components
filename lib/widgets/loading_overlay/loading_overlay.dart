@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoadingOverlay extends StatefulWidget {
   final double? height;
@@ -50,7 +51,8 @@ class LoadingOverlayState extends State<LoadingOverlay> {
             child: SizedBox(
               width: widget.width ?? 40,
               height: widget.height ?? 40,
-              child: widget.loading ?? CircularProgressIndicator(),
+              child: widget.loading ??
+                  Lottie.asset('assets/animations/money_loading.json'),
             ),
           ),
       ],

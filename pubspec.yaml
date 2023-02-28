@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  lottie: ^2.1.0
   fluttertoast: ^8.1.2
   google_fonts: ^3.0.1
   pinput: ^2.2.21
@@ -27,3 +28,4 @@ dev_dependencies:
 flutter:
   assets:
     - assets/icon/
+    - assets/animations/
