@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sizer/sizer.dart';
 
 class LoadingOverlay extends StatefulWidget {
   final double? height;
@@ -49,8 +50,8 @@ class LoadingOverlayState extends State<LoadingOverlay> {
         if (_isLoading)
           Center(
             child: SizedBox(
-              width: widget.width ?? 100,
-              height: widget.height ?? 100,
+              width: widget.width ?? 30.w,
+              height: widget.height ?? 30.h,
               child: widget.loading ??
                   Lottie.asset('assets/animations/money_loading.json'),
             ),
