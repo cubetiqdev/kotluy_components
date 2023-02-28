@@ -6,7 +6,7 @@ class ThemeColor {
   static const Color PRIMARY_MAIN = Color(0xff174988);
   static const Color PRIMARY_DARKER = Color(0xff00306F);
   static const Color PRIMARY_LIGHTER = Color(0xff3163A2);
-  static const Color PRIMARY_Subtle = Color(0xffE2F7FF);
+  static const Color PRIMARY_Subtle = Color(0xff4589df);
   static const Color SECONDARY_MAIN = Color(0xffb4852d);
   static const Color SECONDARY_DARKER = Color(0xff9B6C14);
   static const Color SECCONDARY_LIGHTER = Color(0xffE7B860);
