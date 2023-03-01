@@ -11,6 +11,7 @@ class PhoneTextField extends StatefulWidget {
   final String? Function(String?)? validatorPhone;
   final TextEditingController? controllerPhone;
   final ValueChanged<String>? onChangedPhone;
+  final Widget? icon;
   final bool? noPadding;
   final TextStyle? textStyle;
   final Widget? suffixIcon;
@@ -48,7 +49,8 @@ class PhoneTextField extends StatefulWidget {
       this.hintTextColor,
       this.fillColor,
       this.dropDownColor,
-      this.textStyle})
+      this.textStyle,
+      this.icon})
       : super(key: key);
 
   @override
@@ -74,6 +76,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                   a.name.compareTo(b.name),
               onValuePicked: widget.onValuePicked,
               dropdownColor: widget.dropDownColor,
+              icon: widget.icon,
             ),
             SizedBox(width: 10),
             Expanded(
