@@ -12,6 +12,7 @@ class PhoneTextField extends StatefulWidget {
   final TextEditingController? controllerPhone;
   final ValueChanged<String>? onChangedPhone;
   final bool? noPadding;
+  final TextStyle? textStyle;
   final Widget? suffixIcon;
   final String? initialSelection;
   final String? initialValue;
@@ -46,7 +47,8 @@ class PhoneTextField extends StatefulWidget {
       this.borderColor,
       this.hintTextColor,
       this.fillColor,
-      this.dropDownColor})
+      this.dropDownColor,
+      this.textStyle})
       : super(key: key);
 
   @override
@@ -114,9 +116,10 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                     ),
                   ),
                 ),
-                style: KLabelTextNormal14.copyWith(
-                  color: KDark1,
-                ),
+                style: widget.textStyle ??
+                    KLabelTextNormal14.copyWith(
+                      color: KDark1,
+                    ),
               ),
             ),
           ],
@@ -131,7 +134,10 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
           SizedBox(
             width: 8.0,
           ),
-          Text("+${country.phoneCode}"),
+          Text(
+            "+${country.phoneCode}",
+            style: widget.textStyle,
+          ),
         ],
       );
 }
