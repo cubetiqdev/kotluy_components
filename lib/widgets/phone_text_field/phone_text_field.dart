@@ -64,21 +64,22 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: widget.noPadding == true ? 0 : 40),
-        child: Expanded(
-          child: TextFormField(
-            initialValue: widget.initialValue,
-            maxLines: 1,
-            controller: widget.controllerPhone,
-            keyboardType: TextInputType.phone,
-            validator: widget.validatorPhone,
-            onChanged: widget.onChangedPhone,
-            inputFormatters: widget.inputFormatters ??
-                <TextInputFormatter>[
-                  LengthLimitingTextInputFormatter(10),
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                ],
-            decoration: InputDecoration(
-              suffix: CountryPickerDropdown(
+        child: TextFormField(
+          initialValue: widget.initialValue,
+          maxLines: 1,
+          controller: widget.controllerPhone,
+          keyboardType: TextInputType.phone,
+          validator: widget.validatorPhone,
+          onChanged: widget.onChangedPhone,
+          inputFormatters: widget.inputFormatters ??
+              <TextInputFormatter>[
+                LengthLimitingTextInputFormatter(10),
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
+          decoration: InputDecoration(
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: CountryPickerDropdown(
                 itemBuilder: widget.itemBuilder ?? _buildDropdownItem,
                 initialValue: widget.initialValue ?? 'KH',
                 itemFilter: (c) =>
@@ -89,34 +90,34 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                 dropdownColor: widget.dropDownColor,
                 icon: widget.icon,
               ),
-              contentPadding:
-                  new EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              fillColor: widget.fillColor ?? Colors.white,
-              hintText: widget.hintText ?? "000-000-000",
-              hintStyle: KLabelTextNormal14.copyWith(
-                  color: widget.hintTextColor ?? ThemeColor.DARK_D4),
-              enabledBorder: new OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(10),
-                borderSide: BorderSide(
-                    color: widget.enabledBorderColor ?? ThemeColor.DARK_D4),
-              ),
-              border: new OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(
-                    color: widget.borderColor ?? ThemeColor.DARK_D4, width: 1),
-              ),
-              focusedBorder: new OutlineInputBorder(
-                borderRadius: new BorderRadius.circular(10),
-                borderSide: BorderSide(
-                  color: widget.focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
-                ),
+            ),
+            contentPadding:
+                new EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            fillColor: widget.fillColor ?? Colors.white,
+            hintText: widget.hintText ?? "000-000-000",
+            hintStyle: KLabelTextNormal14.copyWith(
+                color: widget.hintTextColor ?? ThemeColor.DARK_D4),
+            enabledBorder: new OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10),
+              borderSide: BorderSide(
+                  color: widget.enabledBorderColor ?? ThemeColor.DARK_D4),
+            ),
+            border: new OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                  color: widget.borderColor ?? ThemeColor.DARK_D4, width: 1),
+            ),
+            focusedBorder: new OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: widget.focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
               ),
             ),
-            style: widget.textStyle ??
-                KLabelTextNormal14.copyWith(
-                  color: KDark1,
-                ),
           ),
+          style: widget.textStyle ??
+              KLabelTextNormal14.copyWith(
+                color: KDark1,
+              ),
         ),
       ),
     );
