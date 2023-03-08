@@ -53,7 +53,7 @@ class LoadingOverlayState extends State<LoadingOverlay> {
               width: widget.width ?? 30.w,
               height: widget.height ?? 30.h,
               child: widget.loading ??
-                  Lottie.asset('assets/animations/money_loading.json'),
+                  Lottie.asset('assets/animations/loading.json'),
             ),
           ),
       ],
