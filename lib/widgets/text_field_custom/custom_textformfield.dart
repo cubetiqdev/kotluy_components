@@ -1,123 +1,92 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_components/constant/fonts/default_font.dart';
 
 class CTextFormField extends StatelessWidget {
-  TextEditingController? controller;
-  final List<TextInputFormatter>? format;
   final String? hintText;
-  final String? labelText;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final String? Function(String?)? validator;
+  final TextStyle? textStyle;
   final Color? borderColor;
-  final double? borderRadius;
   final Color? focusBorderColor;
+  final Color fillColor;
+  final Color? hintColor;
+  final int? maxLines;
+  final int? maxLenght;
+  final double? borderRadius;
   final double? borderWidth;
   final double? focusBorderWidth;
   final double? focusBorderRadius;
-  final String? helperText;
-  final String? errorText;
-  final Color hintColor;
-  final bool? filled;
-  final Color fillColor;
-  final String? counterText;
-  final Color counterColor;
-  final bool autofocus;
-  final bool enabledBorder;
-  final void Function(String)? onChanged;
-  final TextInputType? keyboardType;
-  final Color helperColor;
-  final bool isPassword;
   final double? contentPadding;
   final double? paddingHorizontal;
   final double? paddingVertical;
-  String? Function(String?)? validator;
-  final int? maxLines;
-  final int? maxLenght;
-  final double? fontSize;
+  final bool? filled;
+  final bool enabledBorder;
+  final bool? noPadding;
+  final TextEditingController? controller;
+  final List<TextInputFormatter>? format;
+  final void Function(String)? onChanged;
+  final TextInputType? keyboardType;
 
-  CTextFormField(
-      {super.key,
-      this.maxLines,
-      this.fontSize,
-      this.maxLenght,
-      this.format,
-      this.validator,
-      this.paddingHorizontal,
-      this.paddingVertical,
-      this.contentPadding,
-      this.errorText,
-      this.autofocus = false,
-      this.isPassword = false,
-      this.helperColor = ThemeColor.DARK_D3,
-      this.keyboardType,
-      this.enabledBorder = false,
-      this.counterColor = ThemeColor.DARK_D3,
-      this.counterText,
-      this.onChanged,
-      this.filled = false,
-      this.fillColor = ThemeColor.NoColor,
-      this.hintColor = ThemeColor.DARK_D3,
-      this.helperText,
-      this.focusBorderRadius,
-      this.focusBorderWidth,
-      this.borderWidth,
-      this.focusBorderColor,
-      this.hintText,
-      this.labelText,
-      this.controller,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.borderColor,
-      this.borderRadius});
+  const CTextFormField({
+    super.key,
+    this.hintText,
+    this.validator,
+    this.textStyle,
+    this.borderColor,
+    this.focusBorderColor,
+    this.fillColor = ThemeColor.NoColor,
+    this.hintColor,
+    this.maxLines,
+    this.maxLenght,
+    this.borderRadius,
+    this.borderWidth,
+    this.focusBorderRadius,
+    this.focusBorderWidth,
+    this.contentPadding,
+    this.paddingHorizontal,
+    this.paddingVertical,
+    this.filled = false,
+    this.enabledBorder = false,
+    this.noPadding,
+    this.controller,
+    this.format,
+    this.onChanged,
+    this.keyboardType,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: paddingHorizontal ?? 10,
-        vertical: paddingVertical ?? 0,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
-        style: TextStyle(
-          fontSize: fontSize ?? 12,
-        ),
-        maxLines: maxLines,
+        style: textStyle ??
+            KLabelTextNormal14.copyWith(
+              color: KDark1,
+            ),
+        maxLines: maxLines ?? 2,
         maxLength: maxLenght,
         validator: validator,
         inputFormatters: format,
-        obscureText: isPassword,
-        keyboardType: keyboardType,
+        keyboardType: keyboardType ?? TextInputType.text,
         controller: controller,
-        autofocus: autofocus,
         onChanged: onChanged,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(contentPadding ?? 20),
-          counterText: counterText,
-          counterStyle: TextStyle(
-            color: counterColor,
-          ),
-          errorText: errorText,
+          contentPadding: EdgeInsets.all(contentPadding ?? 15),
           filled: filled,
           fillColor: fillColor,
           hintText: hintText,
-          labelText: labelText,
-          hintStyle: TextStyle(
-            color: hintColor,
-          ),
-          helperText: helperText,
-          helperStyle: TextStyle(
-            color: helperColor,
-          ),
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
+          hintStyle: KLabelTextNormal14.copyWith(
+              color: hintColor ?? ThemeColor.DARK_D4),
           focusedBorder: enabledBorder
               ? OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: focusBorderColor ?? ThemeColor.DARK_D1,
+                    color: focusBorderColor ?? ThemeColor.PRIMARY_MAIN,
                     width: focusBorderWidth ?? borderWidth ?? 1,
                   ),
-                  borderRadius: BorderRadius.circular(focusBorderRadius ?? 0.0),
+                  borderRadius: BorderRadius.circular(focusBorderRadius ?? 10),
                 )
               : OutlineInputBorder(
                   borderSide: BorderSide.none,
@@ -126,14 +95,14 @@ class CTextFormField extends StatelessWidget {
           enabledBorder: enabledBorder
               ? OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: borderColor ?? ThemeColor.DARK_D1,
+                    color: borderColor ?? ThemeColor.DARK_D4,
                     width: borderWidth ?? 1,
                   ),
-                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 )
               : OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 ),
         ),
       ),

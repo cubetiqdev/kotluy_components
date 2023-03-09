@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-import 'test.dart';
+import 'components/text_field_custom/text_field_custom.dart';
 
 void main() => runApp(const MyWidget());
 
@@ -17,7 +19,7 @@ class _MyWidgetState extends State<MyWidget> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MyHomePage(),
+        body: TextFieldCustom(),
       ),
     );
   }
