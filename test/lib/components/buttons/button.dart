@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_components/widgets/animation_progress_button/animation_progress_button.dart';
+import 'package:flutter_components/widgets/square_tile_logo/square_tile.dart';
 import 'package:flutter_components/widgets/text_field_custom/custom_textfield.dart';
 import 'package:flutter_components/widgets/text_field_custom/custom_textformfield.dart';
 import 'package:flutter_components/widgets/text_field_custom/password_textfield.dart';
@@ -45,6 +46,9 @@ class _ButtonCustomState extends State<ButtonCustom> {
                   },
                   title: 'AnimationProgressButton',
                 ),
+                SquareTile(
+                  imagePath: '',
+                )
               ],
             ),
           )),

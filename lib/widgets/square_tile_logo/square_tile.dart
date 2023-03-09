@@ -4,10 +4,25 @@ import 'package:sizer/sizer.dart';
 class SquareTile extends StatelessWidget {
   final String imagePath;
   final void Function()? onTap;
+  final double? width;
+  final double? height;
+  final double? paddingInside;
+  final double? imageHeight;
+  final double? imageWidth;
+  final Color? backgroundColor;
+  final Color? borderColor;
+
   const SquareTile({
     super.key,
     required this.imagePath,
     this.onTap,
+    this.backgroundColor,
+    this.borderColor,
+    this.paddingInside,
+    this.imageHeight,
+    this.imageWidth,
+    this.width,
+    this.height,
   });
 
   @override
@@ -15,17 +30,20 @@ class SquareTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ?? () {},
       child: Container(
-        padding: const EdgeInsets.all(20),
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(paddingInside ?? 20),
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.grey.shade600,
+            color: borderColor ?? Colors.grey.shade600,
           ),
           borderRadius: BorderRadius.circular(16),
-          color: Colors.grey.shade200,
+          color: backgroundColor ?? Colors.grey.shade200,
         ),
         child: Image.asset(
           imagePath,
-          height: 3.h,
+          width: imageWidth,
+          height: imageHeight ?? 3.h,
         ),
       ),
     );

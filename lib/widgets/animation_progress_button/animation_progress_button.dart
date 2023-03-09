@@ -6,30 +6,31 @@ import 'package:flutter_components/constant/colors/color.dart';
 enum ButtonState { init, loading, done }
 
 class AnimationProgressButton extends StatelessWidget {
+  final String title;
+  final TextStyle? textStyle;
   final ButtonState state;
   final VoidCallback onPressed;
   final double? width;
-  final String title;
   final double padHorizontal;
   final double padVertical;
+  final double? height;
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? loadingColor;
   final Color? doneColor;
-  final TextStyle? textStyle;
-  final double? height;
+
   AnimationProgressButton({
-    this.state = ButtonState.init,
+    Key? key,
     required this.title,
+    this.textStyle,
+    this.state = ButtonState.init,
+    required this.onPressed,
     this.width,
     this.padHorizontal = 20.0,
     this.padVertical = 10.0,
-    required this.onPressed,
-    Key? key,
+    this.height,
     this.backgroundColor,
     this.borderColor,
-    this.textStyle,
-    this.height,
     this.loadingColor,
     this.doneColor,
   }) : super(key: key);
