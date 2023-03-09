@@ -8,50 +8,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PhoneTextField extends StatefulWidget {
-  final String? Function(String?)? validatorPhone;
-  final TextEditingController? controllerPhone;
-  final ValueChanged<String>? onChangedPhone;
-  final Widget? icon;
   final bool? noPadding;
   final TextStyle? textStyle;
-  final Widget? suffixIcon;
+  final TextEditingController? controllerPhone;
+  final String? hintText;
   final String? initialSelection;
   final String? initialValue;
+  final String? Function(String?)? validatorPhone;
   final List<String>? countries;
-  final void Function(Country) onValuePicked;
+  final List<TextInputFormatter>? inputFormatters;
+  final Widget? icon;
+  final Widget? suffixIcon;
   final Widget Function(Country)? itemBuilder;
-  final String? hintText;
+  final ValueChanged<String>? onChangedPhone;
+  final void Function(Country) onValuePicked;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
   final Color? borderColor;
   final Color? hintTextColor;
   final Color? fillColor;
   final Color? dropDownColor;
-  final List<TextInputFormatter>? inputFormatters;
 
-  const PhoneTextField(
-      {Key? key,
-      this.validatorPhone,
-      this.controllerPhone,
-      this.noPadding = false,
-      this.onChangedPhone,
-      this.suffixIcon,
-      this.initialSelection,
-      this.initialValue,
-      this.countries,
-      required this.onValuePicked,
-      this.itemBuilder,
-      this.hintText,
-      this.inputFormatters,
-      this.enabledBorderColor,
-      this.focusedBorderColor,
-      this.borderColor,
-      this.hintTextColor,
-      this.fillColor,
-      this.dropDownColor,
-      this.textStyle,
-      this.icon})
-      : super(key: key);
+  const PhoneTextField({
+    Key? key,
+    this.noPadding = false,
+    this.textStyle,
+    this.controllerPhone,
+    this.hintText,
+    this.initialSelection,
+    this.initialValue,
+    this.validatorPhone,
+    this.countries,
+    this.inputFormatters,
+    this.icon,
+    this.suffixIcon,
+    this.itemBuilder,
+    this.onChangedPhone,
+    required this.onValuePicked,
+    this.enabledBorderColor,
+    this.focusedBorderColor,
+    this.borderColor,
+    this.hintTextColor,
+    this.fillColor,
+    this.dropDownColor,
+  }) : super(key: key);
 
   @override
   _TextFieldPhoneState createState() => _TextFieldPhoneState();
@@ -63,7 +63,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
     return SafeArea(
       child: Padding(
         padding:
-            EdgeInsets.symmetric(horizontal: widget.noPadding == true ? 0 : 40),
+            EdgeInsets.symmetric(horizontal: widget.noPadding == true ? 0 : 20),
         child: TextFormField(
           initialValue: widget.initialValue,
           maxLines: 1,
@@ -73,7 +73,9 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
           onChanged: widget.onChangedPhone,
           inputFormatters: widget.inputFormatters ??
               <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
                 LengthLimitingTextInputFormatter(10),
+                FilteringTextInputFormatter.deny(RegExp('^0+')),
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               ],
           decoration: InputDecoration(
@@ -131,7 +133,10 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
           ),
           Text(
             "+${country.phoneCode}",
-            style: widget.textStyle,
+            style: widget.textStyle ??
+                KLabelTextNormal14.copyWith(
+                  color: KDark1,
+                ),
           ),
         ],
       );
