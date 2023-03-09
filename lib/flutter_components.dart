@@ -1,4 +1,4 @@
-library component_sdk;
+library flutter_components;
 
 export 'console/console.dart';
 export 'utils/base_model.dart';
