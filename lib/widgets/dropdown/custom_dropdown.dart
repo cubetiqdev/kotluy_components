@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:component_sdk/constant/colors/color.dart';
-import 'package:component_sdk/constant/fonts/default_font.dart';
+import 'package:flutter_components/constant/colors/color.dart';
+import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDown<T> extends StatelessWidget {

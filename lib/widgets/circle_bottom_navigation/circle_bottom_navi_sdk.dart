@@ -2,7 +2,7 @@
 
 library circle_bottom_navi_sdk;
 
-import 'package:component_sdk/widgets/circle_bottom_navigation/model.dart';
+import 'package:flutter_components/widgets/circle_bottom_navigation/model.dart';
 import 'package:flutter/material.dart';
 
 class CircleBottomNavigation extends StatefulWidget {

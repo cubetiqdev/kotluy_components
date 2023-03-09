@@ -1,4 +1,4 @@
-import 'package:component_sdk/constant/colors/color.dart';
+import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter/material.dart';
 
 class DialogWarning extends StatelessWidget {

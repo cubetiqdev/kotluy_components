@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:component_sdk/component_sdk.dart';
+import 'package:flutter_components/component_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 

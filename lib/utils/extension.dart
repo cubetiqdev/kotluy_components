@@ -1,4 +1,4 @@
-import 'package:component_sdk/console/console.dart';
+import 'package:flutter_components/console/console.dart';
 
 extension IterableExtension<T> on Iterable<T> {
   T? get firstOrNull => isEmpty ? null : first;
