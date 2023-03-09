@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, unnecessary_this, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_components/constant/colors/color.dart';
 
 enum ButtonState { init, loading, done }
 
@@ -21,7 +22,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.state = ButtonState.init,
     required this.title,
     this.width,
-    this.padHorizontal = 15.0,
+    this.padHorizontal = 20.0,
     this.padVertical = 10.0,
     required this.onPressed,
     Key? key,
@@ -64,8 +65,9 @@ class AnimationProgressButton extends StatelessWidget {
 }
 
 Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
-  final colors =
-      isDone ? doneColor ?? Colors.green : loadingColor ?? Color(0xffEF4748);
+  final colors = isDone
+      ? doneColor ?? Colors.green
+      : loadingColor ?? ThemeColor.PRIMARY_MAIN;
   return Container(
     decoration: BoxDecoration(
       shape: BoxShape.circle,
@@ -90,13 +92,13 @@ Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: backgroundColor ?? const Color(0xffEF4748),
+        backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6.0),
         ),
         side: BorderSide(
           width: 1,
-          color: borderColor ?? const Color(0xffEF4748),
+          color: borderColor ?? ThemeColor.PRIMARY_MAIN,
         ),
       ),
       child: Text(
