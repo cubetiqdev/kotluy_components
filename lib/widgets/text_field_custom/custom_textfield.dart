@@ -1,139 +1,117 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../constant/colors/color.dart';
+import 'package:flutter_components/constant/fonts/default_font.dart';
 
 class CTextField extends StatelessWidget {
-  TextEditingController? controller;
-  final List<TextInputFormatter>? format;
   final String? hintText;
   final String? labelText;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final String? Function(String?)? validator;
+  final TextStyle? textStyle;
+  final TextEditingController? controller;
+  final bool hidePassword;
+  final bool readOnly;
+  final bool? noPadding;
+  final bool? enabled;
+  final Color? hintTextColor;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
   final Color? borderColor;
-  final double? borderRadius;
-  final Color? focusBorderColor;
-  final double? borderWidth;
-  final double? focusBorderWidth;
-  final double? focusBorderRadius;
-  final String? helperText;
-  final String? errorText;
-  final Color hintColor;
-  final bool? filled;
-  final Color fillColor;
-  final String? counterText;
-  final Color counterColor;
-  final bool autofocus;
-  final bool enabledBorder;
-  final void Function(String)? onChanged;
-  final TextInputType? keyboardType;
-  final Color helperColor;
-  final bool isPassword;
-  final double? contentPadding;
-  final double? paddingHorizontal;
-  final double? paddingVertical;
-  final int? maxLines;
-  final int? maxLenght;
-  final double? fontSize;
+  final Color? suffixIconColor;
+  final Color? prefixIconColor;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
+  final GestureTapCallback? onTap;
+  final GestureTapCallback? onTapTextField;
+  final ValueChanged<String>? onChanged;
+  final FormFieldSetter<String>? onSaved;
+  final List<TextInputFormatter>? inputFormatters;
 
-  CTextField(
-      {super.key,
-      this.maxLenght,
-      this.fontSize,
-      this.maxLines,
-      this.format,
-      this.paddingHorizontal,
-      this.paddingVertical,
-      this.contentPadding,
-      this.errorText,
-      this.autofocus = false,
-      this.isPassword = false,
-      this.helperColor = ThemeColor.DARK_D3,
-      this.keyboardType,
-      this.enabledBorder = false,
-      this.counterColor = ThemeColor.DARK_D3,
-      this.counterText,
-      this.onChanged,
-      this.filled = false,
-      this.fillColor = ThemeColor.NoColor,
-      this.hintColor = ThemeColor.DARK_D3,
-      this.helperText,
-      this.focusBorderRadius,
-      this.focusBorderWidth,
-      this.borderWidth,
-      this.focusBorderColor,
-      this.hintText,
-      this.labelText,
-      this.controller,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.borderColor,
-      this.borderRadius});
+  const CTextField({
+    super.key,
+    this.hintText,
+    this.labelText,
+    this.validator,
+    this.textStyle,
+    this.controller,
+    this.hidePassword = false,
+    this.readOnly = false,
+    this.noPadding = false,
+    this.enabled,
+    this.hintTextColor,
+    this.enabledBorderColor,
+    this.focusedBorderColor,
+    this.borderColor,
+    this.suffixIconColor,
+    this.prefixIconColor,
+    this.suffixIcon,
+    this.prefixIcon,
+    this.onTap,
+    this.onTapTextField,
+    this.onSaved,
+    this.onChanged,
+    this.inputFormatters,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: paddingHorizontal ?? 10,
-        vertical: paddingVertical ?? 0,
-      ),
-      child: TextField(
-        style: TextStyle(
-          fontSize: fontSize ?? 12,
-        ),
-        maxLines: maxLines,
-        maxLength: maxLenght,
-        inputFormatters: format,
-        obscureText: isPassword,
-        keyboardType: keyboardType,
-        controller: controller,
-        autofocus: autofocus,
+      padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
+      child: TextFormField(
+        enabled: enabled,
+        onTap: onTapTextField,
         onChanged: onChanged,
+        onSaved: onSaved,
+        validator: validator,
+        readOnly: readOnly,
+        inputFormatters: inputFormatters,
+        obscureText: hidePassword,
+        controller: controller,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(contentPadding ?? 20),
-          counterText: counterText,
-          counterStyle: TextStyle(
-            color: counterColor,
-          ),
-          errorText: errorText,
-          filled: filled,
-          fillColor: fillColor,
-          hintText: hintText,
           labelText: labelText,
-          hintStyle: TextStyle(
-            color: hintColor,
+          hintText: hintText,
+          hintStyle: KLabelTextNormal14.copyWith(
+              color: hintTextColor ?? ThemeColor.DARK_D4),
+          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          fillColor: ThemeColor.ERROR_MAIN,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              width: 1,
+              color: enabledBorderColor ?? ThemeColor.DARK_D4,
+            ),
           ),
-          helperText: helperText,
-          helperStyle: TextStyle(
-            color: helperColor,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+                color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
-          prefixIcon: prefixIcon,
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              width: 1,
+              color: ThemeColor.DARK_D4,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              width: 1,
+              color: borderColor ?? ThemeColor.DARK_D4,
+            ),
+          ),
           suffixIcon: suffixIcon,
-          focusedBorder: enabledBorder
-              ? OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: focusBorderColor ?? ThemeColor.DARK_D1,
-                    width: focusBorderWidth ?? borderWidth ?? 1,
-                  ),
-                  borderRadius: BorderRadius.circular(focusBorderRadius ?? 0.0),
-                )
-              : OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius:
-                      BorderRadius.circular(focusBorderRadius ?? 0.0)),
-          enabledBorder: enabledBorder
-              ? OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: borderColor ?? ThemeColor.DARK_D1,
-                    width: borderWidth ?? 1,
-                  ),
-                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
-                )
-              : OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0),
-                ),
+          suffixIconColor: suffixIconColor,
+          prefixIcon: prefixIcon,
+          prefixIconColor: prefixIconColor,
         ),
+        keyboardType: TextInputType.text,
+        style: textStyle ??
+            KLabelTextNormal14.copyWith(
+              color: KDark1,
+            ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components/widgets/text_field_custom/custom_textfield.dart';
 import 'package:flutter_components/widgets/text_field_custom/custom_textformfield.dart';
-import 'package:flutter_components/widgets/text_field_custom/passsword_textfield.dart';
+import 'package:flutter_components/widgets/text_field_custom/password_textfield.dart';
 import 'package:flutter_components/widgets/text_field_custom/phone_textfield.dart';
 
 class TextFieldCustom extends StatelessWidget {
@@ -38,13 +39,13 @@ class TextFieldCustom extends StatelessWidget {
                     icon: Icons.visibility,
                   ),
                 ),
-                Container(
-                  height: 200,
-                  child: CTextFormField(
-                    hintText: "Transaction Note",
-                    enabledBorder: true,
-                  ),
+                CTextFormField(
+                  hintText: "Textform Field",
+                  enabledBorder: true,
                 ),
+                CTextField(
+                  hintText: 'Normal Text Field',
+                )
               ],
             ),
           )),
