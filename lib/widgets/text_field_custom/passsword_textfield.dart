@@ -1,47 +1,50 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, unnecessary_new
 
 import 'package:flutter_components/constant/colors/color.dart';
-import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_components/constant/fonts/default_font.dart';
 
 class PasswordTextField extends StatelessWidget {
-  final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final TextStyle? textStyle;
+  final String? hintText;
   final bool showPassword;
-  final FormFieldSetter<String>? onSaved;
+  final bool? noPadding;
+  final bool? enabled;
   final IconData? icon;
   final Color? iconColor;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
   final Color? borderColor;
-  final GestureTapCallback? onTap;
+  final String? Function(String?)? validator;
+  final FormFieldSetter<String>? onSaved;
   final ValueChanged<String>? onChanged;
-  final bool? noPadding;
+  final GestureTapCallback? onTap;
   final GestureTapCallback? onTapTextField;
-  final bool? enabled;
-  final String? hintText;
 
-  PasswordTextField(
-      {this.onTap,
-      this.validator,
-      this.controller,
-      this.showPassword = false,
-      this.onSaved,
-      this.icon,
-      this.iconColor,
-      this.onChanged,
-      this.noPadding = false,
-      this.onTapTextField,
-      this.enabled,
-      this.hintText,
-      this.enabledBorderColor,
-      this.focusedBorderColor,
-      this.borderColor});
+  PasswordTextField({
+    this.controller,
+    this.textStyle,
+    this.hintText,
+    this.showPassword = false,
+    this.noPadding = false,
+    this.enabled,
+    this.icon,
+    this.iconColor,
+    this.enabledBorderColor,
+    this.focusedBorderColor,
+    this.borderColor,
+    this.validator,
+    this.onSaved,
+    this.onChanged,
+    this.onTap,
+    this.onTapTextField,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 40),
+      padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
         enabled: enabled,
         onTap: onTapTextField,
@@ -53,7 +56,6 @@ class PasswordTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          fillColor: ThemeColor.ERROR_MAIN,
           enabledBorder: OutlineInputBorder(
             borderRadius: new BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -93,7 +95,7 @@ class PasswordTextField extends StatelessWidget {
           ),
         ),
         keyboardType: TextInputType.text,
-        style: KLabelTextNormal12,
+        style: textStyle ?? KLabelTextNormal12,
       ),
     );
   }
