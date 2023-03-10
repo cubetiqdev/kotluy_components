@@ -72,7 +72,7 @@ class CTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          hintStyle: KLabelTextNormal14.copyWith(
+          hintStyle: KLabelTextNormal12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: ThemeColor.ERROR_MAIN,
