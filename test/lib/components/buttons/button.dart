@@ -57,6 +57,7 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     image: 'assets/icons/apple_logo.png',
                     onTap: () {},
                   ),
+                  ButtonChooseLanguage()
                 ],
               ),
             )),
