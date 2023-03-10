@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_components/widgets/button_custom/animation_progress_button/animation_progress_button.dart';
+import 'package:flutter_components/widgets/button_custom/button_choose_language/button_choose_language.dart';
 import 'package:flutter_components/widgets/button_custom/social_media_button/social_media_button.dart';
 import 'package:flutter_components/widgets/button_custom/square_tile_logo/square_tile.dart';
 
@@ -57,7 +58,10 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     image: 'assets/icons/apple_logo.png',
                     onTap: () {},
                   ),
-                  ButtonChooseLanguage()
+                  const ButtonChooseLanguage(
+                    title: 'English',
+                    image: 'assets/icons/apple_logo.png',
+                  )
                 ],
               ),
             )),
