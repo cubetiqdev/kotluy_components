@@ -8,22 +8,28 @@ import 'package:sizer/sizer.dart';
 
 class LanguageWithFlags extends StatelessWidget {
   final String? language;
-  final String? countryFlags;
-  final bool? select;
+  final String countryFlags;
   final Color? color;
   final Color? textColor;
+  final double padHorizontal;
+  final double padVertical;
+  final bool? select;
 
-  const LanguageWithFlags(
-      {this.language,
-      this.countryFlags,
-      this.select = false,
-      this.color,
-      this.textColor});
+  const LanguageWithFlags({
+    this.language,
+    required this.countryFlags,
+    this.color,
+    this.textColor,
+    this.padHorizontal = 20,
+    this.padVertical = 0,
+    this.select = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(
+          horizontal: padHorizontal, vertical: padVertical),
       child: Container(
         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
         decoration: BoxDecoration(

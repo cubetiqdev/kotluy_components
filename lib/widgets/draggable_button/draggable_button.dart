@@ -6,8 +6,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// Draggable FAB widget which is always aligned to
-/// the edge of the screen - be it left,top, right,bottom
 class DraggableButton extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
@@ -123,7 +121,6 @@ class _DraggableButtonState extends State<DraggableButton> {
     setState(() {});
   }
 
-  /// Computes the appropriate anchor screen edge for the widget
   Anchor _getAnchor(Offset position) {
     if (position.dx < _screenWidthMid! && position.dy < _screenHeightMid!) {
       return position.dx < position.dy ? Anchor.LEFT_FIRST : Anchor.TOP_FIRST;
