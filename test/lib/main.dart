@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:test/components/buttons/button.dart';
+import 'package:test/components/components.dart';
 
 void main() => runApp(const MyWidget());
 
@@ -18,7 +18,7 @@ class _MyWidgetState extends State<MyWidget> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: ButtonCustom(),
+        body: Components(),
       ),
     );
   }

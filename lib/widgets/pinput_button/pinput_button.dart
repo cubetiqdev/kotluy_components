@@ -1,37 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_components/constant/colors/color.dart';
 import 'package:pinput/pinput.dart';
 
 class PinPutCustom extends StatefulWidget {
   final int? length;
   final TextEditingController? pinController;
+  final Color? focusedPinThemeColor;
+  final Color? borderColor;
+  final Color? fillColor;
+  final Color? textColor;
+  final PinTheme? defaultPinTheme;
+  final PinTheme? focusedPinTheme;
+  final PinTheme? submittedPinTheme;
+  final PinTheme? errorPinTheme;
   final String? Function(String?)? validator;
   final void Function(String)? onCompleted;
   final void Function(String)? onChanged;
   final FocusNode? focusNode;
   final AndroidSmsAutofillMethod? androidSmsAutofillMethod;
   final bool? listenForMultipleSmsOnAndroid;
-  final Color? focusedPinThemeColor;
-  final Color? borderColor;
-  final PinTheme? defaultPinTheme;
-  final PinTheme? focusedPinTheme;
-  final PinTheme? submittedPinTheme;
-  final PinTheme? errorPinTheme;
+
   const PinPutCustom({
     super.key,
     this.length,
     this.pinController,
-    this.focusNode,
-    this.androidSmsAutofillMethod,
-    this.listenForMultipleSmsOnAndroid,
+    this.focusedPinThemeColor,
+    this.borderColor,
+    this.fillColor,
+    this.textColor,
     this.defaultPinTheme,
-    this.validator,
-    this.onCompleted,
-    this.onChanged,
     this.focusedPinTheme,
     this.submittedPinTheme,
     this.errorPinTheme,
-    this.focusedPinThemeColor,
-    this.borderColor,
+    this.validator,
+    this.onCompleted,
+    this.onChanged,
+    this.focusNode,
+    this.androidSmsAutofillMethod,
+    this.listenForMultipleSmsOnAndroid,
   });
 
   @override
@@ -44,16 +50,16 @@ final formKey = GlobalKey<FormState>();
 class _PinPutCustomState extends State<PinPutCustom> {
   @override
   Widget build(BuildContext context) {
-    const focusedBorderColor = Color.fromRGBO(23, 171, 144, 1);
-    const fillColor = Color.fromRGBO(243, 246, 249, 0);
-    const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
+    const focusedBorderColor = ThemeColor.PRIMARY_MAIN;
+    const fillColor = Colors.transparent;
+    const borderColor = ThemeColor.SECONDARY_MAIN;
 
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: const TextStyle(
+      textStyle: TextStyle(
         fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
+        color: widget.textColor ?? const Color.fromRGBO(30, 60, 87, 1),
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(19),
@@ -95,7 +101,7 @@ class _PinPutCustomState extends State<PinPutCustom> {
       submittedPinTheme: widget.submittedPinTheme ??
           defaultPinTheme.copyWith(
             decoration: defaultPinTheme.decoration!.copyWith(
-              color: fillColor,
+              color: widget.fillColor ?? fillColor,
               borderRadius: BorderRadius.circular(19),
               border: Border.all(
                   color: widget.focusedPinThemeColor ?? focusedBorderColor),
