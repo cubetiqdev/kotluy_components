@@ -108,10 +108,7 @@ class CTextField extends StatelessWidget {
           prefixIconColor: prefixIconColor,
         ),
         keyboardType: TextInputType.text,
-        style: textStyle ??
-            KLabelTextNormal14.copyWith(
-              color: KDark1,
-            ),
+        style: textStyle ?? KLabelTextNormal12,
       ),
     );
   }
