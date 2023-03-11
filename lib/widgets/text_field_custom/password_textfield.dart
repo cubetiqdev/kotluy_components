@@ -11,7 +11,10 @@ class PasswordTextField extends StatelessWidget {
   final bool showPassword;
   final bool? noPadding;
   final bool? enabled;
+  final Widget? prefixIcon;
   final IconData? icon;
+  final Color? prefixIconColor;
+
   final Color? iconColor;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
@@ -29,7 +32,9 @@ class PasswordTextField extends StatelessWidget {
     this.showPassword = false,
     this.noPadding = false,
     this.enabled,
+    this.prefixIcon,
     this.icon,
+    this.prefixIconColor,
     this.iconColor,
     this.enabledBorderColor,
     this.focusedBorderColor,
@@ -82,6 +87,8 @@ class PasswordTextField extends StatelessWidget {
               color: borderColor ?? ThemeColor.DARK_D4,
             ),
           ),
+          prefixIcon: prefixIcon,
+          prefixIconColor: prefixIconColor,
           suffixIcon: InkWell(
             onTap: onTap,
             child: Padding(
