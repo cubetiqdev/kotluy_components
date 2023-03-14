@@ -30,7 +30,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:test/components/quick_action_menu.dart';
 
 const double degrees2Radians = math.pi / 100.0;
 
