@@ -1,5 +1,5 @@
-import 'package:flutter_components/widgets/pie_chart/pie_chart.dart';
-import 'package:flutter_components/widgets/pie_chart/utils.dart';
+import 'package:flutter_components/components/pie_chart/pie_chart.dart';
+import 'package:flutter_components/components/pie_chart/utils.dart';
 import 'package:flutter/material.dart';
 
 class LegendOptions {

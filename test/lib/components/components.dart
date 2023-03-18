@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components/widgets/button_custom/animation_progress_button/animation_progress_button.dart';
-import 'package:flutter_components/widgets/dash_line/dash_line.dart';
-import 'package:flutter_components/widgets/draggable_button/draggable_button.dart';
-import 'package:flutter_components/widgets/pinput_button/pinput_button.dart';
+import 'package:flutter_components/components/button_custom/animation_progress_button/animation_progress_button.dart';
+import 'package:flutter_components/components/dash_line/dash_line.dart';
+import 'package:flutter_components/components/draggable_button/draggable_button.dart';
+import 'package:flutter_components/components/pinput_button/pinput_button.dart';
 
 class Components extends StatefulWidget {
   const Components({super.key});
