@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_components/widgets/text_field_custom/custom_textfield.dart';
-import 'package:flutter_components/widgets/text_field_custom/custom_textformfield.dart';
-import 'package:flutter_components/widgets/text_field_custom/password_textfield.dart';
-import 'package:flutter_components/widgets/text_field_custom/phone_textfield.dart';
+import 'package:flutter_components/components/text_field_custom/custom_textfield.dart';
+import 'package:flutter_components/components/text_field_custom/custom_textformfield.dart';
+import 'package:flutter_components/components/text_field_custom/password_textfield.dart';
+import 'package:flutter_components/components/text_field_custom/phone_textfield.dart';
 
 class TextFieldCustom extends StatelessWidget {
   const TextFieldCustom({super.key});

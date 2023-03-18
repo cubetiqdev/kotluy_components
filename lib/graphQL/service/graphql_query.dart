@@ -1,17 +1,20 @@
-// ignore_for_file: unnecessary_string_interpolations
-
+import 'package:flutter_components/console/console.dart';
+import 'package:flutter_components/constant/constant/constants.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQlService {
-  final String url;
+  final String? url;
 
-  GraphQlService({required this.url});
+  GraphQlService({this.url});
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void queryDataNoAuth(
-      {required String query, required Function reponseData}) async {
+  Future<void> queryDataNoAuth({
+    required String query,
+    required Function onSuccess,
+    required Function onError,
+  }) async {
     HttpLink httpLink = HttpLink(
-      url,
+      url ?? base_url,
     );
 
     GraphQLClient qlClient = GraphQLClient(
@@ -24,16 +27,17 @@ class GraphQlService {
     QueryResult result = await qlClient.query(
       QueryOptions(
         document: gql(
-          """$query""",
+          query,
         ),
+        fetchPolicy: FetchPolicy.noCache,
       ),
     );
     if (result.hasException) {
-      print(result.exception);
-    } else if (result.isLoading) {
-      return;
+      onError(result.exception!.graphqlErrors[0].message);
     } else if (!result.hasException) {
-      reponseData(result.data);
+      onSuccess(result.data);
+    } else {
+      return Future.value(null);
     }
   }
 
@@ -46,12 +50,15 @@ class GraphQlService {
   /// response = YourResponseModel().fromMap(data['Field Name']);
   ///
   /// },
-  void queryDataWithAuth(
-      {required String query,
-      required String accessToken,
-      required Function reponseData}) async {
+
+  Future<void> queryDataWithAuth({
+    required String query,
+    required String? accessToken,
+    required Function onSuccess,
+    required Function onError,
+  }) async {
     HttpLink httpLink = HttpLink(
-      url,
+      url ?? base_url,
       defaultHeaders: <String, String>{'Authorization': 'Bearer $accessToken'},
     );
     GraphQLClient qlClient = GraphQLClient(
@@ -64,24 +71,28 @@ class GraphQlService {
     QueryResult result = await qlClient.query(
       QueryOptions(
         document: gql(
-          """$query""",
+          query,
         ),
+        fetchPolicy: FetchPolicy.noCache,
       ),
     );
     if (result.hasException) {
-      print(result.exception);
-    } else if (result.isLoading) {
-      return Future.value(null);
+      onError(result.exception!.graphqlErrors[0].message);
     } else if (!result.hasException) {
-      reponseData(result.data);
+      onSuccess(result.data);
+    } else {
+      return Future.value(null);
     }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void mutationDataWithNoAuth(
-      {required String mutation, required Function reponseData}) async {
+  Future<void> mutationDataWithNoAuth({
+    required String mutation,
+    required Function onSuccess,
+    required Function onError,
+  }) async {
     HttpLink httpLink = HttpLink(
-      url,
+      url ?? base_url,
     );
 
     GraphQLClient qlClient = GraphQLClient(
@@ -94,27 +105,31 @@ class GraphQlService {
     QueryResult result = await qlClient.query(
       QueryOptions(
         document: gql(
-          """$mutation""",
+          mutation,
         ),
+        fetchPolicy: FetchPolicy.noCache,
       ),
     );
     if (result.hasException) {
-      print(result.exception);
-    } else if (result.isLoading) {
-      return Future.value(null);
+      onError(result.exception!.graphqlErrors[0].message);
+      Console.error("Error", result.exception);
     } else if (!result.hasException) {
-      reponseData(result.data); 
+      onSuccess(result.data);
+    } else {
+      return Future.value(null);
     }
   }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-  void mutationDataWithAuth(
-      {required String mutation,
-      required String accessToken,
-      required Function reponseData}) async {
+  Future<void> mutationDataWithAuth({
+    required String mutation,
+    required String? accessToken,
+    required Function onSuccess,
+    required Function onError,
+  }) async {
     HttpLink httpLink = HttpLink(
-      url,
-      defaultHeaders: <String, String>{'Authorization': 'Bearer $accessToken'},
+      url ?? base_url,
+      defaultHeaders: <String, String>{"Authorization": "Bearer $accessToken"},
     );
 
     GraphQLClient qlClient = GraphQLClient(
@@ -127,16 +142,18 @@ class GraphQlService {
     QueryResult result = await qlClient.query(
       QueryOptions(
         document: gql(
-          """$mutation""",
+          mutation,
         ),
+        fetchPolicy: FetchPolicy.noCache,
       ),
     );
     if (result.hasException) {
-      print(result.exception);
-    } else if (result.isLoading) {
-      return Future.value(null);
+      onError(result.exception!.graphqlErrors[0].message);
+      Console.error("Error", result.exception!.graphqlErrors[0].message);
     } else if (!result.hasException) {
-      reponseData(result.data);
+      onSuccess(result.data);
+    } else {
+      return Future.value(null);
     }
   }
 }

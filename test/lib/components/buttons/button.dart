@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components/widgets/button_custom/animation_progress_button/animation_progress_button.dart';
-import 'package:flutter_components/widgets/button_custom/button_choose_language/button_choose_language.dart';
-import 'package:flutter_components/widgets/button_custom/flag_language_button/language_with_flags.dart';
-import 'package:flutter_components/widgets/button_custom/social_media_button/social_media_button.dart';
-import 'package:flutter_components/widgets/button_custom/square_tile_logo/square_tile.dart';
+import 'package:flutter_components/components/button_custom/animation_progress_button/animation_progress_button.dart';
+import 'package:flutter_components/components/button_custom/button_choose_language/button_choose_language.dart';
+import 'package:flutter_components/components/button_custom/flag_language_button/language_with_flags.dart';
+import 'package:flutter_components/components/button_custom/social_media_button/social_media_button.dart';
+import 'package:flutter_components/components/button_custom/square_tile_logo/square_tile.dart';
 
 class ButtonCustom extends StatefulWidget {
   const ButtonCustom({super.key});
