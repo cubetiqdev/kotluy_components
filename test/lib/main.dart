@@ -30,9 +30,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:test/components/quick_action_menu.dart';
 
-const double degrees2Radians = math.pi / 100.0;
+const double degrees2Radians = math.pi / 90.0;
 
 void main() => runApp(MyApp());
 
@@ -76,45 +75,76 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RotationTransition(
-      turns: AlwaysStoppedAnimation(260 / 360),
-      child: SizedBox(
-        height: 300,
-        width: 300,
-        child: Stack(
-          children: items
-              .asMap()
-              .map((index, buttonData) {
-                if (index < 4) {
-                  var degree = 120 / 4 * index;
-                  var radian = degree * degrees2Radians;
-                  return MapEntry(
-                    index,
-                    Align(
-                      alignment: Alignment(
-                        math.sin(radian),
-                        math.cos(radian),
-                      ),
-                      child: Transform.rotate(
-                        angle: -radian,
-                        child: MenuPetal(
-                          angle: -radian,
-                          buttonData: buttonData,
-                          color: colors[index],
-                        ),
-                      ),
-                    ),
-                  );
-                }
-                return MapEntry(
-                  index,
-                  _centerButton(buttonData),
-                );
-              })
-              .values
-              .toList(),
+    return Stack(
+      children: [
+        // Center(
+        //   child: RotationTransition(
+        //     turns: AlwaysStoppedAnimation(220 / 360),
+        //     child: SizedBox(
+        //       height: 300,
+        //       width: 300,
+        //       child: Stack(
+        //         children: items
+        //             .asMap()
+        //             .map((index, buttonData) {
+        //               if (index < 4) {
+        //                 var degree = 70 / 4 * index;
+        //                 var radian = degree * degrees2Radians + 0.35;
+        //                 return MapEntry(
+        //                   index,
+        //                   Align(
+        //                     alignment: Alignment(
+        //                       math.sin(radian - 0.55),
+        //                       math.cos(radian - 0.33),
+        //                     ),
+        //                     child: Transform.rotate(
+        //                       angle: -radian + 0.60,
+        //                       child: MenuPetal(
+        //                         buttonData: buttonData,
+        //                         color: colors[index],
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 );
+        //               }
+        //               return MapEntry(
+        //                 index,
+        //                 _centerButton(buttonData),
+        //               );
+        //             })
+        //             .values
+        //             .toList(),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        Positioned(
+          left: 180,
+          height: 750,
+          child: Container(
+              width: 50,
+              height: 50,
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.black)),
         ),
-      ),
+        // Center(
+        //   child: ClipPath(
+        //     clipper: RPSCustomPainter(),
+        //     child: Container(
+        //       width: 200,
+        //       height: 200,
+        //       color: Colors.orange,
+        //     ),
+        //   ),
+        // )
+        Center(
+          child: CustomPaint(
+            size: Size(150,
+                250), //You can Replace this with your desired WIDTH and HEIGHT
+            painter: RPSCustomPainter(),
+          ),
+        ),
+      ],
     );
   }
 
@@ -143,12 +173,10 @@ class ButtonData {
 class MenuPetal extends StatelessWidget {
   const MenuPetal({
     Key? key,
-    required this.angle,
     required this.buttonData,
     required this.color,
   }) : super(key: key);
 
-  final double angle;
   final ButtonData buttonData;
   final Color color;
   final double factor = 0.5; //Gap
@@ -178,20 +206,88 @@ class MenuPetal extends StatelessWidget {
 class MyCustomClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var x = size.width / 100 * 0.802;
+    var x = size.width / 130 * 0.812;
     var y = size.height / 100;
     var path = Path()
-      ..moveTo(39.4 * x, 6.1 * y)
-      ..cubicTo(43.2 * x, -20 * y, 57.1 * x, -20 * y, 60.9 * x, 6.1 * y)
-      ..lineTo(99.1 * x, 138)
-      ..cubicTo(102.1 * x, 90.2 * y, 99.1 * x, 93.9 * y, 92.0 * x, 95.1 * y)
-      ..cubicTo(67.4 * x, 101.7 * y, 36.9 * x, 101.7 * y, 9.2 * x, 95.1 * y)
-      ..cubicTo(1.2 * x, 93.8 * y, -1.3 * x, 88.7 * y, 1.2 * x, 138)
-      ..lineTo(39.4 * x, 6.1 * y);
+      ..moveTo(39.4 * x, 6.1 * y) // Bottom Left
+      ..cubicTo(46 * x, -10 * y, 55 * x, -10 * y, 61 * x, 6.1 * y) // Bottom
+      ..lineTo(100 * x, 139) //Top left
+      ..cubicTo(100 * x, 100 * y, 100 * x, 100 * y, 100 * x, 93 * y) // Top Left
+      ..cubicTo(70 * x, 100 * y, 45 * x, 100 * y, 10 * x, 96 * y)
+      ..cubicTo(0 * x, 95 * y, 0 * x, 93 * y, 2 * x, 140) // Top Right
+      ..lineTo(39.4 * x, 6.1 * y); // Bottom Right
 
     return path.shift(const Offset(12, 0));
   }
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+}
+
+// class PizzaSliceClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     final path = Path()
+//       ..lineTo(size.width, 0)
+//       ..quadraticBezierTo()
+//       ..lineTo(size.width / 2, size.height)
+//       ..close();
+
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+// }
+
+// class RPSCustomPainter extends CustomPainter {
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     Paint paint0 = Paint()
+//       ..color = const Color.fromARGB(255, 33, 150, 243)
+//       ..style = PaintingStyle.fill
+//       ..strokeWidth = 1;
+
+//     Path path0 = Path();
+//     path0.moveTo(size.width * 0.3091667, size.height * 0.2066667);
+//     path0.quadraticBezierTo(size.width * 0.4664583, size.height * 0.1054167,
+//         size.width * 0.6233333, size.height * 0.2050000);
+//     path0.quadraticBezierTo(size.width * 0.5852083, size.height * 0.3541667,
+//         size.width * 0.4741667, size.height * 0.9250000);
+//     path0.lineTo(size.width * 0.3091667, size.height * 0.2066667);
+//     path0.close();
+
+//     canvas.drawPath(path0, paint0);
+//   }
+
+//   @override
+//   bool shouldRepaint(covariant CustomPainter oldDelegate) {
+//     return true;
+//   }
+// }
+
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint0 = Paint()
+      ..color = const Color.fromARGB(255, 33, 150, 243)
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 1;
+
+    Path path0 = Path();
+    path0.moveTo(size.width * 0.1266667, size.height * 0.1683333);
+    path0.quadraticBezierTo(size.width * 0.4707667, size.height * -0.1191000,
+        size.width * 0.8766667, size.height * 0.1650000);
+    path0.lineTo(size.width * 0.5008333, size.height * 0.9950000);
+    path0.quadraticBezierTo(size.width * 0.4072917, size.height * 0.7883333,
+        size.width * 0.1266667, size.height * 0.1683333);
+    path0.close();
+
+    canvas.drawPath(path0, paint0);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
 }
