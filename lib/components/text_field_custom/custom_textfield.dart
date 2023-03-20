@@ -23,6 +23,7 @@ class CTextField extends StatelessWidget {
   final Color? prefixIconColor;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final TextInputType? keyboardType;
   final GestureTapCallback? onTap;
   final GestureTapCallback? onTapTextField;
   final ValueChanged<String>? onChanged;
@@ -48,6 +49,7 @@ class CTextField extends StatelessWidget {
     this.prefixIconColor,
     this.suffixIcon,
     this.prefixIcon,
+    this.keyboardType,
     this.onTap,
     this.onTapTextField,
     this.onSaved,
@@ -107,7 +109,7 @@ class CTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           prefixIconColor: prefixIconColor,
         ),
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType ?? TextInputType.text,
         style: textStyle ?? KLabelTextNormal12,
       ),
     );
