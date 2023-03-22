@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 
-class CustomDropDownSearch extends StatelessWidget {
+class AutoCompleteDropdown extends StatelessWidget {
   final TextEditingController? controller;
   final String? initValue;
   final String? hint;
@@ -17,7 +17,7 @@ class CustomDropDownSearch extends StatelessWidget {
   final bool? isHaveIcon;
   final GestureTapCallback? onClear;
 
-  CustomDropDownSearch(
+  AutoCompleteDropdown(
       {super.key,
       this.controller,
       this.initValue,
