@@ -14,18 +14,17 @@ class AutoCompleteDropdown extends StatelessWidget {
   final String? hint;
   final Function(SearchFieldListItem?)? onTap;
   final List<SearchFieldListItem> suggestions;
-  final bool? isHaveIcon;
-  final GestureTapCallback? onClear;
+  final bool? onClear;
 
-  AutoCompleteDropdown(
-      {super.key,
-      this.controller,
-      this.initValue,
-      this.hint,
-      this.onTap,
-      required this.suggestions,
-      this.isHaveIcon,
-      this.onClear});
+  AutoCompleteDropdown({
+    super.key,
+    this.controller,
+    this.initValue,
+    this.hint,
+    this.onTap,
+    required this.suggestions,
+    this.onClear,
+  });
   FocusNode focus = FocusNode();
   @override
   Widget build(BuildContext context) {
@@ -51,9 +50,11 @@ class AutoCompleteDropdown extends StatelessWidget {
           borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
         ),
-        suffix: isHaveIcon == true
+        suffix: onClear == true
             ? InkWell(
-                onTap: onClear,
+                onTap: () {
+                  controller?.clear();
+                },
                 child: Transform.translate(
                     offset: const Offset(0, 2),
                     child: const Icon(CupertinoIcons.xmark, size: 16)))
