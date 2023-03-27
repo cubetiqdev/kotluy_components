@@ -62,10 +62,7 @@ class CTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
-        style: textStyle ??
-            KLabelTextNormal14.copyWith(
-              color: KDark1,
-            ),
+        style: textStyle ?? KLabelTextRegular14,
         maxLines: maxLines ?? 2,
         maxLength: maxLenght,
         validator: validator,
@@ -78,7 +75,7 @@ class CTextFormField extends StatelessWidget {
           filled: filled,
           fillColor: fillColor,
           hintText: hintText,
-          hintStyle: KLabelTextNormal14.copyWith(
+          hintStyle: KLabelTextRegular14.copyWith(
               color: hintColor ?? ThemeColor.DARK_D4),
           focusedBorder: enabledBorder
               ? OutlineInputBorder(

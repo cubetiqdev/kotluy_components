@@ -67,8 +67,8 @@ class AutoCompleteDropdown extends StatelessWidget {
         ),
       ),
       // onTap:onTap ,
-      searchStyle: KLabelTextNormal12,
-      suggestionStyle: KLabelTextNormal12,
+      searchStyle: KLabelTextRegular12,
+      suggestionStyle: KLabelTextRegular12,
       hint: hint,
       suggestionsDecoration: BoxDecoration(
         color: ThemeColor.LIGHT_WHITE,

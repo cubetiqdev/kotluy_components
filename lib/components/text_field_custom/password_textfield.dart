@@ -102,7 +102,7 @@ class PasswordTextField extends StatelessWidget {
           ),
         ),
         keyboardType: TextInputType.text,
-        style: textStyle ?? KLabelTextNormal12,
+        style: textStyle ?? KLabelTextRegular12,
       ),
     );
   }

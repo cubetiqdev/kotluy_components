@@ -97,7 +97,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                 new EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             fillColor: widget.fillColor ?? Colors.white,
             hintText: widget.hintText ?? "000-000-000",
-            hintStyle: KLabelTextNormal14.copyWith(
+            hintStyle: KLabelTextRegular14.copyWith(
                 color: widget.hintTextColor ?? ThemeColor.DARK_D4),
             enabledBorder: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10),
@@ -116,10 +116,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
               ),
             ),
           ),
-          style: widget.textStyle ??
-              KLabelTextNormal14.copyWith(
-                color: KDark1,
-              ),
+          style: widget.textStyle ?? KLabelTextRegular14,
         ),
       ),
     );
@@ -133,10 +130,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
           ),
           Text(
             "+${country.phoneCode}",
-            style: widget.textStyle ??
-                KLabelTextNormal14.copyWith(
-                  color: KDark1,
-                ),
+            style: widget.textStyle ?? KLabelTextRegular14,
           ),
         ],
       );

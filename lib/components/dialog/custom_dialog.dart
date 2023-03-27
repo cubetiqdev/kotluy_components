@@ -13,14 +13,14 @@ class DialogWarning extends StatelessWidget {
 
   const DialogWarning(
       {super.key,
-      this.warningBorderColor = ThemeColor.WARNING_LIGHTER,
+      this.warningBorderColor = ThemeColor.WARNING,
       this.onTap,
       this.titleText,
       this.content,
       this.backgroundColor,
       this.borderRadius = 20.0,
       this.contentTextColor,
-      this.titleTextColor = ThemeColor.WARNING_DARKER});
+      this.titleTextColor = ThemeColor.WARNING});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class DialogWarning extends StatelessWidget {
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.error, size: 100, color: ThemeColor.WARNING_MAIN),
+          const Icon(Icons.error, size: 100, color: ThemeColor.WARNING),
           const SizedBox(height: 5),
           Text(
             titleText ?? "Warning",
@@ -66,7 +66,7 @@ class DialogWarning extends StatelessWidget {
               textColor: ThemeColor.DARK_Black,
               width: 80,
               height: 35,
-              color: ThemeColor.WARNING_MAIN,
+              color: ThemeColor.WARNING,
               radius: 30.0,
               onTap: () {
                 Navigator.pop(context);
@@ -78,7 +78,7 @@ class DialogWarning extends StatelessWidget {
               width: 80,
               height: 35,
               radius: 30.0,
-              color: ThemeColor.WARNING_MAIN,
+              color: ThemeColor.WARNING,
               onTap: () {
                 onTap;
               },
@@ -101,13 +101,13 @@ class DialogError extends StatelessWidget {
 
   const DialogError(
       {super.key,
-      this.errorBorderColor = ThemeColor.ERROR_MAIN,
+      this.errorBorderColor = ThemeColor.ERROR,
       this.titleText,
       this.content,
       this.backgroundColor,
       this.borderRadius = 20.0,
       this.contentTextColor,
-      this.titleTextColor = ThemeColor.ERROR_DARKER});
+      this.titleTextColor = ThemeColor.ERROR});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,7 @@ class DialogError extends StatelessWidget {
           const Icon(
             Icons.error,
             size: 100,
-            color: ThemeColor.ERROR_MAIN,
+            color: ThemeColor.ERROR,
           ),
           const SizedBox(height: 5),
           Text(
@@ -158,7 +158,7 @@ class DialogError extends StatelessWidget {
               width: 80,
               height: 35,
               radius: 30.0,
-              color: ThemeColor.ERROR_MAIN,
+              color: ThemeColor.ERROR,
               onTap: () {
                 Navigator.pop(context);
               },
@@ -181,13 +181,13 @@ class DialogSuccess extends StatelessWidget {
 
   const DialogSuccess(
       {super.key,
-      this.successBorderColor = ThemeColor.SUCCESS_MAIN,
+      this.successBorderColor = ThemeColor.SUCCESS,
       this.titleText,
       this.content,
       this.backgroundColor,
       this.borderRadius = 20.0,
       this.contentTextColor,
-      this.titleTextColor = ThemeColor.SUCCESS_DARKER});
+      this.titleTextColor = ThemeColor.SUCCESS});
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +207,7 @@ class DialogSuccess extends StatelessWidget {
           const Icon(
             Icons.error,
             size: 100,
-            color: ThemeColor.SUCCESS_MAIN,
+            color: ThemeColor.SUCCESS,
           ),
           const SizedBox(height: 5),
           Text(
@@ -238,7 +238,7 @@ class DialogSuccess extends StatelessWidget {
               width: 80,
               height: 35,
               radius: 30.0,
-              color: ThemeColor.SUCCESS_MAIN,
+              color: ThemeColor.SUCCESS,
               onTap: () {
                 Navigator.pop(context);
               },

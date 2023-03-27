@@ -1,113 +1,201 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
-import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const KPrimaryColor = Color(0xff27AAE1);
-const KPrimarySubtleColor = Color(0xffE2F7FF);
-const KBlack = Color(0xff000000);
-const KDark1 = Color(0xff3A3A3C);
-const KDark2 = Color(0xff525151);
-const KDark3 = Color(0xff777B7D);
-const KDark4 = Color(0xffC4C9CC);
-const KYellow = Color(0xffFFD912);
-const KRed = Color(0xffFF3B3B);
-const KRedSubtle = Color(0xffFFD3D3);
-const KL2 = Color(0xffF4F6F8);
-const KL3 = Color(0xffF4F6F8);
-const KL1 = Color(0xffFAFBFC);
-const KWhite = Color(0xffFFFFFF);
-const KGreen2 = Color(0xffD8FFE5);
-const KGreen = Color(0xff0DDA84);
-const KLight1 = Color(0xffECF1F5);
+const KColor = Color(0xff3A3A3C);
+TextStyle KFont = GoogleFonts.inter();
 
-//font Size 10
-TextStyle KLabelTextNormal10 = GoogleFonts.inter(
-  color: KDark1,
+// ------------------------------ Heading -----------------------------------
+
+///Heading 1 Size 48
+TextStyle KLabelHeading1 = KFont.copyWith(
+  color: KColor,
+  fontSize: 48,
+  fontWeight: FontWeight.bold,
+);
+
+///Heading 2 Size 40
+TextStyle KLabelHeading2 = KFont.copyWith(
+  color: KColor,
+  fontSize: 40,
+  fontWeight: FontWeight.bold,
+);
+
+///Heading 3 Size 32
+TextStyle KLabelHeading3 = GoogleFonts.inter(
+  color: KColor,
+  fontSize: 32,
+  fontWeight: FontWeight.bold,
+);
+
+///Heading 4 Size 24
+TextStyle KLabelHeading4 = KFont.copyWith(
+  color: KColor,
+  fontSize: 24,
+  fontWeight: FontWeight.bold,
+);
+
+///Heading 5 Size 20
+TextStyle KLabelHeading5 = KFont.copyWith(
+  color: KColor,
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);
+
+///Heading 6 Size 18
+TextStyle KLabelHeading6 = KFont.copyWith(
+  color: KColor,
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+);
+
+// ------------------------------ Body -----------------------------------
+
+// ------------------------------Style Regular-----------------------------------
+
+///Regular Font Size 10
+TextStyle KLabelTextRegular10 = KFont.copyWith(
+  color: KColor,
+  fontSize: 10,
+  fontWeight: FontWeight.w400,
+);
+
+///Regular Font Size 12
+TextStyle KLabelTextRegular12 = KFont.copyWith(
+  color: KColor,
+  fontSize: 12,
+  fontWeight: FontWeight.w400,
+);
+
+///Regular Font Size 14
+TextStyle KLabelTextRegular14 = KFont.copyWith(
+  color: KColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);
+
+///Regular Font Size 16
+TextStyle KLabelTextRegular16 = KFont.copyWith(
+  color: KColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+);
+
+///Regular Font Size 18
+TextStyle KLabelTextRegular18 = KFont.copyWith(
+  color: KColor,
+  fontSize: 18,
+  fontWeight: FontWeight.w400,
+);
+
+// ------------------------------Style Medium-----------------------------------
+
+///Medium Font Size 10
+TextStyle KLabelTextMedium10 = KFont.copyWith(
+  color: KColor,
   fontSize: 10,
   fontWeight: FontWeight.w500,
-  height: 1.5,
 );
-//font size 12
-TextStyle KLabelTextNormal12 = GoogleFonts.inter(
-  color: KDark1,
+
+///Medium Font Size 12
+TextStyle KLabelTextMedium12 = KFont.copyWith(
+  color: KColor,
   fontSize: 12,
   fontWeight: FontWeight.w500,
-  height: 1.5,
 );
 
-//font style 14
-TextStyle KLabelTextNormal14 =
-    GoogleFonts.inter(color: KDark1, fontSize: 14, fontWeight: FontWeight.w500);
+///Medium Font Size 14
+TextStyle KLabelTextMedium14 = KFont.copyWith(
+  color: KColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+);
 
-//font style 16
-TextStyle KLabelTextNormal16 = GoogleFonts.inter(
-    color: KDark1, fontSize: 16, fontWeight: FontWeight.w500, height: 1.3);
+///Medium Font Size 16
+TextStyle KLabelTextMedium16 = KFont.copyWith(
+  color: KColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
 
-//font style 18
-TextStyle KLabelTextNormal18 =
-    GoogleFonts.inter(color: KDark1, fontSize: 18, fontWeight: FontWeight.w500);
+///Medium Font Size 18
+TextStyle KLabelTextMedium18 = KFont.copyWith(
+  color: KColor,
+  fontSize: 18,
+  fontWeight: FontWeight.w500,
+);
 
-// ------------------------------font name (Inter) style Medium-----------------------------------
+// ------------------------------Style Semi Bold-----------------------------------
 
-//font size 12
-TextStyle KLabelTextMedium12 = GoogleFonts.inter(
-  color: KDark1,
+///Semi Bold Font Size 10
+TextStyle KLabelTextSemiBold10 = KFont.copyWith(
+  color: KColor,
+  fontSize: 10,
+  fontWeight: FontWeight.w600,
+);
+
+///Semi Bold Font Size 12
+TextStyle KLabelTextSemiBold12 = KFont.copyWith(
+  color: KColor,
   fontSize: 12,
   fontWeight: FontWeight.w600,
 );
 
-//font style 14
-TextStyle KLabelTextMedium14 =
-    GoogleFonts.inter(color: KDark1, fontSize: 14, fontWeight: FontWeight.w600);
-
-//font style 16
-TextStyle KLabelTextMedium16 =
-    GoogleFonts.inter(color: KDark1, fontSize: 16, fontWeight: FontWeight.w600);
-
-//font style 18
-TextStyle KLabelTextMedium18 =
-    GoogleFonts.inter(color: KDark1, fontSize: 18, fontWeight: FontWeight.w600);
-
-// ------------------------------font name (Inter) style DemiBold-----------------------------------
-
-//font size 12
-TextStyle KLabelTextDemiBold12 = GoogleFonts.inter(
-  color: KDark1,
-  fontSize: 12,
-  fontWeight: FontWeight.w700,
+///Semi Bold Font Size 14
+TextStyle KLabelTextSemiBold14 = KFont.copyWith(
+  color: KColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
 );
 
-//font style 14
-TextStyle KLabelTextDemiBold14 =
-    GoogleFonts.inter(color: KDark1, fontSize: 14, fontWeight: FontWeight.w700);
-
-//font style 16
-TextStyle KLabelTextDemiBold16 =
-    GoogleFonts.inter(color: KDark1, fontSize: 16, fontWeight: FontWeight.w700);
-
-//font style 18
-TextStyle KLabelTextDemiBold18 =
-    GoogleFonts.inter(color: KDark1, fontSize: 18, fontWeight: FontWeight.w700);
-
-// ------------------------------font name (Inter) style Bold-----------------------------------
-
-//font size 12
-TextStyle KLabelTextBold12 = GoogleFonts.inter(
-  color: KDark1,
-  fontSize: 12,
-  fontWeight: FontWeight.w900,
+///Semi Bold Font Size 16
+TextStyle KLabelTextSemiBold16 = KFont.copyWith(
+  color: KColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
 );
 
-//font style 14
-TextStyle KLabelTextBold14 = GoogleFonts.inter(
-    color: ThemeColor.DARK_D1, fontSize: 14, fontWeight: FontWeight.w900);
+///Semi Bold Font Size 18
+TextStyle KLabelTextSemiBold18 = KFont.copyWith(
+  color: KColor,
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+);
 
-//font style 16
-TextStyle KLabelTextBold16 =
-    GoogleFonts.inter(color: KDark1, fontSize: 16, fontWeight: FontWeight.w900);
+// ------------------------------Style Bold-----------------------------------
 
-//font style 18
-TextStyle KLabelTextBold18 =
-    GoogleFonts.inter(color: KDark1, fontSize: 18, fontWeight: FontWeight.w900);
+///Bold Font Size 10
+TextStyle KLabelTextBold10 = KFont.copyWith(
+  color: KColor,
+  fontSize: 10,
+  fontWeight: FontWeight.bold,
+);
+
+///Bold Font Size 12
+TextStyle KLabelTextBold12 = KFont.copyWith(
+  color: KColor,
+  fontSize: 12,
+  fontWeight: FontWeight.bold,
+);
+
+///Bold Font Size 14
+TextStyle KLabelTextBold14 = KFont.copyWith(
+  color: KColor,
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+);
+
+///Bold Font Size 16
+TextStyle KLabelTextBold16 = KFont.copyWith(
+  color: KColor,
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+);
+
+///Bold Font Size 18
+TextStyle KLabelTextBold18 = KFont.copyWith(
+  color: KColor,
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+);

@@ -74,10 +74,10 @@ class CTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          hintStyle: KLabelTextNormal12.copyWith(
+          hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          fillColor: ThemeColor.ERROR_MAIN,
+          fillColor: ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -110,7 +110,7 @@ class CTextField extends StatelessWidget {
           prefixIconColor: prefixIconColor,
         ),
         keyboardType: keyboardType ?? TextInputType.text,
-        style: textStyle ?? KLabelTextNormal12,
+        style: textStyle ?? KLabelTextRegular12,
       ),
     );
   }

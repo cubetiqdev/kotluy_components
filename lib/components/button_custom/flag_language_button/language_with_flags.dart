@@ -54,13 +54,13 @@ class LanguageWithFlags extends StatelessWidget {
             ),
             title: Text(
               language ?? "",
-              style: KLabelTextDemiBold14.copyWith(
+              style: KLabelTextSemiBold14.copyWith(
                   color: textColor ?? ThemeColor.DARK_D1),
             ),
             trailing: select == true
                 ? Icon(
                     Icons.check_circle,
-                    color: ThemeColor.SUCCESS_MAIN,
+                    color: ThemeColor.SUCCESS,
                   )
                 : SizedBox.shrink(),
           ),

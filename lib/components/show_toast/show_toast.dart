@@ -10,7 +10,7 @@ showToast(FToast? fToast, String? tile) {
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
     decoration: BoxDecoration(
       color: ThemeColor.LIGHT_L3,
-      border: Border.all(width: 1, color: ThemeColor.SUCCESS_MAIN),
+      border: Border.all(width: 1, color: ThemeColor.SUCCESS),
       borderRadius: BorderRadius.circular(50),
     ),
     child: Row(
@@ -19,7 +19,7 @@ showToast(FToast? fToast, String? tile) {
         Container(
           padding: const EdgeInsets.all(2.5),
           decoration: BoxDecoration(
-              color: ThemeColor.SUCCESS_MAIN,
+              color: ThemeColor.SUCCESS,
               borderRadius: BorderRadius.circular(20)),
           child: const Icon(
             Icons.check,
@@ -80,7 +80,7 @@ void showToastError(
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
     decoration: BoxDecoration(
       color: ThemeColor.LIGHT_L3,
-      border: Border.all(width: 1, color: ThemeColor.ERROR_MAIN),
+      border: Border.all(width: 1, color: ThemeColor.ERROR),
       borderRadius: BorderRadius.circular(15.0),
     ),
     child: Row(
@@ -89,8 +89,7 @@ void showToastError(
         Container(
           padding: const EdgeInsets.all(2.5),
           decoration: BoxDecoration(
-              color: ThemeColor.ERROR_MAIN,
-              borderRadius: BorderRadius.circular(20)),
+              color: ThemeColor.ERROR, borderRadius: BorderRadius.circular(20)),
           child: const Icon(
             Icons.info,
             size: 17,
@@ -125,7 +124,7 @@ void showToastError(
 //         borderRadius: BorderRadius.circular(10),
 //         boxShadow: [
 //           BoxShadow(
-//             color: ThemeColor.ERROR_MAIN.withOpacity(0.09),
+//             color: ThemeColor.ERROR.withOpacity(0.09),
 //             spreadRadius: 2,
 //             blurRadius: 3,
 //             offset: const Offset(0, 2),
@@ -138,7 +137,7 @@ void showToastError(
 //           width: 50,
 //           height: 50,
 //           decoration: const BoxDecoration(
-//             color: ThemeColor.ERROR_MAIN,
+//             color: ThemeColor.ERROR,
 //             borderRadius: BorderRadius.only(
 //                 topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
 //           ),
@@ -180,7 +179,7 @@ void onTapExit(
   Widget toast = Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       decoration: BoxDecoration(
-        color: ThemeColor.ERROR_LIGHTER,
+        color: ThemeColor.ERROR,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Text(
