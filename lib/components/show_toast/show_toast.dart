@@ -2,8 +2,8 @@
 
 import 'package:flutter_components/constant/colors/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_components/extension/sizer.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sizer/sizer.dart';
 
 showToast(FToast? fToast, String? tile) {
   Widget toast = Container(

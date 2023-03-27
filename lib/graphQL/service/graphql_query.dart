@@ -1,11 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter_components/console/console.dart';
-import 'package:flutter_components/constant/constant/constants.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQlService {
   final String? url;
 
   GraphQlService({this.url});
+
+  String base_url = 'https://kotluy-api-dev.ctdn.dev/front/graphql';
 
 //////////////////////////////////////////////////////////////////////////////////////////
   Future<void> queryDataNoAuth({
