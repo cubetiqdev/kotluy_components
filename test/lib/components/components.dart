@@ -28,13 +28,13 @@ class _ComponentsState extends State<Components> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  DashLine(),
-                  PinPutCustom(),
+                  const DashLine(),
+                  const PinPutCustom(),
                   DraggableButton(
                     child: Container(
                       height: 50,
                       width: 50,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.amber,
                       ),

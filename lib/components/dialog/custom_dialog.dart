@@ -99,7 +99,7 @@ class DialogError extends StatelessWidget {
   final Color titleTextColor;
   final Color errorBorderColor;
 
-  DialogError(
+  const DialogError(
       {super.key,
       this.errorBorderColor = ThemeColor.ERROR_MAIN,
       this.titleText,

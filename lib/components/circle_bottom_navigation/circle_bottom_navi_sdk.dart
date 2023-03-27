@@ -175,7 +175,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                           },
                           child: shouldOpen
                               ? AnimatedOpacity(
-                                  duration: Duration(seconds: 0),
+                                  duration: const Duration(seconds: 0),
                                   curve: Curves.easeIn,
                                   opacity: 1,
                                   child: EmptyLayer(
@@ -185,7 +185,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                                   ),
                                 )
                               : AnimatedOpacity(
-                                  duration: Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeOut,
                                   opacity: 0,
                                   child: EmptyLayer(
@@ -211,7 +211,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                           },
                           child: shouldOpen
                               ? AnimatedOpacity(
-                                  duration: Duration(seconds: 0),
+                                  duration: const Duration(seconds: 0),
                                   curve: Curves.easeIn,
                                   opacity: 1,
                                   child: EmptyLayer(
@@ -221,7 +221,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                                   ),
                                 )
                               : AnimatedOpacity(
-                                  duration: Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeOut,
                                   opacity: 0,
                                   child: EmptyLayer(
@@ -248,7 +248,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                           },
                           child: shouldOpen
                               ? AnimatedOpacity(
-                                  duration: Duration(seconds: 0),
+                                  duration: const Duration(seconds: 0),
                                   curve: Curves.easeIn,
                                   opacity: 1,
                                   child: PrimaryCircle(
@@ -260,7 +260,7 @@ class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
                                   ),
                                 )
                               : AnimatedOpacity(
-                                  duration: Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.easeOut,
                                   opacity: 0,
                                   child: PrimaryCircle(

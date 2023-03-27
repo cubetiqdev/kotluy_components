@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_components/extension/sizer.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;

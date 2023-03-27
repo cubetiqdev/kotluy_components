@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable, prefer_final_fields
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_components/extension/sizer.dart';
 
 class OnBoardCustom extends StatefulWidget {
   final List<CustomPage> page;

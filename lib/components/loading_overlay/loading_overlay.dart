@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_components/extension/sizer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sizer/sizer.dart';
 
 class LoadingOverlay extends StatefulWidget {
   final double? height;

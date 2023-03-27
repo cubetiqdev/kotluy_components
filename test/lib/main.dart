@@ -25,7 +25,7 @@
 //   }
 // }
 
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, must_be_immutable, unused_element
 
 import 'dart:math' as math;
 
@@ -36,6 +36,8 @@ const double degrees2Radians = math.pi / 90.0;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -72,6 +74,8 @@ class MyHomePage extends StatelessWidget {
     Colors.green,
     Colors.yellow,
   ];
+
+  MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

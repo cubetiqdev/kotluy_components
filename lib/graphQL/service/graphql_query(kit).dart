@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unnecessary_string_interpolations, file_names, avoid_print
 
 import 'package:graphql_flutter/graphql_flutter.dart';
 
