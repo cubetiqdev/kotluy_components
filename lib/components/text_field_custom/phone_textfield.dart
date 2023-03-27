@@ -1,6 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_new
 
-import 'package:flutter_components/constant/colors/color.dart';
+import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';

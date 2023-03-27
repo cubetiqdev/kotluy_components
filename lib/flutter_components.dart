@@ -3,7 +3,6 @@ library flutter_components;
 export 'console/console.dart';
 export 'utils/base_model.dart';
 
-export 'package:flutter_components/constant/colors/color.dart';
 export 'package:flutter_components/constant/fonts/default_font.dart';
 export 'package:flutter_components/graphQL/service/graphql_query.dart';
 

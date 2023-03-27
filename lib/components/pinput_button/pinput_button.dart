@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components/constant/colors/color.dart';
+import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:pinput/pinput.dart';
 
 class PinPutCustom extends StatefulWidget {

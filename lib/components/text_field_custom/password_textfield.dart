@@ -1,6 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, unnecessary_new
 
-import 'package:flutter_components/constant/colors/color.dart';
+import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 

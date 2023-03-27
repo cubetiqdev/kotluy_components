@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter_components/components/profile_image/profile_image.dart';
-import 'package:flutter_components/constant/colors/color.dart';
+import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/extension/sizer.dart';
