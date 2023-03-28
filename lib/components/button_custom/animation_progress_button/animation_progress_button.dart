@@ -6,8 +6,7 @@ import 'package:flutter_components/constant/colors/default_color.dart';
 enum ButtonState { init, loading, done }
 
 class AnimationProgressButton extends StatelessWidget {
-  final String title;
-  final TextStyle? textStyle;
+  final Widget text;
   final ButtonState state;
   final VoidCallback onPressed;
   final double? width;
@@ -22,8 +21,7 @@ class AnimationProgressButton extends StatelessWidget {
 
   AnimationProgressButton({
     Key? key,
-    required this.title,
-    this.textStyle,
+    required this.text,
     this.state = ButtonState.init,
     required this.onPressed,
     this.width,
@@ -56,11 +54,10 @@ class AnimationProgressButton extends StatelessWidget {
         child: isNotInit
             ? buildSmallButton(isDone, loadingColor, doneColor)
             : buildButton(
-                title,
+                text,
                 onPressed,
                 backgroundColor,
                 borderColor,
-                textStyle,
                 borderRadius: borderRadius,
               ),
       ),
@@ -91,31 +88,21 @@ Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
   );
 }
 
-Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
-        Color? borderColor, TextStyle? textStyle,
+Widget buildButton(Widget text, VoidCallback onPressed, Color? backgroundColor,
+        Color? borderColor,
         {BorderRadius? borderRadius}) =>
     OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
-        shape: RoundedRectangleBorder(
-          borderRadius: borderRadius ?? BorderRadius.circular(50.0),
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
+          shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ?? BorderRadius.circular(50.0),
+          ),
+          side: BorderSide(
+            width: 1,
+            color: borderColor ?? ThemeColor.PRIMARY_MAIN,
+          ),
         ),
-        side: BorderSide(
-          width: 1,
-          color: borderColor ?? ThemeColor.PRIMARY_MAIN,
-        ),
-      ),
-      child: Text(
-        style: textStyle ??
-            TextStyle(
-              fontWeight: FontWeight.bold,
-              fontFamily: "Poppins",
-              fontSize: 14,
-              letterSpacing: 0.5,
-              color: Colors.white,
-            ),
-        title,
-        textAlign: TextAlign.center,
-      ),
-    );
+        child: Center(
+          child: text,
+        ));
