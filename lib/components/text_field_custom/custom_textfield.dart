@@ -12,6 +12,7 @@ class CTextField extends StatelessWidget {
   final TextStyle? textStyle;
   final TextEditingController? controller;
   final bool hidePassword;
+  final bool? filled;
   final bool readOnly;
   final bool? noPadding;
   final bool? enabled;
@@ -29,10 +30,13 @@ class CTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final FormFieldSetter<String>? onSaved;
   final List<TextInputFormatter>? inputFormatters;
+  final Color? filledColor;
 
   const CTextField({
     super.key,
     this.hintText,
+    this.filledColor,
+    this.filled,
     this.labelText,
     this.validator,
     this.textStyle,
@@ -72,12 +76,13 @@ class CTextField extends StatelessWidget {
         obscureText: hidePassword,
         controller: controller,
         decoration: InputDecoration(
+          filled: filled,
           labelText: labelText,
           hintText: hintText,
           hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          fillColor: ThemeColor.ERROR,
+          fillColor: filledColor ?? ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
