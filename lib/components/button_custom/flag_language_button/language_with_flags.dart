@@ -4,7 +4,7 @@ import 'package:flutter_components/components/profile_image/profile_image.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_components/extension/sizer.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 
 class LanguageWithFlags extends StatelessWidget {
   final String? language;

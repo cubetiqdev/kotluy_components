@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_components/extension/sizer.dart';
-import 'package:test/components/buttons/button.dart';
-import 'package:test/components/components.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 
 import 'components/text_field_custom/text_field_custom.dart';
 
@@ -19,8 +17,8 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
+    return ScreenUtilInit(
+      builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(

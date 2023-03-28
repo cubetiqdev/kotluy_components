@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 import 'package:flutter_components/extension/sizer.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
