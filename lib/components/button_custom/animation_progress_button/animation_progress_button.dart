@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
+import 'package:flutter_components/constant/fonts/default_font.dart';
 
 enum ButtonState { init, loading, done }
 
 class AnimationProgressButton extends StatelessWidget {
-  final Widget text;
+  final String title;
+  final TextStyle? textStyle;
   final ButtonState state;
   final VoidCallback onPressed;
   final double? width;
@@ -21,7 +23,8 @@ class AnimationProgressButton extends StatelessWidget {
 
   AnimationProgressButton({
     Key? key,
-    required this.text,
+    required this.title,
+    this.textStyle,
     this.state = ButtonState.init,
     required this.onPressed,
     this.width,
@@ -54,10 +57,11 @@ class AnimationProgressButton extends StatelessWidget {
         child: isNotInit
             ? buildSmallButton(isDone, loadingColor, doneColor)
             : buildButton(
-                text,
+                title,
                 onPressed,
                 backgroundColor,
                 borderColor,
+                textStyle,
                 borderRadius: borderRadius,
               ),
       ),
@@ -88,21 +92,24 @@ Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
   );
 }
 
-Widget buildButton(Widget text, VoidCallback onPressed, Color? backgroundColor,
-        Color? borderColor,
+Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
+        Color? borderColor, TextStyle? textStyle,
         {BorderRadius? borderRadius}) =>
     OutlinedButton(
-        onPressed: onPressed,
-        style: OutlinedButton.styleFrom(
-          backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
-          shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(50.0),
-          ),
-          side: BorderSide(
-            width: 1,
-            color: borderColor ?? ThemeColor.PRIMARY_MAIN,
-          ),
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius ?? BorderRadius.circular(50.0),
         ),
-        child: Center(
-          child: text,
-        ));
+        side: BorderSide(
+          width: 1,
+          color: borderColor ?? ThemeColor.PRIMARY_MAIN,
+        ),
+      ),
+      child: Text(
+        style: textStyle ?? KLabelTextBold16.copyWith(color: Colors.white),
+        title,
+        textAlign: TextAlign.center,
+      ),
+    );
