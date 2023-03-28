@@ -24,6 +24,7 @@ class CTextField extends StatelessWidget {
   final Color? prefixIconColor;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final BorderRadius? borderRadius;
   final TextInputType? keyboardType;
   final GestureTapCallback? onTap;
   final GestureTapCallback? onTapTextField;
@@ -53,6 +54,7 @@ class CTextField extends StatelessWidget {
     this.prefixIconColor,
     this.suffixIcon,
     this.prefixIcon,
+    this.borderRadius,
     this.keyboardType,
     this.onTap,
     this.onTapTextField,
@@ -84,26 +86,26 @@ class CTextField extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: filledColor ?? ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
               width: 1,
               color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
                 color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
               width: 1,
               color: ThemeColor.DARK_D4,
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
               width: 1,
               color: borderColor ?? ThemeColor.DARK_D4,
