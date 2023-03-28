@@ -43,8 +43,7 @@ class AutoCompleteDropdown extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              const BorderSide(color: ThemeColor.PRIMARY_Subtle, width: 1.0),
+          borderSide: const BorderSide(color: ThemeColor.PRIMARY_5, width: 1.0),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),

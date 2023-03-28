@@ -37,8 +37,7 @@ class TextFieldCustom extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   child: PasswordTextField(
-                    hintText: 'Password',
-                    icon: Icons.visibility,
+                    hintText: 'mypassword',
                   ),
                 ),
                 CTextFormField(

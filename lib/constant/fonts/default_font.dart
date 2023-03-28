@@ -99,11 +99,8 @@ TextStyle KLabelTextMedium10 = KFont.copyWith(
 );
 
 ///Medium Font Size 12
-TextStyle KLabelTextMedium12 = KFont.copyWith(
-  color: KColor,
-  fontSize: 12,
-  fontWeight: FontWeight.w500,
-);
+TextStyle KLabelTextMedium12 =
+    KFont.copyWith(color: KColor, fontSize: 12, fontWeight: FontWeight.w500);
 
 ///Medium Font Size 14
 TextStyle KLabelTextMedium14 = KFont.copyWith(

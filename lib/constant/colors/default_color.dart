@@ -5,23 +5,29 @@ import 'dart:ui';
 class ThemeColor {
   //Main
   static const Color PRIMARY_MAIN = Color(0xff34b67f);
-  static const Color PRIMARY_DARKER = Color(0xff1d8d5e);
-  static const Color PRIMARY_LIGHTER = Color(0xff46c58f);
-  static const Color PRIMARY_Subtle = Color(0xffd3f9e9);
+  static const Color PRIMARY_1 = Color(0xff1d8d5e);
+  static const Color PRIMARY_2 = Color(0xff23a06c);
+  static const Color PRIMARY_3 = Color(0xff46c58f);
+  static const Color PRIMARY_4 = Color(0xff84e0b9);
+  static const Color PRIMARY_5 = Color(0xffd3f9e9);
   static const Color SECONDARY_MAIN = Color(0xff1a1c1e);
-  static const Color SECONDARY_DARKER = Color(0xff151719);
-  static const Color SECCONDARY_LIGHTER = Color(0xff6d7073);
-  static const Color SECONDARY_Subtle = Color(0xffdcdfe1);
+  static const Color SECONDARY_1 = Color(0xff151719);
+  static const Color SECONDARY_2 = Color(0xff3b3e41);
+  static const Color SECCONDARY_3 = Color(0xff6d7073);
+  static const Color SECCONDARY_4 = Color(0xffa7aaac);
+  static const Color SECONDARY_5 = Color(0xffdcdfe1);
+
   static const Color DARK_Black = Color(0xff000000);
   static const Color DARK_D1 = Color(0xff3A3A3C);
   static const Color DARK_D2 = Color(0xff525151);
   static const Color DARK_D3 = Color(0xff777B7D);
   static const Color DARK_D4 = Color(0xffC4C9CC);
   static const Color DARK_D5 = Color(0xFFE0E0E0);
+
+  static const Color LIGHT_WHITE = Color(0xffFFFFFF);
   static const Color LIGHT_L1 = Color(0xffECF1F5);
   static const Color LIGHT_L2 = Color(0xffF4F6F8);
   static const Color LIGHT_L3 = Color(0xffFAFBFC);
-  static const Color LIGHT_WHITE = Color(0xffFFFFFF);
 
   //Alert & Status
   static const Color SUCCESS = Color(0xff34b67f);

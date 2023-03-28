@@ -18,6 +18,7 @@ class AnimationProgressButton extends StatelessWidget {
   final Color? borderColor;
   final Color? loadingColor;
   final Color? doneColor;
+  final BorderRadius? borderRadius;
 
   AnimationProgressButton({
     Key? key,
@@ -33,6 +34,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.borderColor,
     this.loadingColor,
     this.doneColor,
+    this.borderRadius,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
@@ -59,6 +61,7 @@ class AnimationProgressButton extends StatelessWidget {
                 backgroundColor,
                 borderColor,
                 textStyle,
+                borderRadius: borderRadius,
               ),
       ),
     );
@@ -89,13 +92,14 @@ Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
 }
 
 Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
-        Color? borderColor, TextStyle? textStyle) =>
+        Color? borderColor, TextStyle? textStyle,
+        {BorderRadius? borderRadius}) =>
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: borderRadius ?? BorderRadius.circular(50.0),
         ),
         side: BorderSide(
           width: 1,

@@ -28,6 +28,7 @@ class PhoneTextField extends StatefulWidget {
   final Color? hintTextColor;
   final Color? fillColor;
   final Color? dropDownColor;
+  final BorderRadius? borderRadius;
 
   const PhoneTextField({
     Key? key,
@@ -51,6 +52,7 @@ class PhoneTextField extends StatefulWidget {
     this.hintTextColor,
     this.fillColor,
     this.dropDownColor,
+    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -65,6 +67,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
         padding:
             EdgeInsets.symmetric(horizontal: widget.noPadding == true ? 0 : 20),
         child: TextFormField(
+          textAlignVertical: TextAlignVertical.center,
           initialValue: widget.initialValue,
           maxLines: 1,
           controller: widget.controllerPhone,
@@ -80,7 +83,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
               ],
           decoration: InputDecoration(
             prefixIcon: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 32, right: 14),
               child: CountryPickerDropdown(
                 itemBuilder: widget.itemBuilder ?? _buildDropdownItem,
                 initialValue: widget.initialValue ?? 'KH',
@@ -90,7 +93,11 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                     a.name.compareTo(b.name),
                 onValuePicked: widget.onValuePicked,
                 dropdownColor: widget.dropDownColor,
-                icon: widget.icon,
+                icon: widget.icon ??
+                    Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      color: ThemeColor.SECCONDARY_3,
+                    ),
               ),
             ),
             contentPadding:
@@ -100,23 +107,25 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
             hintStyle: KLabelTextRegular14.copyWith(
                 color: widget.hintTextColor ?? ThemeColor.DARK_D4),
             enabledBorder: new OutlineInputBorder(
-              borderRadius: new BorderRadius.circular(10),
+              borderRadius:
+                  widget.borderRadius ?? new BorderRadius.circular(25.0),
               borderSide: BorderSide(
                   color: widget.enabledBorderColor ?? ThemeColor.DARK_D4),
             ),
             border: new OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(25.0),
               borderSide: BorderSide(
                   color: widget.borderColor ?? ThemeColor.DARK_D4, width: 1),
             ),
             focusedBorder: new OutlineInputBorder(
-              borderRadius: new BorderRadius.circular(10),
+              borderRadius:
+                  widget.borderRadius ?? new BorderRadius.circular(25.0),
               borderSide: BorderSide(
                 color: widget.focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
               ),
             ),
           ),
-          style: widget.textStyle ?? KLabelTextRegular14,
+          style: widget.textStyle ?? KLabelTextMedium14,
         ),
       ),
     );
@@ -124,13 +133,23 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
 
   Widget _buildDropdownItem(Country country) => Row(
         children: <Widget>[
-          CountryPickerUtils.getDefaultFlagImage(country),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(3.0),
+            child: Image.asset(
+              CountryPickerUtils.getFlagImageAssetPath(country.isoCode),
+              height: 15.0,
+              width: 20.0,
+              fit: BoxFit.fill,
+              package: "country_pickers",
+            ),
+          ),
           SizedBox(
             width: 8.0,
           ),
           Text(
             "+${country.phoneCode}",
-            style: widget.textStyle ?? KLabelTextRegular14,
+            style: widget.textStyle ??
+                KLabelTextMedium12.copyWith(color: ThemeColor.SECCONDARY_3),
           ),
         ],
       );

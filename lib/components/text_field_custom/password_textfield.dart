@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, unnecessary_new
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
@@ -12,13 +13,14 @@ class PasswordTextField extends StatelessWidget {
   final bool? noPadding;
   final bool? enabled;
   final Widget? prefixIcon;
-  final IconData? icon;
+  final Widget? suffixIcon;
   final Color? prefixIconColor;
+  final Color? suffixIconColor;
 
-  final Color? iconColor;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
   final Color? borderColor;
+  final BorderRadius? borderRadius;
   final String? Function(String?)? validator;
   final FormFieldSetter<String>? onSaved;
   final ValueChanged<String>? onChanged;
@@ -33,9 +35,9 @@ class PasswordTextField extends StatelessWidget {
     this.noPadding = false,
     this.enabled,
     this.prefixIcon,
-    this.icon,
+    this.suffixIcon,
     this.prefixIconColor,
-    this.iconColor,
+    this.suffixIconColor,
     this.enabledBorderColor,
     this.focusedBorderColor,
     this.borderColor,
@@ -44,6 +46,7 @@ class PasswordTextField extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.onTapTextField,
+    this.borderRadius,
   });
 
   @override
@@ -60,49 +63,66 @@ class PasswordTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           hintText: hintText,
-          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          contentPadding: EdgeInsets.symmetric(vertical: 13),
           enabledBorder: OutlineInputBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+            borderRadius: borderRadius ?? new BorderRadius.circular(25.0),
             borderSide: BorderSide(
               width: 1,
-              color: enabledBorderColor ?? ThemeColor.DARK_D4,
+              color: enabledBorderColor ?? ThemeColor.SECONDARY_5,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25),
             borderSide: BorderSide(
                 color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25),
             borderSide: BorderSide(
               width: 1,
-              color: ThemeColor.DARK_D4,
+              color: ThemeColor.SECONDARY_5,
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: borderRadius ?? BorderRadius.circular(25),
             borderSide: BorderSide(
               width: 1,
-              color: borderColor ?? ThemeColor.DARK_D4,
+              color: borderColor ?? ThemeColor.SECONDARY_5,
             ),
           ),
-          prefixIcon: prefixIcon,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.only(left: 29, right: 14),
+            child: SizedBox(
+              height: 24,
+              width: 24,
+              child: prefixIcon ??
+                  Icon(
+                    Icons.lock_outline_rounded,
+                    color: ThemeColor.SECCONDARY_4,
+                    size: 16,
+                  ),
+            ),
+          ),
           prefixIconColor: prefixIconColor,
+          suffixIconColor: suffixIconColor,
           suffixIcon: InkWell(
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: 20,
+              padding: const EdgeInsets.only(left: 36, right: 29),
+              child: SizedBox(
+                height: 24,
+                width: 24,
+                child: suffixIcon ??
+                    Icon(
+                      Icons.visibility_off_outlined,
+                      color: ThemeColor.SECONDARY_MAIN,
+                    ),
               ),
             ),
           ),
         ),
         keyboardType: TextInputType.text,
-        style: textStyle ?? KLabelTextRegular12,
+        style: textStyle ?? KLabelTextMedium14,
       ),
     );
   }

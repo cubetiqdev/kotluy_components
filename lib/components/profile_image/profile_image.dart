@@ -143,7 +143,7 @@ class ProfileImageCustom extends StatelessWidget {
                             : BoxShape.circle,
                         border: Border.all(
                             width: borderWidth ?? 0,
-                            color: borderColor ?? ThemeColor.PRIMARY_Subtle),
+                            color: borderColor ?? ThemeColor.PRIMARY_5),
                         image: DecorationImage(
                           image: imageProvider,
                           fit: BoxFit.cover,
