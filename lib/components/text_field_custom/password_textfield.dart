@@ -112,7 +112,7 @@ class PasswordTextField extends StatelessWidget {
                 height: 24,
                 width: 24,
                 child: Icon(
-                  suffixIcon ?? Icons.visibility_off_outlined,
+                  suffixIcon,
                   color: ThemeColor.SECONDARY_MAIN,
                 ),
               ),
