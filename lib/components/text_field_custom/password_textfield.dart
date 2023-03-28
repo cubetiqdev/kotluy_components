@@ -12,8 +12,8 @@ class PasswordTextField extends StatelessWidget {
   final bool showPassword;
   final bool? noPadding;
   final bool? enabled;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final Color? prefixIconColor;
   final Color? suffixIconColor;
 
@@ -95,12 +95,11 @@ class PasswordTextField extends StatelessWidget {
             child: SizedBox(
               height: 24,
               width: 24,
-              child: prefixIcon ??
-                  Icon(
-                    Icons.lock_outline_rounded,
-                    color: ThemeColor.SECCONDARY_4,
-                    size: 16,
-                  ),
+              child: Icon(
+                prefixIcon ?? Icons.lock_outline_rounded,
+                color: ThemeColor.SECCONDARY_4,
+                size: 16,
+              ),
             ),
           ),
           prefixIconColor: prefixIconColor,
@@ -112,11 +111,10 @@ class PasswordTextField extends StatelessWidget {
               child: SizedBox(
                 height: 24,
                 width: 24,
-                child: suffixIcon ??
-                    Icon(
-                      Icons.visibility_off_outlined,
-                      color: ThemeColor.SECONDARY_MAIN,
-                    ),
+                child: Icon(
+                  suffixIcon ?? Icons.visibility_off_outlined,
+                  color: ThemeColor.SECONDARY_MAIN,
+                ),
               ),
             ),
           ),
