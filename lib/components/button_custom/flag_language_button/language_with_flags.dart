@@ -48,8 +48,8 @@ class LanguageWithFlags extends StatelessWidget {
           child: ListTile(
             leading: ProfileImageCustom(
               assetImage: countryFlags,
-              imageHeight: 10.w,
-              imageWidth: 15.w,
+              imageHeight: 40.h,
+              imageWidth: 45.w,
               borderRadius: 0,
             ),
             title: Text(
