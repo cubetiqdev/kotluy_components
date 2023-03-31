@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_components/components/dropdown/custom_dropdown.dart';
 import 'package:flutter_components/components/text_field_custom/custom_textfield.dart';
 import 'package:flutter_components/components/text_field_custom/custom_textformfield.dart';
 import 'package:flutter_components/components/text_field_custom/password_textfield.dart';
@@ -46,6 +47,15 @@ class TextFieldCustom extends StatelessWidget {
                 ),
                 CTextField(
                   hintText: 'Normal Text Field',
+                ),
+                CDropDown(
+                  items: [
+                    // DropdownMenuItem(child: Text('1')),
+                    // DropdownMenuItem(child: Text('2')),
+                    // DropdownMenuItem(child: Text('3')),
+                  ],
+                  onChanged: (value) {},
+                  hint: 'Test',
                 )
               ],
             ),

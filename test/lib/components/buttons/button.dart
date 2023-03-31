@@ -67,7 +67,12 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     countryFlags: 'assets/icons/apple_logo.png',
                     language: 'English',
                     select: true,
-                  )
+                  ),
+                  SocialMediaButton(
+                    width: 160,
+                    image: 'assets/icons/apple_logo.png',
+                    title: 'Apple',
+                  ),
                 ],
               ),
             )),

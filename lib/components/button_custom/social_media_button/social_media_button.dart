@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class SocialMediaButton extends StatelessWidget {
   final String title;
   final String image;
-  final String? fallbackText;
   final Color? borderColor;
   final Color? iconColor;
   final Color? fontColor;
@@ -13,16 +12,16 @@ class SocialMediaButton extends StatelessWidget {
   final double? height;
   final double? width;
   final double? imageHeight;
-  final double? iamgeWidth;
+  final double? imageWidth;
   final double padHorizontal;
   final double padVertical;
-  final bool t;
+  final double? borderRadius;
+  final TextStyle? textStyle;
   final void Function()? onTap;
   const SocialMediaButton({
     Key? key,
     this.title = "",
-    this.image = "",
-    this.fallbackText,
+    required this.image,
     this.borderColor,
     this.iconColor,
     this.fontColor,
@@ -30,10 +29,11 @@ class SocialMediaButton extends StatelessWidget {
     this.height,
     this.width,
     this.imageHeight,
-    this.iamgeWidth,
+    this.imageWidth,
     this.padHorizontal = 20,
     this.padVertical = 10,
-    this.t = false,
+    this.borderRadius,
+    this.textStyle,
     this.onTap,
   }) : super(key: key);
 
@@ -45,29 +45,32 @@ class SocialMediaButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: padHorizontal, vertical: padVertical),
         child: Container(
-          width: width ?? double.infinity,
-          height: height ?? 45,
+          width: width ?? 160,
+          height: height ?? 50,
           decoration: BoxDecoration(
             color: buttonColor ?? Colors.white,
             border: Border.all(width: 1, color: borderColor ?? Colors.black),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(borderRadius ?? 50),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ignore: avoid_unnecessary_containers
-              Container(
+              SizedBox(
+                width: imageWidth ?? 24,
+                height: imageHeight ?? 24,
                 child: Image.asset(
                   image,
-                  width: iamgeWidth,
-                  height: imageHeight ?? 20,
                   color: iconColor,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(width: 10),
               Text(
                 title,
-                style: TextStyle(color: fontColor ?? Colors.black),
+                style: textStyle ??
+                    TextStyle(
+                      color: fontColor ?? Colors.black,
+                    ),
               ),
             ],
           ),
