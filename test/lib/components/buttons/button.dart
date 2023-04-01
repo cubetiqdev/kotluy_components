@@ -73,6 +73,13 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     image: 'assets/icons/apple_logo.png',
                     title: 'Apple',
                   ),
+                  Container(
+                    width: 160,
+                    child: ButtonChooseLanguage(
+                      title: "ភាសាខ្មែរ",
+                      image: 'assets/icons/apple_logo.png',
+                    ),
+                  ),
                 ],
               ),
             )),

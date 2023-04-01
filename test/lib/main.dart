@@ -24,7 +24,7 @@ class _MyWidgetState extends State<MyWidget> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: Components(),
+            body: ButtonCustom(),
           ),
         );
       },
