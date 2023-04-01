@@ -3,6 +3,7 @@ import 'package:flutter_components/components/button_custom/animation_progress_b
 import 'package:flutter_components/components/dash_line/dash_line.dart';
 import 'package:flutter_components/components/draggable_button/draggable_button.dart';
 import 'package:flutter_components/components/pinput_button/pinput_button.dart';
+import 'package:flutter_components/constant/colors/default_color.dart';
 
 class Components extends StatefulWidget {
   const Components({super.key});
@@ -29,7 +30,7 @@ class _ComponentsState extends State<Components> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const DashLine(),
-                  const PinPutCustom(),
+                  const PinPutCustom(length: 4),
                   DraggableButton(
                     child: Container(
                       height: 50,
@@ -39,7 +40,7 @@ class _ComponentsState extends State<Components> {
                         color: Colors.amber,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             )),

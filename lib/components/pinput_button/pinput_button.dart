@@ -4,6 +4,7 @@ import 'package:pinput/pinput.dart';
 
 class PinPutCustom extends StatefulWidget {
   final int? length;
+  final TextStyle? textStyle;
   final TextEditingController? pinController;
   final Color? focusedPinThemeColor;
   final Color? borderColor;
@@ -23,6 +24,7 @@ class PinPutCustom extends StatefulWidget {
   const PinPutCustom({
     super.key,
     this.length,
+    this.textStyle,
     this.pinController,
     this.focusedPinThemeColor,
     this.borderColor,
@@ -50,23 +52,46 @@ final formKey = GlobalKey<FormState>();
 class _PinPutCustomState extends State<PinPutCustom> {
   @override
   Widget build(BuildContext context) {
-    const focusedBorderColor = ThemeColor.PRIMARY_MAIN;
-    const fillColor = Colors.transparent;
     const borderColor = ThemeColor.SECONDARY_MAIN;
 
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: TextStyle(
-        fontSize: 22,
-        color: widget.textColor ?? const Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: widget.borderColor ?? borderColor),
-      ),
+      textStyle: widget.textStyle ??
+          TextStyle(
+            fontSize: 25,
+            color: widget.textColor ?? const Color.fromRGBO(30, 60, 87, 1),
+          ),
+    );
+    final cursor = Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: 56,
+          height: 3,
+          decoration: BoxDecoration(
+            color: borderColor,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ],
+    );
+    final preFilledWidget = Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: 56,
+          height: 3,
+          decoration: BoxDecoration(
+            color: ThemeColor.SECONDARY_MAIN,
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ],
     );
     return Pinput(
+      pinAnimationType: PinAnimationType.fade,
+      showCursor: true,
       length: widget.length ?? 6,
       controller: widget.pinController,
       focusNode: widget.focusNode,
@@ -79,38 +104,8 @@ class _PinPutCustomState extends State<PinPutCustom> {
       hapticFeedbackType: HapticFeedbackType.mediumImpact,
       onCompleted: widget.onCompleted,
       onChanged: widget.onChanged,
-      cursor: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 9),
-            width: 22,
-            height: 1,
-            color: widget.focusedPinThemeColor ?? focusedBorderColor,
-          ),
-        ],
-      ),
-      focusedPinTheme: widget.focusedPinTheme ??
-          defaultPinTheme.copyWith(
-            decoration: defaultPinTheme.decoration!.copyWith(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                  color: widget.focusedPinThemeColor ?? focusedBorderColor),
-            ),
-          ),
-      submittedPinTheme: widget.submittedPinTheme ??
-          defaultPinTheme.copyWith(
-            decoration: defaultPinTheme.decoration!.copyWith(
-              color: widget.fillColor ?? fillColor,
-              borderRadius: BorderRadius.circular(19),
-              border: Border.all(
-                  color: widget.focusedPinThemeColor ?? focusedBorderColor),
-            ),
-          ),
-      errorPinTheme: widget.errorPinTheme ??
-          defaultPinTheme.copyBorderWith(
-            border: Border.all(color: Colors.redAccent),
-          ),
+      cursor: cursor,
+      preFilledWidget: preFilledWidget,
     );
   }
 }

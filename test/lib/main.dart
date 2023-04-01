@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_components/extension/screen_util.dart';
 import 'package:test/components/buttons/button.dart';
+import 'package:test/components/components.dart';
 
 import 'components/text_field_custom/text_field_custom.dart';
 
@@ -23,7 +24,7 @@ class _MyWidgetState extends State<MyWidget> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-            body: TextFieldCustom(),
+            body: Components(),
           ),
         );
       },
