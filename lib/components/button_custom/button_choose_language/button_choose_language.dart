@@ -67,9 +67,8 @@ class ButtonChooseLanguage extends StatelessWidget {
                     color: colorText ?? ThemeColor.DARK_Black),
               ),
 
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(imageRadius ?? 20)),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(imageRadius ?? 20),
                 child: Image.asset(
                   image,
                   width: width ?? 31.0,
