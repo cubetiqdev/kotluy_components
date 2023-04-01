@@ -11,7 +11,7 @@ class CTextFormField extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? borderColor;
   final Color? focusBorderColor;
-  final Color fillColor;
+  final Color? fillColor;
   final Color? hintColor;
   final int? maxLines;
   final int? maxLenght;
@@ -37,7 +37,7 @@ class CTextFormField extends StatelessWidget {
     this.textStyle,
     this.borderColor,
     this.focusBorderColor,
-    this.fillColor = ThemeColor.NoColor,
+    this.fillColor,
     this.hintColor,
     this.maxLines,
     this.maxLenght,
@@ -73,7 +73,7 @@ class CTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(contentPadding ?? 15),
           filled: filled,
-          fillColor: fillColor,
+          fillColor: fillColor ?? ThemeColor.LIGHT_L3,
           hintText: hintText,
           hintStyle: KLabelTextRegular14.copyWith(
               color: hintColor ?? ThemeColor.DARK_D4),
