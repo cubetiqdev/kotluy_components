@@ -29,11 +29,14 @@ class PhoneTextField extends StatefulWidget {
   final Color? fillColor;
   final Color? dropDownColor;
   final BorderRadius? borderRadius;
+  final bool? filled;
 
   const PhoneTextField({
     Key? key,
     this.noPadding = false,
     this.textStyle,
+    this.filled,
+    this.fillColor,
     this.controllerPhone,
     this.hintText,
     this.initialSelection,
@@ -50,7 +53,6 @@ class PhoneTextField extends StatefulWidget {
     this.focusedBorderColor,
     this.borderColor,
     this.hintTextColor,
-    this.fillColor,
     this.dropDownColor,
     this.borderRadius,
   }) : super(key: key);
@@ -100,6 +102,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                     ),
               ),
             ),
+            filled: widget.filled,
             contentPadding:
                 new EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             fillColor: widget.fillColor ?? Colors.white,

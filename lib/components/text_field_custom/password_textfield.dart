@@ -16,7 +16,8 @@ class PasswordTextField extends StatelessWidget {
   final IconData? suffixIcon;
   final Color? prefixIconColor;
   final Color? suffixIconColor;
-
+  final bool? filled;
+  final Color? filledColor;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
   final Color? borderColor;
@@ -28,9 +29,11 @@ class PasswordTextField extends StatelessWidget {
   final GestureTapCallback? onTapTextField;
 
   PasswordTextField({
+    this.filled,
     this.controller,
     this.textStyle,
     this.hintText,
+    this.filledColor,
     this.showPassword = false,
     this.noPadding = false,
     this.enabled,
@@ -62,6 +65,8 @@ class PasswordTextField extends StatelessWidget {
         obscureText: showPassword,
         controller: controller,
         decoration: InputDecoration(
+          fillColor: filledColor ?? ThemeColor.LIGHT_L3,
+          filled: filled ?? false,
           hintText: hintText,
           contentPadding: EdgeInsets.symmetric(vertical: 13),
           enabledBorder: OutlineInputBorder(

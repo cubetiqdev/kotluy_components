@@ -84,7 +84,7 @@ class CTextField extends StatelessWidget {
           hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          fillColor: filledColor ?? ThemeColor.ERROR,
+          fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           enabledBorder: OutlineInputBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
