@@ -12,8 +12,11 @@ class ButtonChooseLanguage extends StatelessWidget {
   final Color? borderColor;
   final double padHorizontal;
   final double padVertical;
+  final double? height;
+  final double? width;
   final EdgeInsetsGeometry? padding;
   final double? borderRadius;
+  final double? imageRadius;
   final GestureTapCallback? onTap;
   const ButtonChooseLanguage({
     super.key,
@@ -26,8 +29,11 @@ class ButtonChooseLanguage extends StatelessWidget {
     this.borderColor,
     this.padHorizontal = 20,
     this.padVertical = 0,
+    this.height,
+    this.width,
     this.padding,
     this.borderRadius,
+    this.imageRadius,
     this.onTap,
   });
   @override
@@ -39,7 +45,6 @@ class ButtonChooseLanguage extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(borderRadius ?? 50),
         child: Container(
-          height: 44,
           padding: padding ??
               const EdgeInsets.only(
                   left: 20.0, right: 5.0, top: 10.0, bottom: 10.0),
@@ -62,10 +67,14 @@ class ButtonChooseLanguage extends StatelessWidget {
                     color: colorText ?? ThemeColor.DARK_Black),
               ),
 
-              Image.asset(
-                image,
-                width: 31.0,
-                height: 20.0,
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(imageRadius ?? 20)),
+                child: Image.asset(
+                  image,
+                  width: width ?? 31.0,
+                  height: height ?? 20.0,
+                ),
               ),
               // Icon(
               //   Icons.arrow_forward_ios_rounded,
