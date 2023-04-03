@@ -324,6 +324,8 @@ class ScreenUtilInit extends StatefulWidget {
   final bool useInheritedMediaQuery;
   final bool scaleByHeight;
   final RebuildFactor rebuildFactor;
+
+  /// The [Size] of the device in the design draft, in dp
   final Size designSize;
 
   @override
@@ -333,17 +335,23 @@ class ScreenUtilInit extends StatefulWidget {
 class _ScreenUtilInitState extends State<ScreenUtilInit>
     with WidgetsBindingObserver {
   MediaQueryData? _mediaQueryData;
+
   bool wrappedInMediaQuery = false;
+
   WidgetsBinding get binding => WidgetsFlutterBinding.ensureInitialized();
+
   MediaQueryData get mediaQueryData => _mediaQueryData!;
+
   MediaQueryData get newData {
     if (widget.useInheritedMediaQuery) {
       final data = MediaQuery.maybeOf(context);
+
       if (data != null) {
         wrappedInMediaQuery = true;
         return data;
       }
     }
+
     return MediaQueryData.fromWindow(binding.window);
   }
 
@@ -359,6 +367,7 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
   @override
   void initState() {
     super.initState();
+    // mediaQueryData = newData;
     binding.addObserver(this);
   }
 
@@ -391,6 +400,7 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
     if (mediaQueryData.size == Size.zero) return const SizedBox.shrink();
     if (!wrappedInMediaQuery) {
       return MediaQuery(
+        // key: GlobalObjectKey('mediaQuery'),
         data: mediaQueryData,
         child: Builder(
           builder: (__context) {
@@ -401,13 +411,13 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
                 splitScreenMode: widget.splitScreenMode,
                 minTextAdapt: widget.minTextAdapt,
                 scaleByHeight: widget.scaleByHeight);
-            return SizedBox(
+            return Container(
                 width: deviceSize.width,
                 height: deviceSize.height,
                 child: FittedBox(
                   fit: BoxFit.none,
                   alignment: Alignment.center,
-                  child: SizedBox(
+                  child: Container(
                     width: widget.scaleByHeight
                         ? (deviceSize.height * widget.designSize.width) /
                             widget.designSize.height
@@ -427,14 +437,15 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
         minTextAdapt: widget.minTextAdapt,
         scaleByHeight: widget.scaleByHeight);
     final deviceData = MediaQuery.maybeOf(_context);
+
     final deviceSize = deviceData?.size ?? widget.designSize;
-    return SizedBox(
+    return Container(
         width: deviceSize.width,
         height: deviceSize.height,
         child: FittedBox(
           fit: BoxFit.none,
           alignment: Alignment.center,
-          child: SizedBox(
+          child: Container(
             width: widget.scaleByHeight
                 ? (deviceSize.height * widget.designSize.width) /
                     widget.designSize.height
