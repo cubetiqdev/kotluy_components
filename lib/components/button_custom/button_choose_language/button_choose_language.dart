@@ -57,24 +57,25 @@ class ButtonChooseLanguage extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 50),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisSize: MainAxisSize.max,
             children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(imageRadius ?? 20),
+                child: Image.asset(
+                  image,
+                  width: width ?? 24.0,
+                  height: height ?? 24.0,
+                ),
+              ),
+              SizedBox(width: 4),
               Text(
                 title,
                 style: KLabelTextMedium14.copyWith(
                     color: colorText ?? ThemeColor.DARK_Black),
               ),
 
-              ClipRRect(
-                borderRadius: BorderRadius.circular(imageRadius ?? 20),
-                child: Image.asset(
-                  image,
-                  width: width ?? 31.0,
-                  height: height ?? 20.0,
-                ),
-              ),
               // Icon(
               //   Icons.arrow_forward_ios_rounded,
               //   color: colorIcon ?? ThemeColor.DARK_D4,

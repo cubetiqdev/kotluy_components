@@ -78,6 +78,7 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     child: ButtonChooseLanguage(
                       title: "ភាសាខ្មែរ",
                       image: 'assets/icons/apple_logo.png',
+                      colorSelect: Colors.amber,
                     ),
                   ),
                 ],
