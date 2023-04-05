@@ -24,11 +24,13 @@ class CDropDown<T> extends StatelessWidget {
   final ValueChanged<T?> onChanged;
   final List<DropdownMenuItem<T>> items;
   final EdgeInsetsGeometry? contentPadding;
+  final Color? iconColor;
 
   const CDropDown({
     Key? key,
     this.value,
     this.icon,
+    this.iconColor,
     this.filled,
     this.noPadding,
     this.hint,
@@ -56,8 +58,8 @@ class CDropDown<T> extends StatelessWidget {
         onChanged: onChanged,
         items: items,
         icon: icon ??
-            const Icon(Icons.keyboard_arrow_down_rounded,
-                color: ThemeColor.DARK_Black),
+            Icon(Icons.keyboard_arrow_down_rounded,
+                color: iconColor ?? ThemeColor.DARK_Black),
         decoration: InputDecoration(
           filled: filled,
           labelText: labelText,
