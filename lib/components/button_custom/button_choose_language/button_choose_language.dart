@@ -6,6 +6,7 @@ class ButtonChooseLanguage extends StatelessWidget {
   final String title;
   final String image;
   final String? icon;
+  final TextStyle? textStyle;
   final Color? colorSelect;
   final Color? colorText;
   final Color? colorIcon;
@@ -23,6 +24,7 @@ class ButtonChooseLanguage extends StatelessWidget {
     required this.title,
     required this.image,
     this.icon,
+    this.textStyle,
     this.colorSelect,
     this.colorText,
     this.colorIcon,
@@ -69,18 +71,12 @@ class ButtonChooseLanguage extends StatelessWidget {
                   height: height ?? 24.0,
                 ),
               ),
-              SizedBox(width: 4),
+              const SizedBox(width: 4),
               Text(
                 title,
                 style: KLabelTextMedium14.copyWith(
                     color: colorText ?? ThemeColor.DARK_Black),
               ),
-
-              // Icon(
-              //   Icons.arrow_forward_ios_rounded,
-              //   color: colorIcon ?? ThemeColor.DARK_D4,
-              //   size: 20,
-              // ),
             ],
           ),
         ),

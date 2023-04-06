@@ -11,6 +11,7 @@ class CTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? errorText;
   final TextStyle? textStyle;
+  final TextStyle? hintStyle;
   final TextEditingController? controller;
   final bool hidePassword;
   final bool? filled;
@@ -42,6 +43,7 @@ class CTextField extends StatelessWidget {
     this.validator,
     this.errorText,
     this.textStyle,
+    this.hintStyle,
     this.controller,
     this.hidePassword = false,
     this.readOnly = false,
@@ -85,8 +87,8 @@ class CTextField extends StatelessWidget {
           filled: filled,
           labelText: labelText,
           hintText: hintText,
-          hintStyle: KLabelTextRegular12.copyWith(
-              color: hintTextColor ?? ThemeColor.DARK_D4),
+          hintStyle: hintStyle ??
+              KLabelTextRegular12.copyWith(color: ThemeColor.DARK_D4),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           enabledBorder: OutlineInputBorder(
