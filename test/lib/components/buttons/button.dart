@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_components/components/button_custom/animation_progress_button/animation_progress_button.dart';
 import 'package:flutter_components/components/button_custom/button_choose_language/button_choose_language.dart';
 import 'package:flutter_components/components/button_custom/flag_language_button/language_with_flags.dart';
+import 'package:flutter_components/components/button_custom/outline_button/outline_button.dart';
 import 'package:flutter_components/components/button_custom/social_media_button/social_media_button.dart';
 import 'package:flutter_components/components/button_custom/square_tile_logo/square_tile.dart';
 
@@ -80,6 +81,9 @@ class _ButtonCustomState extends State<ButtonCustom> {
                       image: 'assets/icons/apple_logo.png',
                       colorSelect: Colors.amber,
                     ),
+                  ),
+                  const OutlineButton(
+                    title: 'English',
                   ),
                 ],
               ),
