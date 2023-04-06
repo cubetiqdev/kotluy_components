@@ -63,14 +63,13 @@ class ButtonChooseLanguage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(imageRadius ?? 20),
-                ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(imageRadius ?? 20),
                 child: Image.asset(
                   image,
                   width: width ?? 24.0,
                   height: height ?? 24.0,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(width: 4),
