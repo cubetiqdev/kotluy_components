@@ -9,6 +9,7 @@ class CTextField extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final String? Function(String?)? validator;
+  final String? errorText;
   final TextStyle? textStyle;
   final TextEditingController? controller;
   final bool hidePassword;
@@ -20,6 +21,7 @@ class CTextField extends StatelessWidget {
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
   final Color? borderColor;
+  final Color? filledColor;
   final Color? suffixIconColor;
   final Color? prefixIconColor;
   final Widget? suffixIcon;
@@ -31,15 +33,14 @@ class CTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final FormFieldSetter<String>? onSaved;
   final List<TextInputFormatter>? inputFormatters;
-  final Color? filledColor;
 
   const CTextField({
     super.key,
     this.hintText,
-    this.filledColor,
     this.filled,
     this.labelText,
     this.validator,
+    this.errorText,
     this.textStyle,
     this.controller,
     this.hidePassword = false,
@@ -50,6 +51,7 @@ class CTextField extends StatelessWidget {
     this.enabledBorderColor,
     this.focusedBorderColor,
     this.borderColor,
+    this.filledColor,
     this.suffixIconColor,
     this.prefixIconColor,
     this.suffixIcon,
@@ -77,6 +79,8 @@ class CTextField extends StatelessWidget {
         inputFormatters: inputFormatters,
         obscureText: hidePassword,
         controller: controller,
+        keyboardType: keyboardType ?? TextInputType.text,
+        style: textStyle ?? KLabelTextRegular12,
         decoration: InputDecoration(
           filled: filled,
           labelText: labelText,
@@ -92,6 +96,12 @@ class CTextField extends StatelessWidget {
               color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
+          errorStyle: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
+          errorMaxLines: 1,
           focusedBorder: OutlineInputBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
@@ -116,8 +126,6 @@ class CTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           prefixIconColor: prefixIconColor,
         ),
-        keyboardType: keyboardType ?? TextInputType.text,
-        style: textStyle ?? KLabelTextRegular12,
       ),
     );
   }

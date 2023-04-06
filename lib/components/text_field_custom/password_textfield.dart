@@ -1,6 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, unnecessary_new
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
@@ -8,15 +7,17 @@ import 'package:flutter_components/constant/fonts/default_font.dart';
 class PasswordTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextStyle? textStyle;
+  final String? errorText;
   final String? hintText;
   final bool showPassword;
   final bool? noPadding;
   final bool? enabled;
+  final bool? filled;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final Color? prefixIconColor;
   final Color? suffixIconColor;
-  final bool? filled;
+
   final Color? filledColor;
   final Color? enabledBorderColor;
   final Color? focusedBorderColor;
@@ -29,14 +30,15 @@ class PasswordTextField extends StatelessWidget {
   final GestureTapCallback? onTapTextField;
 
   PasswordTextField({
-    this.filled,
     this.controller,
     this.textStyle,
+    this.errorText,
     this.hintText,
     this.filledColor,
     this.showPassword = false,
     this.noPadding = false,
     this.enabled,
+    this.filled,
     this.prefixIcon,
     this.suffixIcon,
     this.prefixIconColor,
@@ -64,6 +66,8 @@ class PasswordTextField extends StatelessWidget {
         onSaved: onSaved,
         obscureText: showPassword,
         controller: controller,
+        keyboardType: TextInputType.text,
+        style: textStyle ?? KLabelTextMedium14,
         decoration: InputDecoration(
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           filled: filled ?? false,
@@ -76,6 +80,12 @@ class PasswordTextField extends StatelessWidget {
               color: enabledBorderColor ?? ThemeColor.SECONDARY_5,
             ),
           ),
+          errorStyle: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
+          errorMaxLines: 1,
           focusedBorder: OutlineInputBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(25),
             borderSide: BorderSide(
@@ -124,8 +134,6 @@ class PasswordTextField extends StatelessWidget {
             ),
           ),
         ),
-        keyboardType: TextInputType.text,
-        style: textStyle ?? KLabelTextMedium14,
       ),
     );
   }

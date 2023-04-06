@@ -48,7 +48,7 @@ class OutlineButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: fillColor,
           border:
-              Border.all(width: 1.0, color: borderColor ?? ThemeColor.DARK_D4),
+              Border.all(width: 2.0, color: borderColor ?? ThemeColor.DARK_D4),
           borderRadius: BorderRadius.circular(borderRadius ?? 50),
         ),
         child: Row(
