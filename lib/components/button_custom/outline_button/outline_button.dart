@@ -4,27 +4,35 @@ import 'package:flutter/material.dart';
 
 class OutlineButton extends StatelessWidget {
   final String title;
+  final String? imageUrl;
   final IconData? icon;
   final Color? fillColor;
   final Color? colorText;
   final Color? colorIcon;
   final Color? borderColor;
   final double? height;
+  final double? imgHeight;
+  final double? imgWidth;
   final double? borderRadius;
   final double? iconSize;
+  final TextStyle? textStyle;
   final EdgeInsetsGeometry? contentPadding;
   final GestureTapCallback? onTap;
   const OutlineButton({
     super.key,
     required this.title,
+    this.imageUrl,
     this.icon,
     this.fillColor,
     this.colorText,
     this.colorIcon,
     this.borderColor,
     this.height,
+    this.imgHeight,
+    this.imgWidth,
     this.borderRadius,
     this.iconSize,
+    this.textStyle,
     this.contentPadding,
     this.onTap,
   });
@@ -48,14 +56,21 @@ class OutlineButton extends StatelessWidget {
           children: [
             Text(
               title,
-              style: KLabelTextMedium14.copyWith(
-                  color: colorText ?? ThemeColor.DARK_Black),
+              style: textStyle ??
+                  KLabelTextMedium14.copyWith(
+                      color: colorText ?? ThemeColor.DARK_Black),
             ),
-            Icon(
-              icon ?? Icons.arrow_forward_ios_rounded,
-              color: colorIcon ?? ThemeColor.DARK_D4,
-              size: 20,
-            ),
+            imageUrl == null || imageUrl == ''
+                ? Icon(
+                    icon ?? Icons.arrow_forward_ios_rounded,
+                    color: colorIcon ?? ThemeColor.DARK_Black,
+                    size: 20,
+                  )
+                : Image.asset(
+                    imageUrl!,
+                    height: imgHeight ?? 24,
+                    width: imgWidth ?? 24,
+                  ),
           ],
         ),
       ),
