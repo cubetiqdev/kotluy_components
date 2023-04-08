@@ -26,6 +26,7 @@ class CTextFormField extends StatelessWidget {
   final bool enabledBorder;
   final bool? noPadding;
   final TextAlign? textAlign;
+  final TextAlignVertical? textAlignVertical;
   final TextEditingController? controller;
   final List<TextInputFormatter>? format;
   final void Function(String)? onChanged;
@@ -53,6 +54,7 @@ class CTextFormField extends StatelessWidget {
     this.enabledBorder = false,
     this.noPadding,
     this.textAlign,
+    this.textAlignVertical,
     this.controller,
     this.format,
     this.onChanged,
@@ -64,6 +66,7 @@ class CTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
+        textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,
         maxLines: maxLines ?? 2,

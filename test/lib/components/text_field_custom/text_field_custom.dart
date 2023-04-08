@@ -56,7 +56,14 @@ class TextFieldCustom extends StatelessWidget {
                   ],
                   onChanged: (value) {},
                   hint: 'Test',
-                )
+                ),
+                SizedBox(
+                    height: 100,
+                    child: CTextFormField(
+                      textAlign: TextAlign.center,
+                      noPadding: true,
+                      enabledBorder: true,
+                    )),
               ],
             ),
           )),
