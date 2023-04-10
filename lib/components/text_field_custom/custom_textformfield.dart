@@ -18,7 +18,6 @@ class CTextFormField extends StatelessWidget {
   final double? borderRadius;
   final double? borderWidth;
   final double? focusBorderWidth;
-  final double? focusBorderRadius;
   final double? contentPadding;
   final double? paddingHorizontal;
   final double? paddingVertical;
@@ -45,7 +44,6 @@ class CTextFormField extends StatelessWidget {
     this.maxLenght,
     this.borderRadius,
     this.borderWidth,
-    this.focusBorderRadius,
     this.focusBorderWidth,
     this.contentPadding,
     this.paddingHorizontal,
@@ -89,12 +87,11 @@ class CTextFormField extends StatelessWidget {
                     color: focusBorderColor ?? ThemeColor.PRIMARY_MAIN,
                     width: focusBorderWidth ?? borderWidth ?? 1,
                   ),
-                  borderRadius: BorderRadius.circular(focusBorderRadius ?? 10),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 )
               : OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius:
-                      BorderRadius.circular(focusBorderRadius ?? 0.0)),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0)),
           enabledBorder: enabledBorder
               ? OutlineInputBorder(
                   borderSide: BorderSide(
