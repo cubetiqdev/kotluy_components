@@ -77,8 +77,10 @@ class CTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-          errorStyle: KLabelTextRegular12.copyWith(
-              color: Theme.of(context).colorScheme.error),
+          errorStyle: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.error),
           errorText: errorText,
           contentPadding: EdgeInsets.all(contentPadding ?? 15),
           filled: filled,
@@ -109,6 +111,13 @@ class CTextFormField extends StatelessWidget {
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 10),
+            borderSide: BorderSide(
+              width: 1,
+              color: Theme.of(context).colorScheme.error,
+            ),
+          ),
         ),
       ),
     );
