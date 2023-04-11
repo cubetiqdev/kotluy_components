@@ -111,13 +111,18 @@ class CTextFormField extends StatelessWidget {
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 10),
-            borderSide: BorderSide(
-              width: 1,
-              color: Theme.of(context).colorScheme.error,
-            ),
-          ),
+          errorBorder: enabledBorder
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                  borderSide: BorderSide(
+                    width: borderWidth ?? 1,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                )
+              : OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                ),
         ),
       ),
     );
