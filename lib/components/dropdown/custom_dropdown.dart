@@ -6,7 +6,7 @@ import 'package:flutter_components/constant/fonts/default_font.dart';
 
 class CDropDown<T> extends StatelessWidget {
   final T? value;
-  final Icon? icon;
+  final Widget? icon;
   final bool? filled;
   final bool? noPadding;
   final String? hint;
