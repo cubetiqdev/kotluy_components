@@ -14,6 +14,7 @@ class CDropDown<T> extends StatelessWidget {
   final String? labelText;
   final double? borderRadius;
   final double? iconSize;
+
   final Color? dropdownColor;
   final Color? hintTextColor;
   final Color? filledColor;
@@ -24,7 +25,7 @@ class CDropDown<T> extends StatelessWidget {
   final TextStyle? hintStyle;
   final ValueChanged<T?> onChanged;
   final List<DropdownMenuItem<T>> items;
-  final EdgeInsetsGeometry? contentPadding;
+  final double? contentPadding;
   final Color? iconColor;
   final String? Function(T?)? validator;
   final String? errorText;
@@ -76,6 +77,7 @@ class CDropDown<T> extends StatelessWidget {
           // hintText: hint,
           hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
+          contentPadding: EdgeInsets.all(contentPadding ?? 15),
           fillColor: filledColor ?? ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
