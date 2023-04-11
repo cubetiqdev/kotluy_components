@@ -9,6 +9,7 @@ class CDropDown<T> extends StatelessWidget {
   final Widget? icon;
   final bool? filled;
   final bool? noPadding;
+  final bool isExpanded;
   final String? hint;
   final String? labelText;
   final double? borderRadius;
@@ -35,6 +36,7 @@ class CDropDown<T> extends StatelessWidget {
     this.iconColor,
     this.filled,
     this.noPadding,
+    this.isExpanded = false,
     this.hint,
     this.labelText,
     this.borderRadius,
@@ -107,6 +109,7 @@ class CDropDown<T> extends StatelessWidget {
         // hint: hint,
         value: value,
         dropdownColor: dropdownColor,
+        isExpanded: isExpanded,
         iconSize: iconSize ?? 24.0,
         hint: Text(
           hint ?? '',
