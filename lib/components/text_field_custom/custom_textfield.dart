@@ -126,14 +126,14 @@ class CTextField extends StatelessWidget {
             ),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 10),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
               width: borderWidth ?? 1,
               color: Theme.of(context).colorScheme.error,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 10),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
               width: borderWidth ?? 1,
               color: Theme.of(context).colorScheme.error,
