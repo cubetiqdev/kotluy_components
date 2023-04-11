@@ -76,7 +76,6 @@ class CDropDown<T> extends StatelessWidget {
           // hintText: hint,
           hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
-          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
           fillColor: filledColor ?? ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
