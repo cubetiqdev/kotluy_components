@@ -30,6 +30,7 @@ class PhoneTextField extends StatefulWidget {
   final Color? dropDownColor;
   final BorderRadius? borderRadius;
   final bool? filled;
+  final String? errorText;
 
   const PhoneTextField({
     Key? key,
@@ -55,6 +56,7 @@ class PhoneTextField extends StatefulWidget {
     this.hintTextColor,
     this.dropDownColor,
     this.borderRadius,
+    this.errorText,
   }) : super(key: key);
 
   @override
@@ -84,6 +86,9 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               ],
           decoration: InputDecoration(
+            errorStyle: KLabelTextRegular12.copyWith(
+                color: Theme.of(context).colorScheme.error),
+            errorText: widget.errorText,
             prefixIcon: Padding(
               padding: const EdgeInsets.only(left: 32, right: 14),
               child: CountryPickerDropdown(

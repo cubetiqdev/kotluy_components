@@ -30,6 +30,7 @@ class CTextFormField extends StatelessWidget {
   final List<TextInputFormatter>? format;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final String? errorText;
 
   const CTextFormField({
     super.key,
@@ -57,6 +58,7 @@ class CTextFormField extends StatelessWidget {
     this.format,
     this.onChanged,
     this.keyboardType,
+    this.errorText,
   });
 
   @override
@@ -75,6 +77,9 @@ class CTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
+          errorStyle: KLabelTextRegular12.copyWith(
+              color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
           contentPadding: EdgeInsets.all(contentPadding ?? 15),
           filled: filled,
           fillColor: fillColor ?? ThemeColor.LIGHT_L3,

@@ -25,6 +25,8 @@ class CDropDown<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final EdgeInsetsGeometry? contentPadding;
   final Color? iconColor;
+  final String? Function(T?)? validator;
+  final String? errorText;
 
   const CDropDown({
     Key? key,
@@ -48,6 +50,8 @@ class CDropDown<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     this.contentPadding,
+    this.validator,
+    this.errorText,
   }) : super(key: key);
 
   @override
@@ -55,12 +59,16 @@ class CDropDown<T> extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: DropdownButtonFormField<T>(
+        validator: validator,
         onChanged: onChanged,
         items: items,
         icon: icon ??
             Icon(Icons.keyboard_arrow_down_rounded,
                 color: iconColor ?? ThemeColor.DARK_Black),
         decoration: InputDecoration(
+          errorStyle: KLabelTextRegular12.copyWith(
+              color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
           filled: filled,
           labelText: labelText,
           // hintText: hint,
