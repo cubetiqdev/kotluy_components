@@ -20,6 +20,7 @@ class AutoCompleteDropdown extends StatelessWidget {
   final List<SearchFieldListItem> suggestions;
   final String? Function(String?)? validator;
   final bool isValidate;
+  final void Function(String)? onTextChanged;
 
   AutoCompleteDropdown({
     super.key,
@@ -34,6 +35,7 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.validator,
     this.errorText,
     this.isValidate = false,
+    this.onTextChanged,
   });
   FocusNode focus = FocusNode();
   @override
@@ -130,7 +132,7 @@ class AutoCompleteDropdown extends StatelessWidget {
       marginColor: ThemeColor.DARK_D4,
       textInputAction: TextInputAction.done,
       autoCorrect: true,
-      suggestionState: Suggestion.expand,
+      suggestionState: Suggestion.expand, onTextChanged: onTextChanged,
     );
   }
 }
@@ -182,6 +184,8 @@ extension ListContainsObject<T> on List {
   }
 }
 
+typedef OnTextChangedCallback = void Function(String value);
+
 class SearchField<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final List<SearchFieldListItem<T>> suggestions;
@@ -212,6 +216,7 @@ class SearchField<T> extends StatefulWidget {
   final bool autoCorrect;
   final List<TextInputFormatter>? inputFormatters;
   final SuggestionDirection suggestionDirection;
+  final OnTextChangedCallback? onTextChanged;
 
   SearchField(
       {Key? key,
@@ -243,7 +248,8 @@ class SearchField<T> extends StatefulWidget {
       this.suggestionAction,
       this.textInputAction,
       this.validator,
-      this.comparator})
+      this.comparator,
+      required this.onTextChanged})
       : assert(
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
@@ -559,6 +565,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
   bool _isDirectionCalculated = false;
   Offset _offset = Offset.zero;
   final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     if (widget.suggestions.length > widget.maxSuggestionsInViewPort) {
@@ -600,6 +607,9 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
                 widget.searchInputDecoration?.copyWith(hintText: widget.hint) ??
                     InputDecoration(hintText: widget.hint),
             onChanged: (query) {
+              if (widget.onTextChanged != null) {
+                widget.onTextChanged!(query);
+              }
               final searchResult = <SearchFieldListItem<T>>[];
               if (query.isEmpty) {
                 _createOverlay();
