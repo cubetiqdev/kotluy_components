@@ -15,6 +15,8 @@ class AutoCompleteDropdown extends StatelessWidget {
   final Function(SearchFieldListItem?)? onTap;
   final List<SearchFieldListItem> suggestions;
   final bool? onClear;
+  final double? borderRadius;
+  final Widget? icon;
 
   AutoCompleteDropdown({
     super.key,
@@ -24,6 +26,8 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.onTap,
     required this.suggestions,
     this.onClear,
+    this.borderRadius,
+    this.icon,
   });
   FocusNode focus = FocusNode();
   @override
@@ -38,16 +42,24 @@ class AutoCompleteDropdown extends StatelessWidget {
           vertical: 10,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
           borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
           borderSide: const BorderSide(color: ThemeColor.PRIMARY_5, width: 1.0),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
         ),
         suffix: onClear == true
             ? InkWell(
@@ -58,7 +70,7 @@ class AutoCompleteDropdown extends StatelessWidget {
                     offset: const Offset(0, 2),
                     child: const Icon(CupertinoIcons.xmark, size: 16)))
             : const SizedBox.shrink(),
-        suffixIcon: const Icon(Icons.arrow_drop_down),
+        suffixIcon: icon ?? const Icon(Icons.keyboard_arrow_down_sharp),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide:
@@ -86,10 +98,10 @@ class AutoCompleteDropdown extends StatelessWidget {
       onSuggestionTap: onTap,
       hasOverlay: true,
       suggestionDirection: SuggestionDirection.down,
-      suggestionItemDecoration: const BoxDecoration(
+      suggestionItemDecoration: BoxDecoration(
           border: Border.symmetric(
               horizontal: BorderSide(
-        color: ThemeColor.DARK_D4,
+        color: Theme.of(context).colorScheme.primary,
         width: 0.25,
       ))),
       marginColor: ThemeColor.DARK_D4,
