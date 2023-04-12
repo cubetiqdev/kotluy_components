@@ -19,6 +19,7 @@ class AutoCompleteDropdown extends StatelessWidget {
   final Function(SearchFieldListItem?)? onTap;
   final List<SearchFieldListItem> suggestions;
   final String? Function(String?)? validator;
+  final bool isValidate;
 
   AutoCompleteDropdown({
     super.key,
@@ -32,6 +33,7 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.icon,
     this.validator,
     this.errorText,
+    this.isValidate = false,
   });
   FocusNode focus = FocusNode();
   @override
@@ -49,10 +51,17 @@ class AutoCompleteDropdown extends StatelessWidget {
           horizontal: 20.0,
           vertical: 10,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius ?? 25),
-          borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
-        ),
+        enabledBorder: isValidate
+            ? OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.error),
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+              )
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+                borderSide:
+                    const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
+              ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 25),
           borderSide: const BorderSide(color: ThemeColor.PRIMARY_5, width: 1.0),
@@ -79,11 +88,17 @@ class AutoCompleteDropdown extends StatelessWidget {
                     child: const Icon(CupertinoIcons.xmark, size: 16)))
             : const SizedBox.shrink(),
         suffixIcon: icon ?? const Icon(Icons.keyboard_arrow_down_sharp),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius ?? 25),
-          borderSide:
-              const BorderSide(color: ThemeColor.PRIMARY_MAIN, width: 1.0),
-        ),
+        focusedBorder: isValidate
+            ? OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.error),
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+              )
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+                borderSide: const BorderSide(
+                    color: ThemeColor.PRIMARY_MAIN, width: 1.0),
+              ),
       ),
       // onTap:onTap ,
       searchStyle: KLabelTextRegular12,
