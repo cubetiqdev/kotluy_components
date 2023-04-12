@@ -12,11 +12,13 @@ class AutoCompleteDropdown extends StatelessWidget {
   final TextEditingController? controller;
   final String? initValue;
   final String? hint;
-  final Function(SearchFieldListItem?)? onTap;
-  final List<SearchFieldListItem> suggestions;
+  final String? errorText;
   final bool? onClear;
   final double? borderRadius;
   final Widget? icon;
+  final Function(SearchFieldListItem?)? onTap;
+  final List<SearchFieldListItem> suggestions;
+  final String? Function(String?)? validator;
 
   AutoCompleteDropdown({
     super.key,
@@ -28,6 +30,8 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.onClear,
     this.borderRadius,
     this.icon,
+    this.validator,
+    this.errorText,
   });
   FocusNode focus = FocusNode();
   @override
@@ -36,7 +40,11 @@ class AutoCompleteDropdown extends StatelessWidget {
       focusNode: focus,
       controller: controller,
       suggestions: suggestions,
+      validator: validator,
       searchInputDecoration: InputDecoration(
+        errorText: errorText,
+        errorStyle: KLabelTextRegular12.copyWith(
+            color: Theme.of(context).colorScheme.error),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 10,
@@ -72,7 +80,7 @@ class AutoCompleteDropdown extends StatelessWidget {
             : const SizedBox.shrink(),
         suffixIcon: icon ?? const Icon(Icons.keyboard_arrow_down_sharp),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
           borderSide:
               const BorderSide(color: ThemeColor.PRIMARY_MAIN, width: 1.0),
         ),
