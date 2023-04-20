@@ -68,7 +68,7 @@ class _PinPutCustomState extends State<PinPutCustom> {
           width: 56,
           height: 3,
           decoration: BoxDecoration(
-            color: borderColor??ThemeColor.SECONDARY_MAIN,
+            color: widget.borderColor??ThemeColor.SECONDARY_MAIN,
             borderRadius: BorderRadius.circular(8),
           ),
         ),
