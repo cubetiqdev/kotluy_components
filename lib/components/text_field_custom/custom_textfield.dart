@@ -35,13 +35,14 @@ class CTextField extends StatelessWidget {
   final FormFieldSetter<String>? onSaved;
   final List<TextInputFormatter>? inputFormatters;
   final double? borderWidth;
-
+  final bool autofocus ;
   const CTextField({
     super.key,
     this.hintText,
     this.filled,
     this.labelText,
     this.validator,
+    this.autofocus=false,
     this.errorText,
     this.textStyle,
     this.hintStyle,
@@ -75,6 +76,7 @@ class CTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
         enabled: enabled,
+        autofocus: autofocus,
         onTap: onTapTextField,
         onChanged: onChanged,
         onSaved: onSaved,
