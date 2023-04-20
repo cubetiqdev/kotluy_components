@@ -69,6 +69,7 @@ class CTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
+        //for show keyboard when building screen
         autofocus:autofocus ,
         textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
