@@ -25,6 +25,7 @@ class CTextFormField extends StatelessWidget {
   final bool enabledBorder;
   final bool? noPadding;
   final TextAlign? textAlign;
+  final FocusNode? focusNode;
   final TextAlignVertical? textAlignVertical;
   final TextEditingController? controller;
   final List<TextInputFormatter>? format;
@@ -42,6 +43,7 @@ class CTextFormField extends StatelessWidget {
     this.fillColor,
     this.hintColor,
     this.maxLines,
+    this.focusNode,
     this.maxLenght,
     this.borderRadius,
     this.borderWidth,
@@ -71,6 +73,7 @@ class CTextFormField extends StatelessWidget {
         style: textStyle ?? KLabelTextRegular14,
         maxLines: maxLines ?? 2,
         maxLength: maxLenght,
+        focusNode: focusNode,
         validator: validator,
         inputFormatters: format,
         keyboardType: keyboardType ?? TextInputType.text,
