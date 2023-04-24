@@ -27,15 +27,16 @@ class CTextField extends StatelessWidget {
   final Color? prefixIconColor;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
-  final BorderRadius? borderRadius;
+  final double? borderRadius;
   final TextInputType? keyboardType;
   final GestureTapCallback? onTap;
   final GestureTapCallback? onTapTextField;
   final ValueChanged<String>? onChanged;
   final FormFieldSetter<String>? onSaved;
   final List<TextInputFormatter>? inputFormatters;
+  final double? borderWidth;
+  final bool autofocus;
   final EdgeInsetsGeometry? contentPadding;
-
   const CTextField({
     super.key,
     this.contentPadding,
@@ -43,6 +44,7 @@ class CTextField extends StatelessWidget {
     this.filled,
     this.labelText,
     this.validator,
+    this.autofocus = false,
     this.errorText,
     this.textStyle,
     this.hintStyle,
@@ -67,6 +69,7 @@ class CTextField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.inputFormatters,
+    this.borderWidth,
   });
 
   @override
@@ -75,6 +78,7 @@ class CTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
         enabled: enabled,
+        autofocus: autofocus,
         onTap: onTapTextField,
         onChanged: onChanged,
         onSaved: onSaved,
@@ -95,9 +99,9 @@ class CTextField extends StatelessWidget {
               EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           enabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
-              width: 1,
+              width: borderWidth ?? 1,
               color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
@@ -108,22 +112,36 @@ class CTextField extends StatelessWidget {
           errorText: errorText,
           errorMaxLines: 1,
           focusedBorder: OutlineInputBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
                 color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
           ),
           disabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
-              width: 1,
+              width: borderWidth ?? 1,
               color: ThemeColor.DARK_D4,
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
             borderSide: BorderSide(
-              width: 1,
+              width: borderWidth ?? 1,
               color: borderColor ?? ThemeColor.DARK_D4,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+            borderSide: BorderSide(
+              width: borderWidth ?? 1,
+              color: Theme.of(context).colorScheme.error,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+            borderSide: BorderSide(
+              width: borderWidth ?? 1,
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
           suffixIcon: suffixIcon,

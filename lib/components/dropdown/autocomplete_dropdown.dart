@@ -12,9 +12,15 @@ class AutoCompleteDropdown extends StatelessWidget {
   final TextEditingController? controller;
   final String? initValue;
   final String? hint;
+  final String? errorText;
+  final bool? onClear;
+  final double? borderRadius;
+  final Widget? icon;
   final Function(SearchFieldListItem?)? onTap;
   final List<SearchFieldListItem> suggestions;
-  final bool? onClear;
+  final String? Function(String?)? validator;
+  final bool isValidate;
+  final void Function(String)? onTextChanged;
 
   AutoCompleteDropdown({
     super.key,
@@ -24,6 +30,12 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.onTap,
     required this.suggestions,
     this.onClear,
+    this.borderRadius,
+    this.icon,
+    this.validator,
+    this.errorText,
+    this.isValidate = false,
+    this.onTextChanged,
   });
   FocusNode focus = FocusNode();
   @override
@@ -32,22 +44,41 @@ class AutoCompleteDropdown extends StatelessWidget {
       focusNode: focus,
       controller: controller,
       suggestions: suggestions,
+      validator: validator,
       searchInputDecoration: InputDecoration(
+        errorText: errorText,
+        errorStyle: KLabelTextRegular12.copyWith(
+            color: Theme.of(context).colorScheme.error),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 10,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
-        ),
+        enabledBorder: isValidate
+            ? OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.error),
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+              )
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+                borderSide:
+                    const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
+              ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
           borderSide: const BorderSide(color: ThemeColor.PRIMARY_5, width: 1.0),
         ),
         disabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: ThemeColor.DARK_D4, width: 1.0),
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+          borderRadius: BorderRadius.circular(borderRadius ?? 25),
         ),
         suffix: onClear == true
             ? InkWell(
@@ -58,12 +89,18 @@ class AutoCompleteDropdown extends StatelessWidget {
                     offset: const Offset(0, 2),
                     child: const Icon(CupertinoIcons.xmark, size: 16)))
             : const SizedBox.shrink(),
-        suffixIcon: const Icon(Icons.arrow_drop_down),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              const BorderSide(color: ThemeColor.PRIMARY_MAIN, width: 1.0),
-        ),
+        suffixIcon: icon ?? const Icon(Icons.keyboard_arrow_down_sharp),
+        focusedBorder: isValidate
+            ? OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.error),
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+              )
+            : OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 25),
+                borderSide: const BorderSide(
+                    color: ThemeColor.PRIMARY_MAIN, width: 1.0),
+              ),
       ),
       // onTap:onTap ,
       searchStyle: KLabelTextRegular12,
@@ -86,16 +123,16 @@ class AutoCompleteDropdown extends StatelessWidget {
       onSuggestionTap: onTap,
       hasOverlay: true,
       suggestionDirection: SuggestionDirection.down,
-      suggestionItemDecoration: const BoxDecoration(
+      suggestionItemDecoration: BoxDecoration(
           border: Border.symmetric(
               horizontal: BorderSide(
-        color: ThemeColor.DARK_D4,
+        color: Theme.of(context).colorScheme.primary,
         width: 0.25,
       ))),
       marginColor: ThemeColor.DARK_D4,
       textInputAction: TextInputAction.done,
       autoCorrect: true,
-      suggestionState: Suggestion.expand,
+      suggestionState: Suggestion.expand, onTextChanged: onTextChanged,
     );
   }
 }
@@ -147,6 +184,8 @@ extension ListContainsObject<T> on List {
   }
 }
 
+typedef OnTextChangedCallback = void Function(String value);
+
 class SearchField<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final List<SearchFieldListItem<T>> suggestions;
@@ -177,6 +216,7 @@ class SearchField<T> extends StatefulWidget {
   final bool autoCorrect;
   final List<TextInputFormatter>? inputFormatters;
   final SuggestionDirection suggestionDirection;
+  final OnTextChangedCallback? onTextChanged;
 
   SearchField(
       {Key? key,
@@ -208,7 +248,8 @@ class SearchField<T> extends StatefulWidget {
       this.suggestionAction,
       this.textInputAction,
       this.validator,
-      this.comparator})
+      this.comparator,
+      required this.onTextChanged})
       : assert(
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
@@ -524,6 +565,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
   bool _isDirectionCalculated = false;
   Offset _offset = Offset.zero;
   final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     if (widget.suggestions.length > widget.maxSuggestionsInViewPort) {
@@ -565,6 +607,9 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
                 widget.searchInputDecoration?.copyWith(hintText: widget.hint) ??
                     InputDecoration(hintText: widget.hint),
             onChanged: (query) {
+              if (widget.onTextChanged != null) {
+                widget.onTextChanged!(query);
+              }
               final searchResult = <SearchFieldListItem<T>>[];
               if (query.isEmpty) {
                 _createOverlay();

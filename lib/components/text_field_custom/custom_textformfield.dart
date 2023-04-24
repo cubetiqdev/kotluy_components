@@ -18,18 +18,21 @@ class CTextFormField extends StatelessWidget {
   final double? borderRadius;
   final double? borderWidth;
   final double? focusBorderWidth;
-  final double? focusBorderRadius;
   final double? contentPadding;
   final double? paddingHorizontal;
   final double? paddingVertical;
   final bool? filled;
   final bool enabledBorder;
   final bool? noPadding;
+  final TextAlign? textAlign;
+  final FocusNode? focusNode;
+  final TextAlignVertical? textAlignVertical;
   final TextEditingController? controller;
   final List<TextInputFormatter>? format;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
-
+  final String? errorText;
+  final bool autofocus ;
   const CTextFormField({
     super.key,
     this.hintText,
@@ -40,10 +43,10 @@ class CTextFormField extends StatelessWidget {
     this.fillColor,
     this.hintColor,
     this.maxLines,
+    this.focusNode,
     this.maxLenght,
     this.borderRadius,
     this.borderWidth,
-    this.focusBorderRadius,
     this.focusBorderWidth,
     this.contentPadding,
     this.paddingHorizontal,
@@ -51,10 +54,14 @@ class CTextFormField extends StatelessWidget {
     this.filled = false,
     this.enabledBorder = false,
     this.noPadding,
+    this.textAlign,
+    this.textAlignVertical,
     this.controller,
     this.format,
+    this.autofocus= false,
     this.onChanged,
     this.keyboardType,
+    this.errorText,
   });
 
   @override
@@ -62,15 +69,25 @@ class CTextFormField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
+        //for show keyboard when building screen
+        autofocus:autofocus ,
+        textAlignVertical: textAlignVertical,
+        textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,
         maxLines: maxLines ?? 2,
         maxLength: maxLenght,
+        focusNode: focusNode,
         validator: validator,
         inputFormatters: format,
         keyboardType: keyboardType ?? TextInputType.text,
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
+          errorStyle: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
           contentPadding: EdgeInsets.all(contentPadding ?? 15),
           filled: filled,
           fillColor: fillColor ?? ThemeColor.LIGHT_L3,
@@ -83,12 +100,11 @@ class CTextFormField extends StatelessWidget {
                     color: focusBorderColor ?? ThemeColor.PRIMARY_MAIN,
                     width: focusBorderWidth ?? borderWidth ?? 1,
                   ),
-                  borderRadius: BorderRadius.circular(focusBorderRadius ?? 10),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
                 )
               : OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius:
-                      BorderRadius.circular(focusBorderRadius ?? 0.0)),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 0.0)),
           enabledBorder: enabledBorder
               ? OutlineInputBorder(
                   borderSide: BorderSide(
@@ -96,6 +112,30 @@ class CTextFormField extends StatelessWidget {
                     width: borderWidth ?? 1,
                   ),
                   borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                )
+              : OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                ),
+          errorBorder: enabledBorder
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                  borderSide: BorderSide(
+                    width: borderWidth ?? 1,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                )
+              : OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                ),
+          focusedErrorBorder: enabledBorder
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? 10),
+                  borderSide: BorderSide(
+                    width: borderWidth ?? 1,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
                 )
               : OutlineInputBorder(
                   borderSide: BorderSide.none,

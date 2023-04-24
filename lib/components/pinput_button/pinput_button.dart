@@ -52,8 +52,6 @@ final formKey = GlobalKey<FormState>();
 class _PinPutCustomState extends State<PinPutCustom> {
   @override
   Widget build(BuildContext context) {
-    const borderColor = ThemeColor.SECONDARY_MAIN;
-
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
@@ -70,7 +68,7 @@ class _PinPutCustomState extends State<PinPutCustom> {
           width: 56,
           height: 3,
           decoration: BoxDecoration(
-            color: borderColor,
+            color: widget.borderColor??ThemeColor.SECONDARY_MAIN,
             borderRadius: BorderRadius.circular(8),
           ),
         ),

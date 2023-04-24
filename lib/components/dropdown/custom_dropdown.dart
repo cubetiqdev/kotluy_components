@@ -6,13 +6,15 @@ import 'package:flutter_components/constant/fonts/default_font.dart';
 
 class CDropDown<T> extends StatelessWidget {
   final T? value;
-  final Icon? icon;
+  final Widget? icon;
   final bool? filled;
   final bool? noPadding;
+  final bool isExpanded;
   final String? hint;
   final String? labelText;
   final double? borderRadius;
   final double? iconSize;
+
   final Color? dropdownColor;
   final Color? hintTextColor;
   final Color? filledColor;
@@ -23,8 +25,10 @@ class CDropDown<T> extends StatelessWidget {
   final TextStyle? hintStyle;
   final ValueChanged<T?> onChanged;
   final List<DropdownMenuItem<T>> items;
-  final EdgeInsetsGeometry? contentPadding;
+  final double? contentPadding;
   final Color? iconColor;
+  final String? Function(T?)? validator;
+  final String? errorText;
 
   const CDropDown({
     Key? key,
@@ -33,6 +37,7 @@ class CDropDown<T> extends StatelessWidget {
     this.iconColor,
     this.filled,
     this.noPadding,
+    this.isExpanded = false,
     this.hint,
     this.labelText,
     this.borderRadius,
@@ -48,6 +53,8 @@ class CDropDown<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     this.contentPadding,
+    this.validator,
+    this.errorText,
   }) : super(key: key);
 
   @override
@@ -55,18 +62,22 @@ class CDropDown<T> extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: DropdownButtonFormField<T>(
+        validator: validator,
         onChanged: onChanged,
         items: items,
         icon: icon ??
             Icon(Icons.keyboard_arrow_down_rounded,
                 color: iconColor ?? ThemeColor.DARK_Black),
         decoration: InputDecoration(
+          errorStyle: KLabelTextRegular12.copyWith(
+              color: Theme.of(context).colorScheme.error),
+          errorText: errorText,
           filled: filled,
           labelText: labelText,
           // hintText: hint,
           hintStyle: KLabelTextRegular12.copyWith(
               color: hintTextColor ?? ThemeColor.DARK_D4),
-          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
+          contentPadding: EdgeInsets.all(contentPadding ?? 15),
           fillColor: filledColor ?? ThemeColor.ERROR,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
@@ -99,6 +110,7 @@ class CDropDown<T> extends StatelessWidget {
         // hint: hint,
         value: value,
         dropdownColor: dropdownColor,
+        isExpanded: isExpanded,
         iconSize: iconSize ?? 24.0,
         hint: Text(
           hint ?? '',
