@@ -13,6 +13,8 @@ class ButtonChooseLanguage extends StatelessWidget {
   final Color? borderColor;
   final double padHorizontal;
   final double padVertical;
+  final double? imgHeight;
+  final double? imgWidth;
   final double? height;
   final double? width;
   final EdgeInsetsGeometry? padding;
@@ -31,6 +33,8 @@ class ButtonChooseLanguage extends StatelessWidget {
     this.borderColor,
     this.padHorizontal = 20,
     this.padVertical = 0,
+    this.imgHeight,
+    this.imgWidth,
     this.height,
     this.width,
     this.padding,
@@ -47,6 +51,8 @@ class ButtonChooseLanguage extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(borderRadius ?? 50),
         child: Container(
+          height: height,
+          width: width,
           padding: padding ??
               const EdgeInsets.only(
                   left: 20.0, right: 5.0, top: 10.0, bottom: 10.0),
@@ -67,8 +73,8 @@ class ButtonChooseLanguage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(imageRadius ?? 20),
                 child: Image.asset(
                   image,
-                  width: width ?? 24.0,
-                  height: height ?? 24.0,
+                  width: imgWidth ?? 24.0,
+                  height: imgHeight ?? 24.0,
                   fit: BoxFit.cover,
                 ),
               ),
