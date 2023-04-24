@@ -34,9 +34,11 @@ class CTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final FormFieldSetter<String>? onSaved;
   final List<TextInputFormatter>? inputFormatters;
+  final EdgeInsetsGeometry? contentPadding;
 
   const CTextField({
     super.key,
+    this.contentPadding,
     this.hintText,
     this.filled,
     this.labelText,
@@ -89,7 +91,8 @@ class CTextField extends StatelessWidget {
           hintText: hintText,
           hintStyle: hintStyle ??
               KLabelTextRegular12.copyWith(color: ThemeColor.DARK_D4),
-          contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          contentPadding: contentPadding ??
+              EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           enabledBorder: OutlineInputBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(25.0),
