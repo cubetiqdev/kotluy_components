@@ -185,7 +185,6 @@ extension ListContainsObject<T> on List {
 }
 
 typedef OnTextChangedCallback = void Function(String value);
-bool _isSuggestionTapped = false;
 
 class SearchField<T> extends StatefulWidget {
   final FocusNode? focusNode;
@@ -377,129 +376,120 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
   }
 
   Widget _suggestionsBuilder() {
-    if (_isSuggestionTapped) {
-      return const SizedBox();
-    } else {
-      _isSuggestionTapped = false;
-      return StreamBuilder<List<SearchFieldListItem<T>?>?>(
-        stream: suggestionStream.stream,
-        builder: (BuildContext context,
-            AsyncSnapshot<List<SearchFieldListItem<T>?>?> snapshot) {
-          if (snapshot.data == null || !isSuggestionExpanded) {
-            return const SizedBox();
-          } else if (snapshot.data!.isEmpty) {
-            return widget.emptyWidget;
+    return StreamBuilder<List<SearchFieldListItem<T>?>?>(
+      stream: suggestionStream.stream,
+      builder: (BuildContext context,
+          AsyncSnapshot<List<SearchFieldListItem<T>?>?> snapshot) {
+        if (snapshot.data == null || !isSuggestionExpanded) {
+          return const SizedBox();
+        } else if (snapshot.data!.isEmpty) {
+          return widget.emptyWidget;
+        } else {
+          if (snapshot.data!.length > widget.maxSuggestionsInViewPort) {
+            _totalHeight = widget.itemHeight * widget.maxSuggestionsInViewPort;
+          } else if (snapshot.data!.length == 1) {
+            _totalHeight = widget.itemHeight;
           } else {
-            if (snapshot.data!.length > widget.maxSuggestionsInViewPort) {
-              _totalHeight =
-                  widget.itemHeight * widget.maxSuggestionsInViewPort;
-            } else if (snapshot.data!.length == 1) {
-              _totalHeight = widget.itemHeight;
-            } else {
-              _totalHeight = snapshot.data!.length * widget.itemHeight;
-            }
-            final onSurfaceColor = Theme.of(context).colorScheme.onSurface;
+            _totalHeight = snapshot.data!.length * widget.itemHeight;
+          }
+          final onSurfaceColor = Theme.of(context).colorScheme.onSurface;
 
-            final Widget listView = ListView.builder(
-              reverse: widget.suggestionDirection == SuggestionDirection.up,
-              padding: EdgeInsets.zero,
-              controller: _scrollController,
-              itemCount: snapshot.data!.length,
-              physics: snapshot.data!.length == 1
-                  ? const NeverScrollableScrollPhysics()
-                  : const ScrollPhysics(),
-              itemBuilder: (context, index) => TextFieldTapRegion(
-                  child: InkWell(
-                onTap: () {
-                  searchController!.text = snapshot.data![index]!.searchKey;
-                  searchController!.selection = TextSelection.fromPosition(
-                    TextPosition(
-                      offset: searchController!.text.length,
-                    ),
-                  );
+          final Widget listView = ListView.builder(
+            reverse: widget.suggestionDirection == SuggestionDirection.up,
+            padding: EdgeInsets.zero,
+            controller: _scrollController,
+            itemCount: snapshot.data!.length,
+            physics: snapshot.data!.length == 1
+                ? const NeverScrollableScrollPhysics()
+                : const ScrollPhysics(),
+            itemBuilder: (context, index) => TextFieldTapRegion(
+                child: InkWell(
+              onTap: () {
+                searchController!.text = snapshot.data![index]!.searchKey;
+                searchController!.selection = TextSelection.fromPosition(
+                  TextPosition(
+                    offset: searchController!.text.length,
+                  ),
+                );
 
-                  if (widget.suggestionAction != null) {
-                    if (widget.suggestionAction == SuggestionAction.next) {
-                      _focus!.nextFocus();
-                    } else if (widget.suggestionAction ==
-                        SuggestionAction.unfocus) {
-                      _focus!.unfocus();
-                    }
+                if (widget.suggestionAction != null) {
+                  if (widget.suggestionAction == SuggestionAction.next) {
+                    _focus!.nextFocus();
+                  } else if (widget.suggestionAction ==
+                      SuggestionAction.unfocus) {
+                    _focus!.unfocus();
                   }
+                }
 
-                  suggestionStream.sink.add(null);
-                  if (widget.onSuggestionTap != null) {
-                    widget.onSuggestionTap!(snapshot.data![index]!);
-                    _isSuggestionTapped = true;
-                  } else {
-                    _isSuggestionTapped = false;
-                  }
-                },
-                child: Container(
-                  height: widget.itemHeight,
-                  width: double.infinity,
-                  alignment: Alignment.centerLeft,
-                  decoration: widget.suggestionItemDecoration?.copyWith(
-                        border: widget.suggestionItemDecoration?.border ??
-                            Border(
+                suggestionStream.sink.add(null);
+                if (widget.onSuggestionTap != null) {
+                  widget.onSuggestionTap!(snapshot.data![index]!);
+                }
+              },
+              child: Container(
+                height: widget.itemHeight,
+                width: double.infinity,
+                alignment: Alignment.centerLeft,
+                decoration: widget.suggestionItemDecoration?.copyWith(
+                      border: widget.suggestionItemDecoration?.border ??
+                          Border(
+                            bottom: BorderSide(
+                              color: widget.marginColor ??
+                                  onSurfaceColor.withOpacity(0.1),
+                            ),
+                          ),
+                    ) ??
+                    BoxDecoration(
+                      border: index == snapshot.data!.length - 1
+                          ? null
+                          : Border(
                               bottom: BorderSide(
                                 color: widget.marginColor ??
                                     onSurfaceColor.withOpacity(0.1),
                               ),
                             ),
-                      ) ??
-                      BoxDecoration(
-                        border: index == snapshot.data!.length - 1
-                            ? null
-                            : Border(
-                                bottom: BorderSide(
-                                  color: widget.marginColor ??
-                                      onSurfaceColor.withOpacity(0.1),
-                                ),
-                              ),
-                      ),
-                  child: snapshot.data![index]!.child ??
-                      Text(
-                        snapshot.data![index]!.searchKey,
-                        style: widget.suggestionStyle,
-                      ),
-                ),
-              )),
-            );
+                    ),
+                child: snapshot.data![index]!.child ??
+                    Text(
+                      snapshot.data![index]!.searchKey,
+                      style: widget.suggestionStyle,
+                    ),
+              ),
+            )),
+          );
 
-            return AnimatedContainer(
-              duration: widget.suggestionDirection == SuggestionDirection.up
-                  ? Duration.zero
-                  : const Duration(milliseconds: 300),
-              height: _totalHeight,
-              alignment: Alignment.centerLeft,
-              decoration: widget.suggestionsDecoration ??
-                  BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    boxShadow: [
-                      BoxShadow(
-                        color: onSurfaceColor.withOpacity(0.1),
-                        blurRadius: 8.0,
-                        spreadRadius: 2.0,
-                        offset: widget.hasOverlay
-                            ? const Offset(
-                                2.0,
-                                5.0,
-                              )
-                            : const Offset(1.0, 0.5),
-                      ),
-                    ],
-                  ),
-              child: RawScrollbar(
-                  thumbVisibility: widget.scrollbarAlwaysVisible,
-                  controller: _scrollController,
-                  padding: EdgeInsets.zero,
-                  child: listView),
-            );
-          }
-        },
-      );
-    }
+          return AnimatedContainer(
+            duration: widget.suggestionDirection == SuggestionDirection.up
+                ? Duration.zero
+                : const Duration(milliseconds: 300),
+            height: _totalHeight,
+            alignment: Alignment.centerLeft,
+            decoration: widget.suggestionsDecoration ??
+                BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  boxShadow: [
+                    BoxShadow(
+                      color: onSurfaceColor.withOpacity(0.1),
+                      blurRadius: 8.0,
+                      spreadRadius: 2.0,
+                      offset: widget.hasOverlay
+                          ? const Offset(
+                              2.0,
+                              5.0,
+                            )
+                          : const Offset(1.0, 0.5),
+                    ),
+                  ],
+                ),
+            child: RawScrollbar(
+                thumbVisibility: widget.scrollbarAlwaysVisible,
+                controller: _scrollController,
+                padding: EdgeInsets.zero,
+                child: listView),
+          );
+        }
+      },
+    );
   }
 
   Offset? getYOffset(
