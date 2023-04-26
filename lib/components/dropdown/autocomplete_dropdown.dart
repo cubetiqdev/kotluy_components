@@ -13,6 +13,7 @@ class AutoCompleteDropdown extends StatelessWidget {
   final String? initValue;
   final String? hint;
   final String? errorText;
+  final TextStyle? hintStyle;
   final bool? onClear;
   final double? borderRadius;
   final Widget? icon;
@@ -36,6 +37,7 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.errorText,
     this.isValidate = false,
     this.onTextChanged,
+    this.hintStyle,
   });
   FocusNode focus = FocusNode();
   @override
@@ -106,6 +108,7 @@ class AutoCompleteDropdown extends StatelessWidget {
       searchStyle: KLabelTextRegular12,
       suggestionStyle: KLabelTextRegular12,
       hint: hint,
+      hintStyle: hintStyle,
       suggestionsDecoration: BoxDecoration(
         color: ThemeColor.LIGHT_WHITE,
         borderRadius: const BorderRadius.only(
