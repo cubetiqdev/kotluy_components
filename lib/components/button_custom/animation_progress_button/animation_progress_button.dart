@@ -83,7 +83,7 @@ Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
       child: isDone
           ? Icon(
               Icons.done,
-              size: 40.w,
+              size: 40,
               color: Colors.white,
             )
           : CircularProgressIndicator(
