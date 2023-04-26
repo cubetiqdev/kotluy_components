@@ -193,6 +193,7 @@ class SearchField<T> extends StatefulWidget {
   final bool? enabled;
   final Function(String)? onSubmit;
   final String? hint;
+  final TextStyle? hintStyle;
   final TextInputAction? textInputAction;
   final SearchFieldListItem<T>? initialValue;
   final TextStyle? searchStyle;
@@ -249,7 +250,8 @@ class SearchField<T> extends StatefulWidget {
       this.textInputAction,
       this.validator,
       this.comparator,
-      required this.onTextChanged})
+      required this.onTextChanged,
+      this.hintStyle})
       : assert(
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
@@ -603,9 +605,9 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             style: widget.searchStyle,
             textInputAction: widget.textInputAction,
             keyboardType: widget.inputType,
-            decoration:
-                widget.searchInputDecoration?.copyWith(hintText: widget.hint) ??
-                    InputDecoration(hintText: widget.hint),
+            decoration: widget.searchInputDecoration?.copyWith(
+                    hintText: widget.hint, hintStyle: widget.hintStyle) ??
+                InputDecoration(hintText: widget.hint),
             onChanged: (query) {
               if (widget.onTextChanged != null) {
                 widget.onTextChanged!(query);
