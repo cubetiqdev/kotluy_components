@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 
 class AutoCompleteDropdown extends StatelessWidget {
   final TextEditingController? controller;
@@ -22,6 +23,7 @@ class AutoCompleteDropdown extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool isValidate;
   final void Function(String)? onTextChanged;
+  final EdgeInsetsGeometry? contentPadding;
 
   AutoCompleteDropdown({
     super.key,
@@ -38,6 +40,7 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.isValidate = false,
     this.onTextChanged,
     this.hintStyle,
+    this.contentPadding,
   });
   FocusNode focus = FocusNode();
   @override
@@ -51,10 +54,11 @@ class AutoCompleteDropdown extends StatelessWidget {
         errorText: errorText,
         errorStyle: KLabelTextRegular12.copyWith(
             color: Theme.of(context).colorScheme.error),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 10,
-        ),
+        contentPadding: contentPadding ??
+            EdgeInsets.symmetric(
+              horizontal: 15.0.w,
+              vertical: 15.h,
+            ),
         enabledBorder: isValidate
             ? OutlineInputBorder(
                 borderSide:
