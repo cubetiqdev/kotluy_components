@@ -32,7 +32,8 @@ class CTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final String? errorText;
-  final bool autofocus ;
+  final bool autofocus;
+
   const CTextFormField({
     super.key,
     this.hintText,
@@ -58,7 +59,7 @@ class CTextFormField extends StatelessWidget {
     this.textAlignVertical,
     this.controller,
     this.format,
-    this.autofocus= false,
+    this.autofocus = false,
     this.onChanged,
     this.keyboardType,
     this.errorText,
@@ -70,7 +71,8 @@ class CTextFormField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
         //for show keyboard when building screen
-        autofocus:autofocus ,
+        autofocus: autofocus,
+
         textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,

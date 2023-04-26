@@ -37,8 +37,10 @@ class CTextField extends StatelessWidget {
   final double? borderWidth;
   final bool autofocus;
   final EdgeInsetsGeometry? contentPadding;
+  final FocusNode? focusNode;
   const CTextField({
     super.key,
+    this.focusNode,
     this.contentPadding,
     this.hintText,
     this.filled,
@@ -79,6 +81,7 @@ class CTextField extends StatelessWidget {
       child: TextFormField(
         enabled: enabled,
         autofocus: autofocus,
+        focusNode: focusNode,
         onTap: onTapTextField,
         onChanged: onChanged,
         onSaved: onSaved,
