@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 
 class AutoCompleteDropdown extends StatelessWidget {
   final TextEditingController? controller;
   final String? initValue;
   final String? hint;
   final String? errorText;
+  final TextStyle? hintStyle;
   final bool? onClear;
   final double? borderRadius;
   final Widget? icon;
@@ -21,6 +23,7 @@ class AutoCompleteDropdown extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool isValidate;
   final void Function(String)? onTextChanged;
+  final EdgeInsetsGeometry? contentPadding;
 
   AutoCompleteDropdown({
     super.key,
@@ -36,6 +39,8 @@ class AutoCompleteDropdown extends StatelessWidget {
     this.errorText,
     this.isValidate = false,
     this.onTextChanged,
+    this.hintStyle,
+    this.contentPadding,
   });
   FocusNode focus = FocusNode();
   @override
@@ -49,10 +54,11 @@ class AutoCompleteDropdown extends StatelessWidget {
         errorText: errorText,
         errorStyle: KLabelTextRegular12.copyWith(
             color: Theme.of(context).colorScheme.error),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 10,
-        ),
+        contentPadding: contentPadding ??
+            EdgeInsets.symmetric(
+              horizontal: 15.0.w,
+              vertical: 15.h,
+            ),
         enabledBorder: isValidate
             ? OutlineInputBorder(
                 borderSide:
@@ -106,6 +112,7 @@ class AutoCompleteDropdown extends StatelessWidget {
       searchStyle: KLabelTextRegular12,
       suggestionStyle: KLabelTextRegular12,
       hint: hint,
+      hintStyle: hintStyle,
       suggestionsDecoration: BoxDecoration(
         color: ThemeColor.LIGHT_WHITE,
         borderRadius: const BorderRadius.only(
@@ -193,6 +200,7 @@ class SearchField<T> extends StatefulWidget {
   final bool? enabled;
   final Function(String)? onSubmit;
   final String? hint;
+  final TextStyle? hintStyle;
   final TextInputAction? textInputAction;
   final SearchFieldListItem<T>? initialValue;
   final TextStyle? searchStyle;
@@ -249,7 +257,8 @@ class SearchField<T> extends StatefulWidget {
       this.textInputAction,
       this.validator,
       this.comparator,
-      required this.onTextChanged})
+      required this.onTextChanged,
+      this.hintStyle})
       : assert(
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
@@ -603,9 +612,9 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
             style: widget.searchStyle,
             textInputAction: widget.textInputAction,
             keyboardType: widget.inputType,
-            decoration:
-                widget.searchInputDecoration?.copyWith(hintText: widget.hint) ??
-                    InputDecoration(hintText: widget.hint),
+            decoration: widget.searchInputDecoration?.copyWith(
+                    hintText: widget.hint, hintStyle: widget.hintStyle) ??
+                InputDecoration(hintText: widget.hint),
             onChanged: (query) {
               if (widget.onTextChanged != null) {
                 widget.onTextChanged!(query);

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
+import 'package:flutter_components/extension/screen_util.dart';
 
 enum ButtonState { init, loading, done }
 
@@ -52,8 +53,8 @@ class AnimationProgressButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeIn,
-        width: state == ButtonState.init ? this.width ?? width : 100,
-        height: height ?? 57,
+        width: state == ButtonState.init ? this.width ?? width : 100.w,
+        height: height ?? 57.h,
         child: isNotInit
             ? buildSmallButton(isDone, loadingColor, doneColor)
             : buildButton(
@@ -100,15 +101,16 @@ Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
         shape: RoundedRectangleBorder(
-          borderRadius: borderRadius ?? BorderRadius.circular(50.0),
+          borderRadius: borderRadius ?? BorderRadius.circular(50.0.r),
         ),
         side: BorderSide(
-          width: 1,
+          width: 1.w,
           color: borderColor ?? ThemeColor.PRIMARY_MAIN,
         ),
       ),
       child: Text(
-        style: textStyle ?? KLabelTextBold16.copyWith(color: Colors.white),
+        style: textStyle ??
+            KLabelTextBold16.copyWith(color: Colors.white, fontSize: 16.sp),
         title,
         textAlign: TextAlign.center,
       ),
