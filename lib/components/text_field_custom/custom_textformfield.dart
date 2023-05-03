@@ -9,6 +9,7 @@ class CTextFormField extends StatelessWidget {
   final String? hintText;
   final String? Function(String?)? validator;
   final TextStyle? textStyle;
+  final TextStyle? errorStyle;
   final Color? borderColor;
   final Color? focusBorderColor;
   final Color? fillColor;
@@ -33,12 +34,14 @@ class CTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? errorText;
   final bool autofocus;
+  
 
   const CTextFormField({
     super.key,
     this.hintText,
     this.validator,
     this.textStyle,
+    this.errorStyle,
     this.borderColor,
     this.focusBorderColor,
     this.fillColor,
@@ -85,7 +88,7 @@ class CTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-          errorStyle: Theme.of(context)
+          errorStyle: errorStyle??Theme.of(context)
               .textTheme
               .titleMedium
               ?.copyWith(color: Theme.of(context).colorScheme.error),
