@@ -29,9 +29,11 @@ class CDropDown<T> extends StatelessWidget {
   final Color? iconColor;
   final String? Function(T?)? validator;
   final String? errorText;
+  final bool disable;
 
   const CDropDown({
     Key? key,
+    this.disable=false,
     this.value,
     this.icon,
     this.iconColor,
@@ -53,6 +55,7 @@ class CDropDown<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     this.contentPadding,
+    
     this.validator,
     this.errorText,
   }) : super(key: key);
@@ -61,61 +64,64 @@ class CDropDown<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
-      child: DropdownButtonFormField<T>(
-        validator: validator,
-        onChanged: onChanged,
-        items: items,
-        icon: icon ??
-            Icon(Icons.keyboard_arrow_down_rounded,
-                color: iconColor ?? ThemeColor.DARK_Black),
-        decoration: InputDecoration(
-          errorStyle: KLabelTextRegular12.copyWith(
-              color: Theme.of(context).colorScheme.error),
-          errorText: errorText,
-          filled: filled,
-          labelText: labelText,
-          // hintText: hint,
-          hintStyle: KLabelTextRegular12.copyWith(
-              color: hintTextColor ?? ThemeColor.DARK_D4),
-          contentPadding: contentPadding ?? EdgeInsets.all(15),
-          fillColor: filledColor ?? ThemeColor.ERROR,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
-            borderSide: BorderSide(
-              width: 1,
-              color: enabledBorderColor ?? ThemeColor.SECONDARY_MAIN,
+      child: IgnorePointer(
+        ignoring:disable ,
+        child: DropdownButtonFormField<T>(
+          validator: validator,
+          onChanged: onChanged,
+          items: items,
+          icon: icon ??
+              Icon(Icons.keyboard_arrow_down_rounded,
+                  color: iconColor ?? ThemeColor.DARK_Black),
+          decoration: InputDecoration(
+            errorStyle: KLabelTextRegular12.copyWith(
+                color: Theme.of(context).colorScheme.error),
+            errorText: errorText,
+            filled: filled,
+            labelText: labelText,
+            // hintText: hint,
+            hintStyle: KLabelTextRegular12.copyWith(
+                color: hintTextColor ?? ThemeColor.DARK_D4),
+            contentPadding: contentPadding ?? EdgeInsets.all(15),
+            fillColor: filledColor ?? ThemeColor.ERROR,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+              borderSide: BorderSide(
+                width: 1,
+                color: enabledBorderColor ?? ThemeColor.SECONDARY_MAIN,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+              borderSide: BorderSide(
+                  color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+              borderSide: BorderSide(
+                width: 1,
+                color: ThemeColor.DARK_D4,
+              ),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
+              borderSide: BorderSide(
+                width: 1,
+                color: borderColor ?? ThemeColor.DARK_D4,
+              ),
             ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
-            borderSide: BorderSide(
-                color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
+          style: textStyle ?? TextStyle(fontSize: 20, color: Colors.black),
+          // hint: hint,
+          value: value,
+          dropdownColor: dropdownColor,
+          isExpanded: isExpanded,
+          iconSize: iconSize ?? 24.0,
+          hint: Text(
+            hint ?? '',
+            style: hintStyle ??
+                KLabelTextRegular12.copyWith(color: ThemeColor.DARK_D4),
           ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
-            borderSide: BorderSide(
-              width: 1,
-              color: ThemeColor.DARK_D4,
-            ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
-            borderSide: BorderSide(
-              width: 1,
-              color: borderColor ?? ThemeColor.DARK_D4,
-            ),
-          ),
-        ),
-        style: textStyle ?? TextStyle(fontSize: 20, color: Colors.black),
-        // hint: hint,
-        value: value,
-        dropdownColor: dropdownColor,
-        isExpanded: isExpanded,
-        iconSize: iconSize ?? 24.0,
-        hint: Text(
-          hint ?? '',
-          style: hintStyle ??
-              KLabelTextRegular12.copyWith(color: ThemeColor.DARK_D4),
         ),
       ),
     );

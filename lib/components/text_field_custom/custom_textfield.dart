@@ -11,6 +11,7 @@ class CTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? errorText;
   final TextStyle? textStyle;
+  final TextStyle? errorStyle;
   final TextStyle? hintStyle;
   final TextEditingController? controller;
   final bool hidePassword;
@@ -37,8 +38,11 @@ class CTextField extends StatelessWidget {
   final double? borderWidth;
   final bool autofocus;
   final EdgeInsetsGeometry? contentPadding;
+  final FocusNode? focusNode;
   const CTextField({
     super.key,
+    this.focusNode,
+    this.errorStyle,
     this.contentPadding,
     this.hintText,
     this.filled,
@@ -79,6 +83,7 @@ class CTextField extends StatelessWidget {
       child: TextFormField(
         enabled: enabled,
         autofocus: autofocus,
+        focusNode: focusNode,
         onTap: onTapTextField,
         onChanged: onChanged,
         onSaved: onSaved,
@@ -105,7 +110,7 @@ class CTextField extends StatelessWidget {
               color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
-          errorStyle: Theme.of(context)
+          errorStyle:errorStyle?? Theme.of(context)
               .textTheme
               .titleMedium
               ?.copyWith(color: Theme.of(context).colorScheme.error),

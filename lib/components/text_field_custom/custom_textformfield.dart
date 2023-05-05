@@ -9,6 +9,7 @@ class CTextFormField extends StatelessWidget {
   final String? hintText;
   final String? Function(String?)? validator;
   final TextStyle? textStyle;
+  final TextStyle? errorStyle;
   final Color? borderColor;
   final Color? focusBorderColor;
   final Color? fillColor;
@@ -32,12 +33,15 @@ class CTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final String? errorText;
-  final bool autofocus ;
+  final bool autofocus;
+  
+
   const CTextFormField({
     super.key,
     this.hintText,
     this.validator,
     this.textStyle,
+    this.errorStyle,
     this.borderColor,
     this.focusBorderColor,
     this.fillColor,
@@ -58,7 +62,7 @@ class CTextFormField extends StatelessWidget {
     this.textAlignVertical,
     this.controller,
     this.format,
-    this.autofocus= false,
+    this.autofocus = false,
     this.onChanged,
     this.keyboardType,
     this.errorText,
@@ -70,7 +74,8 @@ class CTextFormField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
         //for show keyboard when building screen
-        autofocus:autofocus ,
+        autofocus: autofocus,
+
         textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,
@@ -83,7 +88,7 @@ class CTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-          errorStyle: Theme.of(context)
+         errorStyle:  errorStyle??Theme.of(context)
               .textTheme
               .titleMedium
               ?.copyWith(color: Theme.of(context).colorScheme.error),
