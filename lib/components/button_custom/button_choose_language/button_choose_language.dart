@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,6 @@ class ButtonChooseLanguage extends StatelessWidget {
           padding: padding ??
               const EdgeInsets.only(
                   left: 20.0, right: 5.0, top: 10.0, bottom: 10.0),
-          // ignore: prefer_const_constructors
           alignment: Alignment(0, 0),
           decoration: BoxDecoration(
             color: colorSelect,
@@ -65,9 +66,8 @@ class ButtonChooseLanguage extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 50),
           ),
           child: Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.max,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(imageRadius ?? 20),
