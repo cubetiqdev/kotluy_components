@@ -19,7 +19,7 @@ class CTextFormField extends StatelessWidget {
   final double? borderRadius;
   final double? borderWidth;
   final double? focusBorderWidth;
-  final double? contentPadding;
+  final EdgeInsets? contentPadding;
   final double? paddingHorizontal;
   final double? paddingVertical;
   final bool? filled;
@@ -34,7 +34,6 @@ class CTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? errorText;
   final bool autofocus;
-  
 
   const CTextFormField({
     super.key,
@@ -88,12 +87,14 @@ class CTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-         errorStyle:  errorStyle??Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(color: Theme.of(context).colorScheme.error),
+          errorStyle: errorStyle ??
+              Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.error),
           errorText: errorText,
-          contentPadding: EdgeInsets.all(contentPadding ?? 15),
+          contentPadding: contentPadding ??
+              EdgeInsets.symmetric(horizontal: 24, vertical: 15),
           filled: filled,
           fillColor: fillColor ?? ThemeColor.LIGHT_L3,
           hintText: hintText,
