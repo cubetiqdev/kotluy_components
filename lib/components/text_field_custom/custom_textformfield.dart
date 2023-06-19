@@ -94,7 +94,7 @@ class CTextFormField extends StatelessWidget {
                   ?.copyWith(color: Theme.of(context).colorScheme.error),
           errorText: errorText,
           contentPadding: contentPadding ??
-              EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+              const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
           filled: filled,
           fillColor: fillColor ?? ThemeColor.LIGHT_L3,
           hintText: hintText,
