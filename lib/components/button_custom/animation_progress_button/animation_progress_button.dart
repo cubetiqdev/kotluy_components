@@ -72,8 +72,8 @@ class AnimationProgressButton extends StatelessWidget {
 
 Widget buildSmallButton(bool isDone, Color? loadingColor, Color? doneColor) {
   final colors = isDone
-      ? doneColor ?? Colors.green
-      : loadingColor ?? ThemeColor.PRIMARY_MAIN;
+      ? doneColor ?? Color(0xff34B67F)
+      : loadingColor ?? Color(0xff34B67F);
   return Container(
     decoration: BoxDecoration(
       shape: BoxShape.circle,

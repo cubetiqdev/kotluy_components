@@ -74,7 +74,7 @@ class CTextFormField extends StatelessWidget {
       child: TextFormField(
         //for show keyboard when building screen
         autofocus: autofocus,
-
+        
         textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,

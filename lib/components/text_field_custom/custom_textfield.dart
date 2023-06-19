@@ -39,13 +39,17 @@ class CTextField extends StatelessWidget {
   final bool autofocus;
   final EdgeInsetsGeometry? contentPadding;
   final FocusNode? focusNode;
+  final TextAlignVertical? textAlignVertical;
+  final TextAlign? textAlign;
   const CTextField({
     super.key,
     this.focusNode,
     this.errorStyle,
+    this.textAlign,
     this.contentPadding,
     this.hintText,
     this.filled,
+    this.textAlignVertical,
     this.labelText,
     this.validator,
     this.autofocus = false,
@@ -81,8 +85,10 @@ class CTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
+        textAlign: textAlign ?? TextAlign.start,
         enabled: enabled,
         autofocus: autofocus,
+        textAlignVertical: textAlignVertical,
         focusNode: focusNode,
         onTap: onTapTextField,
         onChanged: onChanged,
@@ -110,10 +116,11 @@ class CTextField extends StatelessWidget {
               color: enabledBorderColor ?? ThemeColor.DARK_D4,
             ),
           ),
-          errorStyle:errorStyle?? Theme.of(context)
-              .textTheme
-              .titleMedium
-              ?.copyWith(color: Theme.of(context).colorScheme.error),
+          errorStyle: errorStyle ??
+              Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.error),
           errorText: errorText,
           errorMaxLines: 1,
           focusedBorder: OutlineInputBorder(
