@@ -30,6 +30,7 @@ class CDropDown<T> extends StatelessWidget {
   final String? Function(T?)? validator;
   final String? errorText;
   final bool disable;
+  final int? elevation;
 
   const CDropDown({
     Key? key,
@@ -57,6 +58,7 @@ class CDropDown<T> extends StatelessWidget {
     this.contentPadding,
     this.validator,
     this.errorText,
+    this.elevation,
   }) : super(key: key);
 
   @override
@@ -117,7 +119,7 @@ class CDropDown<T> extends StatelessWidget {
           dropdownColor: dropdownColor,
           isExpanded: isExpanded,
           iconSize: iconSize ?? 24.0,
-          elevation: 0,
+          elevation: elevation ?? 0,
           hint: Text(
             hint ?? '',
             style: hintStyle ??
