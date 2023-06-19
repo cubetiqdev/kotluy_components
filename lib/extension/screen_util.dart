@@ -168,13 +168,13 @@ class ScreenUtil {
     final binding = WidgetsFlutterBinding.ensureInitialized();
     window ??= binding.window;
 
-    if (window.viewConfiguration.geometry.isEmpty) {
-      return Future.delayed(duration, () async {
-        binding.deferFirstFrame();
-        await ensureScreenSize(window, duration);
-        return binding.allowFirstFrame();
-      });
-    }
+    // if (window.viewConfiguration.geometry.isEmpty) {
+    //   return Future.delayed(duration, () async {
+    //     binding.deferFirstFrame();
+    //     await ensureScreenSize(window, duration);
+    //     return binding.allowFirstFrame();
+    //   });
+    // }
   }
 
   Set<Element>? _elementsToRebuild;

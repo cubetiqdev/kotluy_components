@@ -33,7 +33,7 @@ class CDropDown<T> extends StatelessWidget {
 
   const CDropDown({
     Key? key,
-    this.disable=false,
+    this.disable = false,
     this.value,
     this.icon,
     this.iconColor,
@@ -55,7 +55,6 @@ class CDropDown<T> extends StatelessWidget {
     required this.onChanged,
     required this.items,
     this.contentPadding,
-    
     this.validator,
     this.errorText,
   }) : super(key: key);
@@ -65,7 +64,7 @@ class CDropDown<T> extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: IgnorePointer(
-        ignoring:disable ,
+        ignoring: disable,
         child: DropdownButtonFormField<T>(
           validator: validator,
           onChanged: onChanged,
@@ -94,7 +93,8 @@ class CDropDown<T> extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
               borderSide: BorderSide(
-                  color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN, width: 1),
+                  color: focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
+                  width: 1),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
@@ -117,6 +117,7 @@ class CDropDown<T> extends StatelessWidget {
           dropdownColor: dropdownColor,
           isExpanded: isExpanded,
           iconSize: iconSize ?? 24.0,
+          elevation: 0,
           hint: Text(
             hint ?? '',
             style: hintStyle ??
