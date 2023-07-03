@@ -22,6 +22,7 @@ class AnimationProgressButton extends StatelessWidget {
   final Color? doneColor;
   final BorderRadius? borderRadius;
   final double? iconSize;
+  final bool? noInternet;
 
   AnimationProgressButton({
     Key? key,
@@ -39,6 +40,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.doneColor,
     this.borderRadius,
     this.iconSize,
+    this.noInternet = false,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
@@ -48,26 +50,30 @@ class AnimationProgressButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Container(
-      alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(
-          horizontal: padHorizontal, vertical: padVertical),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-        width: state == ButtonState.init ? this.width ?? width : 100.w,
-        height: height ?? 57.h,
-        child: isNotInit
-            ? buildSmallButton(
-                isDone, loadingColor, doneColor, iconSize ?? 30.0)
-            : buildButton(
-                title,
-                onPressed,
-                backgroundColor,
-                borderColor,
-                textStyle,
-                borderRadius: borderRadius,
-              ),
+    return IgnorePointer(
+      ignoring: noInternet == true ? true : false,
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(
+            horizontal: padHorizontal, vertical: padVertical),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+          width: state == ButtonState.init ? this.width ?? width : 100.w,
+          height: height ?? 57.h,
+          child: isNotInit
+              ? buildSmallButton(
+                  isDone, loadingColor, doneColor, iconSize ?? 30.0)
+              : buildButton(
+                  title,
+                  onPressed,
+                  backgroundColor,
+                  borderColor,
+                  textStyle,
+                  noInternet ?? false,
+                  borderRadius: borderRadius,
+                ),
+        ),
       ),
     );
   }
@@ -98,18 +104,22 @@ Widget buildSmallButton(
 }
 
 Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
-        Color? borderColor, TextStyle? textStyle,
+        Color? borderColor, TextStyle? textStyle, bool noInternet,
         {BorderRadius? borderRadius}) =>
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: backgroundColor ?? ThemeColor.PRIMARY_MAIN,
+        backgroundColor: noInternet == true
+            ? ThemeColor.DIS_BUTTON
+            : backgroundColor ?? ThemeColor.PRIMARY_MAIN,
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.circular(50.0.r),
         ),
         side: BorderSide(
           width: 1.w,
-          color: borderColor ?? ThemeColor.PRIMARY_MAIN,
+          color: noInternet == true
+              ? ThemeColor.DIS_BUTTON
+              : borderColor ?? ThemeColor.PRIMARY_MAIN,
         ),
       ),
       child: Text(
