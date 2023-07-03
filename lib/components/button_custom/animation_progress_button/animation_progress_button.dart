@@ -40,7 +40,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.doneColor,
     this.borderRadius,
     this.iconSize,
-    this.noInternet = false,
+    this.noInternet,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
