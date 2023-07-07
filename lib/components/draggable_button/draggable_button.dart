@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class DraggableButton extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
+  final void Function()? onDragStarted;
   final double securityBottom;
   final double securityTop;
   final double securityLeft;
@@ -17,6 +18,7 @@ class DraggableButton extends StatefulWidget {
   const DraggableButton(
       {Key? key,
       required this.child,
+      this.onDragStarted,
       this.initPosition,
       this.securityBottom = 0,
       this.securityTop = 0,
@@ -57,6 +59,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         top: _top,
         child: Draggable(
           feedback: widget.child,
+          onDragStarted: widget.onDragStarted,
           onDragEnd: _handleDragEnded,
           data: 'accept',
           childWhenDragging: const SizedBox(
