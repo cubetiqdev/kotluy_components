@@ -10,6 +10,7 @@ class DraggableButton extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
   final void Function()? onDragStarted;
+  final void Function()? onDragCompleted;
   final double securityBottom;
   final double securityTop;
   final double securityLeft;
@@ -19,6 +20,7 @@ class DraggableButton extends StatefulWidget {
       {Key? key,
       required this.child,
       this.onDragStarted,
+      this.onDragCompleted,
       this.initPosition,
       this.securityBottom = 0,
       this.securityTop = 0,
@@ -61,6 +63,7 @@ class _DraggableButtonState extends State<DraggableButton> {
           feedback: widget.child,
           onDragStarted: widget.onDragStarted,
           onDragEnd: _handleDragEnded,
+          onDragCompleted: widget.onDragCompleted,
           data: 'accept',
           childWhenDragging: const SizedBox(
             width: 0.0,
