@@ -58,6 +58,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         child: Draggable(
           feedback: widget.child,
           onDragEnd: _handleDragEnded,
+          data: 'accept',
           childWhenDragging: const SizedBox(
             width: 0.0,
             height: 0.0,
