@@ -23,6 +23,7 @@ class AnimationProgressButton extends StatelessWidget {
   final BorderRadius? borderRadius;
   final double? iconSize;
   final bool? noInternet;
+  final Widget? child;
 
   AnimationProgressButton({
     Key? key,
@@ -41,6 +42,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.borderRadius,
     this.iconSize,
     this.noInternet,
+    this.child,
   }) : super(key: key);
 
   bool get isDone => this.state == ButtonState.done;
@@ -71,6 +73,7 @@ class AnimationProgressButton extends StatelessWidget {
                   borderColor,
                   textStyle,
                   noInternet ?? false,
+                  child: child,
                   borderRadius: borderRadius,
                 ),
         ),
@@ -105,7 +108,7 @@ Widget buildSmallButton(
 
 Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
         Color? borderColor, TextStyle? textStyle, bool noInternet,
-        {BorderRadius? borderRadius}) =>
+        {Widget? child, BorderRadius? borderRadius}) =>
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
@@ -122,10 +125,11 @@ Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
               : borderColor ?? ThemeColor.PRIMARY_MAIN,
         ),
       ),
-      child: Text(
-        style: textStyle ??
-            KLabelTextBold16.copyWith(color: Colors.white, fontSize: 16.sp),
-        title,
-        textAlign: TextAlign.center,
-      ),
+      child: child ??
+          Text(
+            style: textStyle ??
+                KLabelTextBold16.copyWith(color: Colors.white, fontSize: 16.sp),
+            title,
+            textAlign: TextAlign.center,
+          ),
     );
