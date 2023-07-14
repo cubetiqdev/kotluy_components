@@ -56,6 +56,14 @@ class _DraggableButtonState extends State<DraggableButton> {
   }
 
   @override
+  void didUpdateWidget(covariant DraggableButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initPosition != oldWidget.initPosition) {
+      _calculatePosition(widget.initPosition!);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Positioned(
