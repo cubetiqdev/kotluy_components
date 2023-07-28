@@ -6,7 +6,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class DraggableButton extends StatefulWidget {
+class DraggableButton1 extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
   final void Function()? onDragStarted;
@@ -17,7 +17,7 @@ class DraggableButton extends StatefulWidget {
   final double securityLeft;
   final double securityRight;
 
-  const DraggableButton(
+  const DraggableButton1(
       {Key? key,
       required this.child,
       this.onDragStarted,
@@ -34,7 +34,7 @@ class DraggableButton extends StatefulWidget {
   _DraggableButtonState createState() => _DraggableButtonState();
 }
 
-class _DraggableButtonState extends State<DraggableButton> {
+class _DraggableButtonState extends State<DraggableButton1> {
   late Size _widgetSize;
   double? _left, _top;
   double _screenWidth = 0.0, _screenHeight = 0.0;
@@ -56,7 +56,7 @@ class _DraggableButtonState extends State<DraggableButton> {
   }
 
   @override
-  void didUpdateWidget(covariant DraggableButton oldWidget) {
+  void didUpdateWidget(covariant DraggableButton1 oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initPosition != oldWidget.initPosition) {
       _calculatePosition(widget.initPosition!);
@@ -110,7 +110,7 @@ class _DraggableButtonState extends State<DraggableButton> {
             _widgetSize.height / 2, targetOffset.dy + widget.securityTop + 10);
         break;
       case Anchor.TOP_FIRST:
-        _left = max(_widgetSize.width / 2, targetOffset.dx);
+        _left = max(_widgetSize.width / 2, targetOffset.dx) - 10;
         _top = _widgetSize.height / 2 + widget.securityTop;
         break;
       case Anchor.RIGHT_SECOND:
@@ -118,7 +118,7 @@ class _DraggableButtonState extends State<DraggableButton> {
         _top = max(_widgetSize.height, targetOffset.dy + widget.securityTop);
         break;
       case Anchor.TOP_SECOND:
-        _left = min(_screenWidth - _widgetSize.width, targetOffset.dx);
+        _left = min(_screenWidth - _widgetSize.width, targetOffset.dx) - 20;
         _top = _widgetSize.height / 2 + widget.securityTop;
         break;
       case Anchor.LEFT_THIRD:
@@ -136,7 +136,7 @@ class _DraggableButtonState extends State<DraggableButton> {
             targetOffset.dy);
         break;
       case Anchor.BOTTOM_FOURTH:
-        _left = _screenWidth - _widgetSize.width;
+        _left = _screenWidth - _widgetSize.width - 20;
         _top = _screenHeight - _widgetSize.height - widget.securityBottom;
         break;
     }
