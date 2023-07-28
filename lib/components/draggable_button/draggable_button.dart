@@ -6,7 +6,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class DraggableButton1 extends StatefulWidget {
+class DraggableButton extends StatefulWidget {
   final Widget child;
   final Offset? initPosition;
   final void Function()? onDragStarted;
@@ -17,7 +17,7 @@ class DraggableButton1 extends StatefulWidget {
   final double securityLeft;
   final double securityRight;
 
-  const DraggableButton1(
+  const DraggableButton(
       {Key? key,
       required this.child,
       this.onDragStarted,
@@ -34,7 +34,7 @@ class DraggableButton1 extends StatefulWidget {
   _DraggableButtonState createState() => _DraggableButtonState();
 }
 
-class _DraggableButtonState extends State<DraggableButton1> {
+class _DraggableButtonState extends State<DraggableButton> {
   late Size _widgetSize;
   double? _left, _top;
   double _screenWidth = 0.0, _screenHeight = 0.0;
@@ -56,7 +56,7 @@ class _DraggableButtonState extends State<DraggableButton1> {
   }
 
   @override
-  void didUpdateWidget(covariant DraggableButton1 oldWidget) {
+  void didUpdateWidget(covariant DraggableButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initPosition != oldWidget.initPosition) {
       _calculatePosition(widget.initPosition!);
