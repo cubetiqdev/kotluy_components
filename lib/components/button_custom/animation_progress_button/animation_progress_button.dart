@@ -11,7 +11,7 @@ class AnimationProgressButton extends StatelessWidget {
   final String title;
   final TextStyle? textStyle;
   final ButtonState state;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final double? width;
   final double padHorizontal;
   final double padVertical;
@@ -30,7 +30,7 @@ class AnimationProgressButton extends StatelessWidget {
     required this.title,
     this.textStyle,
     this.state = ButtonState.init,
-    required this.onPressed,
+    this.onPressed,
     this.width,
     this.padHorizontal = 20.0,
     this.padVertical = 10.0,
@@ -66,16 +66,11 @@ class AnimationProgressButton extends StatelessWidget {
           child: isNotInit
               ? buildSmallButton(
                   isDone, loadingColor, doneColor, iconSize ?? 30.0)
-              : buildButton(
-                  title,
-                  onPressed,
-                  backgroundColor,
-                  borderColor,
-                  textStyle,
+              : buildButton(title, backgroundColor, borderColor, textStyle,
                   noInternet ?? false,
                   child: child,
                   borderRadius: borderRadius,
-                ),
+                  onPressed: onPressed),
         ),
       ),
     );
@@ -106,9 +101,9 @@ Widget buildSmallButton(
   );
 }
 
-Widget buildButton(String title, VoidCallback onPressed, Color? backgroundColor,
-        Color? borderColor, TextStyle? textStyle, bool noInternet,
-        {Widget? child, BorderRadius? borderRadius}) =>
+Widget buildButton(String title, Color? backgroundColor, Color? borderColor,
+        TextStyle? textStyle, bool noInternet,
+        {Widget? child, BorderRadius? borderRadius, VoidCallback? onPressed}) =>
     OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
