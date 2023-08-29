@@ -54,23 +54,28 @@ class AnimationProgressButton extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return IgnorePointer(
       ignoring: noInternet == true ? true : false,
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(
-            horizontal: padHorizontal, vertical: padVertical),
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeIn,
-          width: state == ButtonState.init ? this.width ?? width : 100.w,
-          height: height ?? 57.h,
-          child: isNotInit
-              ? buildSmallButton(
-                  isDone, loadingColor, doneColor, iconSize ?? 30.0)
-              : buildButton(title, backgroundColor, borderColor, textStyle,
-                  noInternet ?? false,
-                  child: child,
-                  borderRadius: borderRadius,
-                  onPressed: onPressed),
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(
+              horizontal: padHorizontal, vertical: padVertical),
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+            width: state == ButtonState.init ? this.width ?? width : 100.w,
+            height: height ?? 57.h,
+            child: isNotInit
+                ? buildSmallButton(
+                    isDone, loadingColor, doneColor, iconSize ?? 30.0)
+                : buildButton(
+                    title, backgroundColor, borderColor, textStyle,
+                    noInternet ?? false,
+                    child: child,
+                    borderRadius: borderRadius,
+                    // onPressed: onPressed,
+                  ),
+          ),
         ),
       ),
     );
