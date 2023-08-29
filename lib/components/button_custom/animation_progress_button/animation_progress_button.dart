@@ -56,6 +56,7 @@ class AnimationProgressButton extends StatelessWidget {
       ignoring: noInternet == true ? true : false,
       child: InkWell(
         onTap: onPressed,
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
