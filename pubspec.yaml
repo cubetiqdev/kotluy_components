@@ -12,7 +12,9 @@ dependencies:
   country_pickers: ^2.0.0
   flutter:
     sdk: flutter
-
+  shared_preferences: ^2.0.20
+  flutter_svg: ^2.0.4
+  get: ^4.6.5
   lottie: ^2.1.0
   google_fonts: ^4.0.4
   pinput: ^2.2.21
