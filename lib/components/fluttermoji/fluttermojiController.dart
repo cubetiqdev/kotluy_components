@@ -10,7 +10,6 @@ import 'fluttermoji_assets/clothes/clothes.dart';
 import 'fluttermoji_assets/face/eyebrow/eyebrow.dart';
 import 'fluttermoji_assets/face/eyes/eyes.dart';
 import 'fluttermoji_assets/face/mouth/mouth.dart';
-import 'fluttermoji_assets/face/nose/nose.dart';
 import 'fluttermoji_assets/skin.dart';
 import 'fluttermoji_assets/top/accessories/accessories.dart';
 import 'fluttermoji_assets/top/facialHair/facialHair.dart';

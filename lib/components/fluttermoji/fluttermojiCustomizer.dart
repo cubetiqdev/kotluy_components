@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, curly_braces_in_flow_control_structures, prefer_typing_uninitialized_variables
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, curly_braces_in_flow_control_structures
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +94,7 @@ class FluttermojiCustomizer extends StatefulWidget {
 
 class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
     with SingleTickerProviderStateMixin {
-  late FluttermojiController fluttermojiController;
+  FluttermojiController fluttermojiController = FluttermojiController();
   late TabController tabController;
   final attributesCount = 11;
   var heightFactor = 0.4, widthFactor = 0.95;
@@ -102,8 +102,6 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
   @override
   void initState() {
     super.initState();
-
-    var fluttermojiController;
     Get.put(FluttermojiController());
     fluttermojiController = Get.find<FluttermojiController>();
 
