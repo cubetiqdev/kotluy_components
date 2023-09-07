@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, curly_braces_in_flow_control_structures, prefer_typing_uninitialized_variables
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/components/fluttermoji/defaults.dart';
@@ -44,9 +46,9 @@ class FluttermojiCustomizer extends StatefulWidget {
           "List of Attribute Icon paths must be of length $attributesCount.\n"
           " You need to provide icon paths for all attributes",
         ),
-        this.theme = theme ?? FluttermojiThemeData.standard,
-        this.attributeTitles = attributeTitles ?? defaultAttributeTitles,
-        this.attributeIcons = attributeIcons ?? defaultAttributeIcons,
+        theme = theme ?? FluttermojiThemeData.standard,
+        attributeTitles = attributeTitles ?? defaultAttributeTitles,
+        attributeIcons = attributeIcons ?? defaultAttributeIcons,
         super(key: key);
 
   final double? scaffoldHeight;
@@ -101,13 +103,13 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
   void initState() {
     super.initState();
 
-    var _fluttermojiController;
+    var fluttermojiController;
     Get.put(FluttermojiController());
-    _fluttermojiController = Get.find<FluttermojiController>();
+    fluttermojiController = Get.find<FluttermojiController>();
 
     setState(() {
       tabController = TabController(length: attributesCount, vsync: this);
-      fluttermojiController = _fluttermojiController;
+      fluttermojiController = fluttermojiController;
     });
 
     tabController.addListener(() {
@@ -133,14 +135,14 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
   }
 
   void onArrowTap(bool isLeft) {
-    int _currentIndex = tabController.index;
-    if (isLeft)
+    int currentIndex = tabController.index;
+    if (isLeft) {
       tabController
-          .animateTo(_currentIndex > 0 ? _currentIndex - 1 : _currentIndex);
-    else
-      tabController.animateTo(_currentIndex < attributesCount - 1
-          ? _currentIndex + 1
-          : _currentIndex);
+          .animateTo(currentIndex > 0 ? currentIndex - 1 : currentIndex);
+    } else {
+      tabController.animateTo(
+          currentIndex < attributesCount - 1 ? currentIndex + 1 : currentIndex);
+    }
 
     setState(() {});
   }
@@ -241,9 +243,9 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
 
       /// Set the number of tiles per horizontal row,
       /// depending on the [attributeListLength]
-      if (attributeListLength < 12)
+      if (attributeListLength < 12) {
         gridCrossAxisCount = 3;
-      else if (attributeListLength < 9)
+      } else if (attributeListLength < 9)
         gridCrossAxisCount = 2;
       else
         gridCrossAxisCount = 4;
@@ -251,7 +253,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
       int? i = fluttermojiController.selectedOptions[attribute.key];
 
       /// Build the main Tile Grid with all the options from the attribute
-      var _tileGrid = GridView.builder(
+      var tileGrid = GridView.builder(
         physics: widget.theme.scrollPhysics,
         itemCount: attributeListLength,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -298,7 +300,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
           ));
 
       /// Add all the initialized widgets to the state
-      attributeGrids.add(_tileGrid);
+      attributeGrids.add(tileGrid);
       navbarWidgets.add(bottomNavWidget);
     }
 

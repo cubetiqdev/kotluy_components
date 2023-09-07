@@ -3,13 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fluttermoji_assets/clothes/clothes.dart';
-import 'fluttermoji_assets/face/eyebrow/eyebrow.dart';
-import 'fluttermoji_assets/face/eyes/eyes.dart';
-import 'fluttermoji_assets/face/mouth/mouth.dart';
-import 'fluttermoji_assets/face/nose/nose.dart';
 import 'fluttermoji_assets/fluttermojimodel.dart';
-import 'fluttermoji_assets/skin.dart';
-import 'fluttermoji_assets/style.dart';
 import 'fluttermoji_assets/top/accessories/accessories.dart';
 import 'fluttermoji_assets/top/facialHair/facialHair.dart';
 import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
@@ -54,25 +48,24 @@ class FluttermojiFunctions {
   String decodeFluttermojifromString(String encodedData) {
     if (encodedData != '') _decodedList = Map.from(jsonDecode(encodedData));
 
-    String _fluttermojiStyle =
-        fluttermojiStyle[_getFluttermojiProperty('style')]!;
-    String _clothe = Clothes.generateClothes(
+    String fluttermojiStyle = _getFluttermojiProperty('style');
+    String clothe = Clothes.generateClothes(
         clotheType: _getFluttermojiProperty('clotheType'),
         clColor: _getFluttermojiProperty('clotheColor'))!;
-    String _facialhair = FacialHair.generateFacialHair(
+    String facialhair = FacialHair.generateFacialHair(
         facialHairType: _getFluttermojiProperty('facialHairType'),
         fhColor: _getFluttermojiProperty('facialHairColor'))!;
-    String _mouth = mouth['${_getFluttermojiProperty('mouthType')}'];
-    String _nose = nose['Default'];
-    String _eyes = eyes['${_getFluttermojiProperty('eyeType')}'];
-    String _eyebrows = eyebrow['${_getFluttermojiProperty('eyebrowType')}'];
-    String _accessory = accessories[_getFluttermojiProperty('accessoriesType')];
-    String _hair = HairStyle.generateHairStyle(
+    String mouth = _getFluttermojiProperty('mouthType');
+    String nose = 'Default';
+    String eyes = _getFluttermojiProperty('eyeType');
+    String eyebrows = _getFluttermojiProperty('eyebrowType');
+    String accessory = accessories[_getFluttermojiProperty('accessoriesType')];
+    String hair = HairStyle.generateHairStyle(
         hairType: _getFluttermojiProperty('topType'),
         hColor: _getFluttermojiProperty('hairColor'))!;
-    String _skin = skin[_getFluttermojiProperty('skinColor')];
-    String _completeSVG = '''
-<svg width="264px" height="280px" viewBox="0 0 264 280" version="1.1"
+    String skin = _getFluttermojiProperty('skinColor');
+    String completeSVG =
+        '''<svg width="264px" height="280px" viewBox="0 0 264 280" version="1.1"
 xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink">
 <desc>Fluttermoji on pub.dev</desc>
@@ -83,31 +76,15 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 </defs>
 <g id="Fluttermoji" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 <g transform="translate(-825.000000, -1100.000000)" id="Fluttermoji/Circle">
-<g transform="translate(825.000000, 1100.000000)">''' +
-        _fluttermojiStyle +
-        '''
-<g id="Mask"></g>
+<g transform="translate(825.000000, 1100.000000)">$fluttermojiStyle<g id="Mask"></g>
 <g id="Fluttermoji" stroke-width="1" fill-rule="evenodd">
 <g id="Body" transform="translate(32.000000, 36.000000)">
 
 <mask id="mask-6" fill="white">
 <use xlink:href="#path-5"></use>
 </mask>
-<use fill="#D0C6AC" xlink:href="#path-5"></use>''' +
-        _skin +
-        '''<path d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z" id="Neck-Shadow" opacity="0.100000001" fill="#000000" mask="url(#mask-6)"></path></g>''' +
-        _clothe +
-        '''<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">''' +
-        _mouth +
-        _facialhair +
-        _nose +
-        _eyes +
-        _eyebrows +
-        _accessory +
-        '''</g>''' +
-        _hair +
-        '''</g></g></g></g></svg>''';
-    return _completeSVG;
+<use fill="#D0C6AC" xlink:href="#path-5"></use>$skin<path d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z" id="Neck-Shadow" opacity="0.100000001" fill="#000000" mask="url(#mask-6)"></path></g>$clothe<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">$mouth$facialhair$nose$eyes$eyebrows$accessory</g>$hair</g></g></g></g></svg>''';
+    return completeSVG;
   }
 
   /// Retrieve the local user's fluttermoji attributes from local storage
@@ -116,17 +93,17 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   /// returns a Future, you have to await on function call
   Future<Map<String, dynamic>> encodeMySVGtoMap() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String? _fluttermojiOptions = pref.getString('fluttermojiSelectedOptions');
-    if (_fluttermojiOptions == null || _fluttermojiOptions == '') {
-      Map<String, int> _fluttermojiOptionsMap =
+    String? fluttermojiOptions = pref.getString('fluttermojiSelectedOptions');
+    if (fluttermojiOptions == null || fluttermojiOptions == '') {
+      Map<String, int> fluttermojiOptionsMap =
           Map.from(defaultFluttermojiOptions);
       await pref.setString(
-          'fluttermojiSelectedOptions', jsonEncode(_fluttermojiOptionsMap));
+          'fluttermojiSelectedOptions', jsonEncode(fluttermojiOptionsMap));
 
-      return _fluttermojiOptionsMap;
+      return fluttermojiOptionsMap;
     }
 
-    return Map.from(jsonDecode(_fluttermojiOptions));
+    return Map.from(jsonDecode(fluttermojiOptions));
   }
 
   /// Retrieve the local user's fluttermoji attributes from local storage
@@ -135,14 +112,14 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   /// returns a Future, you have to await on function call
   Future<String> encodeMySVGtoString() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String? _fluttermojiOptions = pref.getString('fluttermojiSelectedOptions');
-    if (_fluttermojiOptions == null || _fluttermojiOptions == '') {
-      Map<String, int> _fluttermojiOptionsMap =
+    String? fluttermojiOptions = pref.getString('fluttermojiSelectedOptions');
+    if (fluttermojiOptions == null || fluttermojiOptions == '') {
+      Map<String, int> fluttermojiOptionsMap =
           Map.from(defaultFluttermojiOptions);
       await pref.setString(
-          'fluttermojiSelectedOptions', jsonEncode(_fluttermojiOptionsMap));
-      return jsonEncode(_fluttermojiOptionsMap);
+          'fluttermojiSelectedOptions', jsonEncode(fluttermojiOptionsMap));
+      return jsonEncode(fluttermojiOptionsMap);
     }
-    return _fluttermojiOptions;
+    return fluttermojiOptions;
   }
 }

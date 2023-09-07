@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,8 +20,9 @@ class FluttermojiCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (backgroundColor == null)
+    if (backgroundColor == null) {
       CircleAvatar(radius: radius, child: buildGetX());
+    }
     return CircleAvatar(
         radius: radius, backgroundColor: backgroundColor, child: buildGetX());
   }

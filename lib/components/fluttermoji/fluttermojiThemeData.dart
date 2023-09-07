@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 /// Defines the configuration of the overall visual [theme] for a [FluttermojiCustomizer]
@@ -68,7 +70,7 @@ class FluttermojiThemeData {
     Color? primaryBgColor,
     Color? secondaryBgColor,
     Decoration? selectedTileDecoration,
-    Decoration? unselectedTileDecoration,
+    this.unselectedTileDecoration,
     Color? iconColor,
     Color? selectedIconColor,
     Color? unselectedIconColor,
@@ -76,13 +78,12 @@ class FluttermojiThemeData {
     ScrollPhysics? scrollPhysics,
     EdgeInsetsGeometry? tilePadding,
     EdgeInsetsGeometry? tileMargin,
-  })  : this.primaryBgColor = primaryBgColor ?? const Color(0xFFFFFFFF),
-        this.secondaryBgColor = secondaryBgColor ?? const Color(0xFFF1F1F1),
-        this.iconColor = iconColor ?? const Color(0xFF9C9C9C),
-        this.selectedIconColor = selectedIconColor ?? const Color(0xFF424242),
-        this.unselectedIconColor =
-            unselectedIconColor ?? const Color(0xFF9C9C9C),
-        this.selectedTileDecoration = selectedTileDecoration ??
+  })  : primaryBgColor = primaryBgColor ?? const Color(0xFFFFFFFF),
+        secondaryBgColor = secondaryBgColor ?? const Color(0xFFF1F1F1),
+        iconColor = iconColor ?? const Color(0xFF9C9C9C),
+        selectedIconColor = selectedIconColor ?? const Color(0xFF424242),
+        unselectedIconColor = unselectedIconColor ?? const Color(0xFF9C9C9C),
+        selectedTileDecoration = selectedTileDecoration ??
             BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
@@ -90,14 +91,13 @@ class FluttermojiThemeData {
                 width: 3.0,
               ),
             ),
-        this.unselectedTileDecoration = unselectedTileDecoration,
-        this.boxDecoration = boxDecoration ??
+        boxDecoration = boxDecoration ??
             BoxDecoration(borderRadius: BorderRadius.circular(18)),
-        this.labelTextStyle = labelTextStyle ??
+        labelTextStyle = labelTextStyle ??
             const TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
-        this.scrollPhysics = scrollPhysics ?? const ClampingScrollPhysics(),
-        this.tileMargin = const EdgeInsets.all(2.0),
-        this.tilePadding = const EdgeInsets.all(2.0);
+        scrollPhysics = scrollPhysics ?? const ClampingScrollPhysics(),
+        tileMargin = const EdgeInsets.all(2.0),
+        tilePadding = const EdgeInsets.all(2.0);
 
   FluttermojiThemeData copyWith({
     TextStyle? labelTextStyle,

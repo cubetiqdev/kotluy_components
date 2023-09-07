@@ -59,12 +59,11 @@ class FluttermojiSaveWidget extends StatelessWidget {
       splashFactory: splashFactory,
       radius: radius,
       splashColor: splashColor,
-      child: child == null
-          ? Icon(
-              Icons.save,
-              color: theme.iconColor,
-            )
-          : child,
+      child: child ??
+          Icon(
+            Icons.save,
+            color: theme.iconColor,
+          ),
     );
   }
 }
