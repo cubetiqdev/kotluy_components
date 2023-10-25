@@ -70,11 +70,14 @@ class AnimationProgressButton extends StatelessWidget {
                 ? buildSmallButton(
                     isDone, loadingColor, doneColor, iconSize ?? 30.0)
                 : buildButton(
-                    title, backgroundColor, borderColor, textStyle,
+                    title,
+                    backgroundColor,
+                    borderColor,
+                    textStyle,
                     noInternet ?? false,
                     child: child,
                     borderRadius: borderRadius,
-                    // onPressed: onPressed,
+                    onPressed: onPressed,
                   ),
           ),
         ),
