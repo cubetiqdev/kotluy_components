@@ -41,10 +41,12 @@ class CTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextAlignVertical? textAlignVertical;
   final TextAlign? textAlign;
+  final AutovalidateMode? autovalidateMode;
   const CTextField({
     super.key,
     this.focusNode,
     this.errorStyle,
+    this.autovalidateMode,
     this.textAlign,
     this.contentPadding,
     this.hintText,
@@ -85,6 +87,7 @@ class CTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: noPadding == true ? 0 : 20),
       child: TextFormField(
+        autovalidateMode: autovalidateMode,
         textAlign: textAlign ?? TextAlign.start,
         enabled: enabled,
         autofocus: autofocus,
