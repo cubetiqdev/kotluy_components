@@ -34,6 +34,7 @@ class CTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? errorText;
   final bool autofocus;
+  final AutovalidateMode? autovalidateMode;
 
   const CTextFormField({
     super.key,
@@ -44,6 +45,7 @@ class CTextFormField extends StatelessWidget {
     this.borderColor,
     this.focusBorderColor,
     this.fillColor,
+    this.autovalidateMode,
     this.hintColor,
     this.maxLines,
     this.focusNode,
@@ -74,7 +76,7 @@ class CTextFormField extends StatelessWidget {
       child: TextFormField(
         //for show keyboard when building screen
         autofocus: autofocus,
-        
+        autovalidateMode: autovalidateMode,
         textAlignVertical: textAlignVertical,
         textAlign: textAlign ?? TextAlign.start,
         style: textStyle ?? KLabelTextRegular14,

@@ -55,7 +55,9 @@ class AnimationProgressButton extends StatelessWidget {
     return IgnorePointer(
       ignoring: noInternet == true ? true : false,
       child: InkWell(
-        onTap: onPressed,
+        onTap: state == ButtonState.loading || state == ButtonState.done
+            ? null
+            : onPressed,
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         child: Container(
           alignment: Alignment.center,
@@ -77,7 +79,10 @@ class AnimationProgressButton extends StatelessWidget {
                     noInternet ?? false,
                     child: child,
                     borderRadius: borderRadius,
-                    onPressed: onPressed,
+                    onPressed: state == ButtonState.loading ||
+                            state == ButtonState.done
+                        ? null
+                        : onPressed,
                   ),
           ),
         ),
@@ -130,10 +135,14 @@ Widget buildButton(String title, Color? backgroundColor, Color? borderColor,
         ),
       ),
       child: child ??
-          Text(
-            style: textStyle ??
-                KLabelTextBold16.copyWith(color: Colors.white, fontSize: 16.sp),
-            title,
-            textAlign: TextAlign.center,
+          InkWell(
+            onTap: onPressed,
+            child: Text(
+              style: textStyle ??
+                  KLabelTextBold16.copyWith(
+                      color: Colors.white, fontSize: 16.sp),
+              title,
+              textAlign: TextAlign.center,
+            ),
           ),
     );
