@@ -98,7 +98,10 @@ class CTextField extends StatelessWidget {
         onSaved: onSaved,
         validator: validator,
         readOnly: readOnly,
-        inputFormatters: inputFormatters,
+        inputFormatters: inputFormatters ??
+            [
+              LengthLimitingTextInputFormatter(120),
+            ],
         obscureText: hidePassword,
         controller: controller,
         keyboardType: keyboardType ?? TextInputType.text,
