@@ -323,7 +323,7 @@ Future<T?> showModalBottomSheet<T>({
   ));
 }
 
-PersistentBottomSheetController<T> showBottomSheetCustom<T>({
+PersistentBottomSheetController showBottomSheetCustom<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   Color? backgroundColor,
@@ -338,7 +338,7 @@ PersistentBottomSheetController<T> showBottomSheetCustom<T>({
   assert(builder != null);
   assert(debugCheckHasScaffold(context));
 
-  return Scaffold.of(context).showBottomSheet<T>(
+  return Scaffold.of(context).showBottomSheet(
     builder,
     backgroundColor: backgroundColor,
     elevation: elevation,
