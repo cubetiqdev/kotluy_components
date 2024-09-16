@@ -13,15 +13,14 @@ class MyPhoneTextField extends StatelessWidget {
   final void Function(Country) onValuePicked;
 
   const MyPhoneTextField(
-      {Key? key,
+      {super.key,
       this.controller,
      required this.onValuePicked,
       this.errorText,
       this.onChanged,
       this.validator,
       this.countries,
-      this.styleDropDown})
-      : super(key: key);
+      this.styleDropDown});
 
   @override
   Widget build(BuildContext context) {

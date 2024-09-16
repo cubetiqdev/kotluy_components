@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'fluttermoji_assets/clothes/clothes.dart';
 import 'fluttermoji_assets/fluttermojimodel.dart';
 import 'fluttermoji_assets/top/accessories/accessories.dart';
-import 'fluttermoji_assets/top/facialHair/facialHair.dart';
-import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
+import 'fluttermoji_assets/top/facialHair/facial_hair.dart';
+import 'fluttermoji_assets/top/hairStyles/hair_style.dart';
 
 class FluttermojiFunctions {
   late Map<String, int> _decodedList;

@@ -33,7 +33,7 @@ class CDropDown<T> extends StatelessWidget {
   final int? elevation;
 
   const CDropDown({
-    Key? key,
+    super.key,
     this.disable = false,
     this.value,
     this.icon,
@@ -59,7 +59,7 @@ class CDropDown<T> extends StatelessWidget {
     this.validator,
     this.errorText,
     this.elevation,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

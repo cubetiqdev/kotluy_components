@@ -227,7 +227,7 @@ class SearchField<T> extends StatefulWidget {
   final OnTextChangedCallback? onTextChanged;
 
   SearchField(
-      {Key? key,
+      {super.key,
       required this.suggestions,
       this.autoCorrect = true,
       this.controller,
@@ -263,8 +263,7 @@ class SearchField<T> extends StatefulWidget {
             (initialValue != null &&
                     suggestions.containsObject(initialValue)) ||
                 initialValue == null,
-            'Initial value should either be null or should be present in suggestions list.'),
-        super(key: key);
+            'Initial value should either be null or should be present in suggestions list.');
 
   @override
   _SearchFieldState<T> createState() => _SearchFieldState();

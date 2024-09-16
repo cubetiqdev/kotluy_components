@@ -26,7 +26,7 @@ class AnimationProgressButton extends StatelessWidget {
   final Widget? child;
 
   AnimationProgressButton({
-    Key? key,
+    super.key,
     required this.title,
     this.textStyle,
     this.state = ButtonState.init,
@@ -43,7 +43,7 @@ class AnimationProgressButton extends StatelessWidget {
     this.iconSize,
     this.noInternet,
     this.child,
-  }) : super(key: key);
+  });
 
   bool get isDone => this.state == ButtonState.done;
 
@@ -58,7 +58,7 @@ class AnimationProgressButton extends StatelessWidget {
         onTap: state == ButtonState.loading || state == ButtonState.done
             ? null
             : onPressed,
-        overlayColor: MaterialStateProperty.all(Colors.transparent),
+        overlayColor: WidgetStateProperty.all(Colors.transparent),
         child: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(

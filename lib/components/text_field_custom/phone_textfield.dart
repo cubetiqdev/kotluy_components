@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_new
-
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
 import 'package:country_pickers/country.dart';
@@ -33,7 +31,7 @@ class PhoneTextField extends StatefulWidget {
   final String? errorText;
 
   const PhoneTextField({
-    Key? key,
+    super.key,
     this.noPadding = false,
     this.textStyle,
     this.filled,
@@ -57,13 +55,13 @@ class PhoneTextField extends StatefulWidget {
     this.dropDownColor,
     this.borderRadius,
     this.errorText,
-  }) : super(key: key);
+  });
 
   @override
-  _TextFieldPhoneState createState() => _TextFieldPhoneState();
+  TextFieldPhoneState createState() => TextFieldPhoneState();
 }
 
-class _TextFieldPhoneState extends State<PhoneTextField> {
+class TextFieldPhoneState extends State<PhoneTextField> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -101,7 +99,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
                 onValuePicked: widget.onValuePicked,
                 dropdownColor: widget.dropDownColor,
                 icon: widget.icon ??
-                    Icon(
+                    const Icon(
                       Icons.keyboard_arrow_down_rounded,
                       color: ThemeColor.SECCONDARY_3,
                     ),
@@ -109,25 +107,23 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
             ),
             filled: widget.filled,
             contentPadding:
-                new EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             fillColor: widget.fillColor ?? Colors.white,
             hintText: widget.hintText ?? "000-000-000",
             hintStyle: KLabelTextRegular14.copyWith(
                 color: widget.hintTextColor ?? ThemeColor.DARK_D4),
-            enabledBorder: new OutlineInputBorder(
-              borderRadius:
-                  widget.borderRadius ?? new BorderRadius.circular(25.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(25.0),
               borderSide: BorderSide(
                   color: widget.enabledBorderColor ?? ThemeColor.DARK_D4),
             ),
-            border: new OutlineInputBorder(
+            border: OutlineInputBorder(
               borderRadius: widget.borderRadius ?? BorderRadius.circular(25.0),
               borderSide: BorderSide(
                   color: widget.borderColor ?? ThemeColor.DARK_D4, width: 1),
             ),
-            focusedBorder: new OutlineInputBorder(
-              borderRadius:
-                  widget.borderRadius ?? new BorderRadius.circular(25.0),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(25.0),
               borderSide: BorderSide(
                 color: widget.focusedBorderColor ?? ThemeColor.PRIMARY_MAIN,
               ),
@@ -151,7 +147,7 @@ class _TextFieldPhoneState extends State<PhoneTextField> {
               package: "country_pickers",
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 8.0,
           ),
           Text(

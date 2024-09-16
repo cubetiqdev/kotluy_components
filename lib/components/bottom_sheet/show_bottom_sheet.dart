@@ -1,4 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
 
 import 'dart:ui' show lerpDouble;
 
@@ -7,7 +6,7 @@ import 'package:flutter/material.dart';
 
 const Duration _bottomSheetEnterDuration = Duration(milliseconds: 250);
 const Duration _bottomSheetExitDuration = Duration(milliseconds: 200);
-const Curve _modalBottomSheetCurve = decelerateEasing;
+const Curve _modalBottomSheetCurve = Easing.legacyDecelerate;
 
 class _ModalBottomSheetLayout extends SingleChildLayoutDelegate {
   _ModalBottomSheetLayout(this.progress, this.isScrollControlled);
@@ -48,8 +47,7 @@ class _ModalBottomSheet<T> extends StatefulWidget {
     this.constraints,
     this.isScrollControlled = false,
     this.enableDrag = true,
-  })  : assert(isScrollControlled != null),
-        assert(enableDrag != null);
+  });
 
   final _ModalBottomSheetRoute<T>? route;
   final bool isScrollControlled;
@@ -160,9 +158,7 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
     super.settings,
     this.transitionAnimationController,
     this.anchorPoint,
-  })  : assert(isScrollControlled != null),
-        assert(isDismissible != null),
-        assert(enableDrag != null);
+  });
 
   final WidgetBuilder? builder;
   final CapturedThemes capturedThemes;
@@ -245,8 +241,7 @@ class _BottomSheetSuspendedCurve extends ParametricCurve<double> {
   const _BottomSheetSuspendedCurve(
     this.startingPoint, {
     this.curve = Curves.easeOutCubic,
-  })  : assert(startingPoint != null),
-        assert(curve != null);
+  });
 
   final double startingPoint;
   final Curve curve;
@@ -292,12 +287,6 @@ Future<T?> showModalBottomSheet<T>({
   AnimationController? transitionAnimationController,
   Offset? anchorPoint,
 }) {
-  assert(context != null);
-  assert(builder != null);
-  assert(isScrollControlled != null);
-  assert(useRootNavigator != null);
-  assert(isDismissible != null);
-  assert(enableDrag != null);
   assert(debugCheckHasMediaQuery(context));
   assert(debugCheckHasMaterialLocalizations(context));
 
@@ -334,8 +323,6 @@ PersistentBottomSheetController showBottomSheetCustom<T>({
   bool? enableDrag,
   AnimationController? transitionAnimationController,
 }) {
-  assert(context != null);
-  assert(builder != null);
   assert(debugCheckHasScaffold(context));
 
   return Scaffold.of(context).showBottomSheet(

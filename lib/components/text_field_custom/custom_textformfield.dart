@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +8,7 @@ class CTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextStyle? textStyle;
   final TextStyle? errorStyle;
+  final TextStyle? hintStyle;
   final Color? borderColor;
   final Color? focusBorderColor;
   final Color? fillColor;
@@ -40,6 +39,7 @@ class CTextFormField extends StatelessWidget {
     super.key,
     this.hintText,
     this.validator,
+    this.hintStyle,
     this.textStyle,
     this.errorStyle,
     this.borderColor,
@@ -100,8 +100,9 @@ class CTextFormField extends StatelessWidget {
           filled: filled,
           fillColor: fillColor ?? ThemeColor.LIGHT_L3,
           hintText: hintText,
-          hintStyle: KLabelTextRegular14.copyWith(
-              color: hintColor ?? ThemeColor.DARK_D4),
+          hintStyle: hintStyle ??
+              KLabelTextRegular14.copyWith(
+                  color: hintColor ?? ThemeColor.DARK_D4),
           focusedBorder: enabledBorder
               ? OutlineInputBorder(
                   borderSide: BorderSide(

@@ -1,5 +1,3 @@
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 
 class DashLine extends StatelessWidget {
@@ -7,11 +5,11 @@ class DashLine extends StatelessWidget {
   final double? height;
   final Color? color;
   const DashLine({
-    Key? key,
+    super.key,
     this.height,
     this.width,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +20,8 @@ class DashLine extends StatelessWidget {
         final dashHeight = height ?? 1.0;
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
         return Flex(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          direction: Axis.horizontal,
           children: List.generate(dashCount, (_) {
             return SizedBox(
               width: dashWidth,
@@ -31,8 +31,6 @@ class DashLine extends StatelessWidget {
               ),
             );
           }),
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          direction: Axis.horizontal,
         );
       },
     );

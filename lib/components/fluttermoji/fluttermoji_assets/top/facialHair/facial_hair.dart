@@ -1,4 +1,3 @@
-/// SVG strings and generators for facial hair
 class FacialHair {
   static Map<String, dynamic> facialHairColor = {
     'Auburn': "#A55728",

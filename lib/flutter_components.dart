@@ -24,9 +24,9 @@ export 'components/button_custom/social_media_button/social_media_button.dart';
 export 'components/pinput_button/pinput_button.dart';
 export 'components/pinput_button/pin_theme.dart';
 
-export 'components/fluttermoji/fluttermojiCustomizer.dart';
-export 'components/fluttermoji/fluttermojiCircleAvatar.dart';
-export 'components/fluttermoji/fluttermojiController.dart';
-export 'components/fluttermoji/fluttermojiFunctions.dart';
-export 'components/fluttermoji/fluttermojiSaveWidget.dart';
-export 'components/fluttermoji/fluttermojiThemeData.dart';
+export 'components/fluttermoji/fluttermoji_customizer.dart';
+export 'components/fluttermoji/fluttermoji_circle_avatar.dart';
+export 'components/fluttermoji/fluttermoji_controller.dart';
+export 'components/fluttermoji/fluttermoji_functions.dart';
+export 'components/fluttermoji/fluttermoji_save_widget.dart';
+export 'components/fluttermoji/fluttermoji_theme_data.dart';

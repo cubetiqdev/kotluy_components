@@ -1,4 +1,3 @@
-/// SVG strings and generators for hairstyle
 class HairStyle {
   static Map<String, dynamic> hairColor = {
     'Auburn': "#A55728",
@@ -897,7 +896,7 @@ class HairStyle {
 						</g>
 					</g>
 ''',
-      "I\'m not bald": '''
+      "I'm not bald": '''
 <g id="Top" stroke-width="1" fill-rule="evenodd">
 						<defs>
 							<rect id="react-path-3286" x="0" y="0" width="264" height="280"></rect>

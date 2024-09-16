@@ -1,4 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
 
 library circle_bottom_navi_sdk;
 
@@ -8,16 +7,15 @@ import 'package:flutter/material.dart';
 class CircleBottomNavigation extends StatefulWidget {
   final CircleBottomBarModel bottomBarModel;
 
-  const CircleBottomNavigation({Key? key, required this.bottomBarModel})
-      : super(key: key);
+  const CircleBottomNavigation({super.key, required this.bottomBarModel});
 
   @override
-  _SpinCircleBottomBarState createState() => _SpinCircleBottomBarState();
+  SpinCircleBottomBarState createState() => SpinCircleBottomBarState();
 }
 
 enum ExpansionStatus { open, close, idle }
 
-class _SpinCircleBottomBarState extends State<CircleBottomNavigation> {
+class SpinCircleBottomBarState extends State<CircleBottomNavigation> {
   ExpansionStatus expansionStatus = ExpansionStatus.idle;
   late CircleBottomBarModel expandableBottomBarDetails;
   int activeIndex = 0;
@@ -328,11 +326,10 @@ class PrimaryCircle extends StatelessWidget {
   final double radius;
 
   const PrimaryCircle(
-      {Key? key,
+      {super.key,
       required this.color,
       required this.radius,
-      required this.circleItems})
-      : super(key: key);
+      required this.circleItems});
 
   @override
   Widget build(BuildContext context) {
@@ -396,8 +393,7 @@ class EmptyLayer extends StatelessWidget {
   final Color color;
   final double radius;
 
-  const EmptyLayer({Key? key, required this.color, required this.radius})
-      : super(key: key);
+  const EmptyLayer({super.key, required this.color, required this.radius});
 
   @override
   Widget build(BuildContext context) {
@@ -419,22 +415,6 @@ class EmptyLayer extends StatelessWidget {
     );
   }
 }
-
-// class MyCustomClipper extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     Path path = Path()
-//       ..lineTo(0, 0)
-//       ..lineTo(50, 100)
-//       ..lineTo(size.width, size.height * .5)
-//       ..lineTo(size.width, size.height * .5);
-
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
-// }
 
 class Sky extends CustomClipper<Path> {
   @override

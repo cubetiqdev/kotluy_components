@@ -24,7 +24,7 @@ class ProfileImageCustom extends StatelessWidget {
   final String? defaultIcon;
 
   const ProfileImageCustom(
-      {Key? key,
+      {super.key,
       this.imageFile,
       this.assetImage,
       this.isServicePic = false,
@@ -39,8 +39,7 @@ class ProfileImageCustom extends StatelessWidget {
       this.onDefaultImageTap,
       this.defaultImage,
       this.editIcon,
-      this.defaultIcon})
-      : super(key: key);
+      this.defaultIcon});
 
   @override
   Widget build(BuildContext context) {

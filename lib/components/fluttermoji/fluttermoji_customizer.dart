@@ -1,13 +1,11 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, curly_braces_in_flow_control_structures
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/components/fluttermoji/defaults.dart';
-import 'package:flutter_components/components/fluttermoji/fluttermojiThemeData.dart';
+import 'package:flutter_components/components/fluttermoji/fluttermoji_theme_data.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'fluttermoji_assets/fluttermojimodel.dart';
 import 'package:get/get.dart';
-import 'fluttermojiController.dart';
+import 'fluttermoji_controller.dart';
 
 /// This widget provides the user with a UI for customizing their Fluttermoji
 ///
@@ -29,7 +27,7 @@ class FluttermojiCustomizer extends StatefulWidget {
   /// It is advised that a [FluttermojiCircleAvatar] also be present in the same page.
   /// to show the user a preview of the changes being made.
   FluttermojiCustomizer({
-    Key? key,
+    super.key,
     this.scaffoldHeight,
     this.scaffoldWidth,
     FluttermojiThemeData? theme,
@@ -48,8 +46,7 @@ class FluttermojiCustomizer extends StatefulWidget {
         ),
         theme = theme ?? FluttermojiThemeData.standard,
         attributeTitles = attributeTitles ?? defaultAttributeTitles,
-        attributeIcons = attributeIcons ?? defaultAttributeIcons,
-        super(key: key);
+        attributeIcons = attributeIcons ?? defaultAttributeIcons;
 
   final double? scaffoldHeight;
   final double? scaffoldWidth;
@@ -89,10 +86,10 @@ class FluttermojiCustomizer extends StatefulWidget {
   static const int attributesCount = 11;
 
   @override
-  _FluttermojiCustomizerState createState() => _FluttermojiCustomizerState();
+  FluttermojiCustomizerState createState() => FluttermojiCustomizerState();
 }
 
-class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
+class FluttermojiCustomizerState extends State<FluttermojiCustomizer>
     with SingleTickerProviderStateMixin {
   FluttermojiController fluttermojiController = FluttermojiController();
   late TabController tabController;
@@ -169,9 +166,9 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
       child: TabBar(
         controller: tabController,
         isScrollable: true,
-        labelPadding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+        labelPadding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
         indicatorColor: widget.theme.selectedIconColor,
-        indicatorPadding: EdgeInsets.all(2),
+        indicatorPadding: const EdgeInsets.all(2),
         tabs: navbarWidgets,
       ),
     );
@@ -243,10 +240,11 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
       /// depending on the [attributeListLength]
       if (attributeListLength < 12) {
         gridCrossAxisCount = 3;
-      } else if (attributeListLength < 9)
+      } else if (attributeListLength < 9) {
         gridCrossAxisCount = 2;
-      else
+      } else {
         gridCrossAxisCount = 4;
+      }
 
       int? i = fluttermojiController.selectedOptions[attribute.key];
 
@@ -271,7 +269,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
               fluttermojiController.getComponentSVG(attribute.key, index),
               height: 20,
               semanticsLabel: 'Your Fluttermoji',
-              placeholderBuilder: (context) => Center(
+              placeholderBuilder: (context) => const Center(
                 child: CupertinoActivityIndicator(),
               ),
             ),
@@ -281,7 +279,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
 
       /// Builds the icon for the attribute to be placed in the bottom row
       var bottomNavWidget = Padding(
-          padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 12),
+          padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 12),
           child: SvgPicture.asset(
             attribute.iconAsset!,
             package: 'fluttermoji',

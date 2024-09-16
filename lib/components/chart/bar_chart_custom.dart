@@ -1,9 +1,8 @@
-// ignore_for_file: no_leading_underscores_for_library_prefixes, must_be_immutable
 import 'package:flutter/material.dart';
 
 class BarChartCustom extends StatefulWidget {
   const BarChartCustom(
-      {Key? key,
+      {super.key,
       this.max,
       required this.listData,
       this.xLineStyle,
@@ -32,8 +31,7 @@ class BarChartCustom extends StatefulWidget {
       this.minHeight = 100,
       this.maxHeight,
       this.minWidth = 100,
-      this.maxWidth})
-      : super(key: key);
+      this.maxWidth});
 
   final double? max;
   final List<BarDataCustom> listData;
@@ -312,7 +310,6 @@ class BarDataCustom {
 
 class _BarItemValueView extends StatelessWidget {
   const _BarItemValueView({
-    Key? key,
     this.labelAlign,
     required this.verticalOffsetTooltip,
     required this.barDataCustom,
@@ -320,7 +317,7 @@ class _BarItemValueView extends StatelessWidget {
     this.radiusBar,
     this.showxLabelInside,
     this.labelInsideStyle,
-  }) : super(key: key);
+  });
 
   final BarDataCustom barDataCustom;
   final Alignment? labelAlign;

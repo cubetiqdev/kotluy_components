@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_components/components/fluttermoji/fluttermojiController.dart';
-import 'package:flutter_components/components/fluttermoji/fluttermojiThemeData.dart';
+import 'package:flutter_components/components/fluttermoji/fluttermoji_controller.dart';
+import 'package:flutter_components/components/fluttermoji/fluttermoji_theme_data.dart';
 import 'package:get/get.dart';
 
 /// Renders a save button by default OR can be used as a [InkWell]
@@ -39,15 +39,14 @@ class FluttermojiSaveWidget extends StatelessWidget {
   final double? radius;
 
   FluttermojiSaveWidget({
-    Key? key,
+    super.key,
     FluttermojiThemeData? theme,
     this.onTap,
     this.child,
     this.splashFactory,
     this.splashColor,
     this.radius,
-  })  : theme = theme ?? FluttermojiThemeData.standard,
-        super(key: key);
+  })  : theme = theme ?? FluttermojiThemeData.standard;
 
   @override
   Widget build(BuildContext context) {

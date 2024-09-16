@@ -4,7 +4,7 @@ import 'dart:convert';
 import './fluttermoji_assets/style.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'fluttermojiFunctions.dart';
+import 'fluttermoji_functions.dart';
 import 'fluttermoji_assets/fluttermojimodel.dart';
 import 'fluttermoji_assets/clothes/clothes.dart';
 import 'fluttermoji_assets/face/eyebrow/eyebrow.dart';
@@ -12,8 +12,8 @@ import 'fluttermoji_assets/face/eyes/eyes.dart';
 import 'fluttermoji_assets/face/mouth/mouth.dart';
 import 'fluttermoji_assets/skin.dart';
 import 'fluttermoji_assets/top/accessories/accessories.dart';
-import 'fluttermoji_assets/top/facialHair/facialHair.dart';
-import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
+import 'fluttermoji_assets/top/facialHair/facial_hair.dart';
+import 'fluttermoji_assets/top/hairStyles/hair_style.dart';
 
 /// Brains of the Fluttermoji package
 ///

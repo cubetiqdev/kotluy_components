@@ -91,7 +91,7 @@ class _SplashScreenCustomState extends State<SplashScreenCustom> {
 
 class SpinKitFadingCircle extends StatefulWidget {
   const SpinKitFadingCircle({
-    Key? key,
+    super.key,
     required this.color,
     this.size = 50.0,
     this.itemBuilder,
@@ -100,8 +100,7 @@ class SpinKitFadingCircle extends StatefulWidget {
   })  : assert(
             !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
                 !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
-        super(key: key);
+            'You should specify either a itemBuilder or a color');
 
   final Color? color;
   final double size;
@@ -187,8 +186,7 @@ class _SpinKitFadingCircleState extends State<SpinKitFadingCircle>
 }
 
 class DelayTween extends Tween<double> {
-  DelayTween({double? begin, double? end, required this.delay})
-      : super(begin: begin, end: end);
+  DelayTween({super.begin, super.end, required this.delay});
 
   final double delay;
 

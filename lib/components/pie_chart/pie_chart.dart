@@ -30,11 +30,11 @@ class PieChart extends StatefulWidget {
     this.gradientList,
     this.emptyColorGradient = const [Colors.black26, Colors.black54],
     this.legendLabels = const {},
-    Key? key,
+    super.key,
     this.degreeOptions = const DegreeOptions(),
     this.baseChartColor = Colors.transparent,
     this.totalValue,
-  }) : super(key: key);
+  });
 
   final Map<String, double> dataMap;
   final ChartType chartType;

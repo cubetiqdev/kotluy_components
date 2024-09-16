@@ -69,12 +69,12 @@ class _ButtonCustomState extends State<ButtonCustom> {
                     language: 'English',
                     select: true,
                   ),
-                  SocialMediaButton(
+                  const SocialMediaButton(
                     width: 160,
                     image: 'assets/icons/apple_logo.png',
                     title: 'Apple',
                   ),
-                  Container(
+                  const SizedBox(
                     width: 160,
                     child: ButtonChooseLanguage(
                       title: "ភាសាខ្មែរ",

@@ -160,7 +160,7 @@ class CustomPage extends StatelessWidget {
   final Color? fontColor;
 
   const CustomPage(
-      {Key? key,
+      {super.key,
       this.titleFontColor,
       this.titleFontSize,
       this.fontColor,
@@ -170,8 +170,7 @@ class CustomPage extends StatelessWidget {
       required this.image,
       this.descriptionFontSize,
       this.imageHeight,
-      this.imageWidth})
-      : super(key: key);
+      this.imageWidth});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, unnecessary_new
-
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_components/constant/fonts/default_font.dart';
@@ -29,7 +27,7 @@ class PasswordTextField extends StatelessWidget {
   final GestureTapCallback? onTap;
   final GestureTapCallback? onTapTextField;
 
-  PasswordTextField({
+  const PasswordTextField({super.key, 
     this.controller,
     this.textStyle,
     this.errorText,
@@ -72,9 +70,9 @@ class PasswordTextField extends StatelessWidget {
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           filled: filled ?? false,
           hintText: hintText,
-          contentPadding: EdgeInsets.symmetric(vertical: 13),
+          contentPadding: const EdgeInsets.symmetric(vertical: 13),
           enabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius ?? new BorderRadius.circular(25.0),
+            borderRadius: borderRadius ?? BorderRadius.circular(25.0),
             borderSide: BorderSide(
               width: 1,
               color: enabledBorderColor ?? ThemeColor.SECONDARY_5,
@@ -93,7 +91,7 @@ class PasswordTextField extends StatelessWidget {
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(25),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1,
               color: ThemeColor.SECONDARY_5,
             ),

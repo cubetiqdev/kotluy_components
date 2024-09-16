@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 
 class Marquee extends StatefulWidget {
@@ -8,19 +6,19 @@ class Marquee extends StatefulWidget {
   final Duration animationDuration, backDuration, pauseDuration;
 
   const Marquee({
-    Key? key,
+    super.key,
     required this.child,
     this.direction = Axis.horizontal,
     this.animationDuration = const Duration(milliseconds: 6000),
     this.backDuration = const Duration(milliseconds: 800),
     this.pauseDuration = const Duration(milliseconds: 100),
-  }) : super(key: key);
+  });
 
   @override
-  _MarqueeWidgetState createState() => _MarqueeWidgetState();
+  MarqueeWidgetState createState() => MarqueeWidgetState();
 }
 
-class _MarqueeWidgetState extends State<Marquee> {
+class MarqueeWidgetState extends State<Marquee> {
   late ScrollController scrollController;
 
   @override
@@ -39,7 +37,7 @@ class _MarqueeWidgetState extends State<Marquee> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       scrollDirection: widget.direction,
       controller: scrollController,
       child: widget.child,

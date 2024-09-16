@@ -6,8 +6,8 @@ class Legend extends StatelessWidget {
     required this.color,
     required this.style,
     required this.legendShape,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String title;
   final Color color;

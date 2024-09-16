@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'fluttermojiController.dart';
+import 'fluttermoji_controller.dart';
 
 /// This widget renders the Fluttermoji of the user on screen
 ///
@@ -15,8 +14,7 @@ import 'fluttermojiController.dart';
 class FluttermojiCircleAvatar extends StatelessWidget {
   final double radius;
   final Color? backgroundColor;
-  FluttermojiCircleAvatar({Key? key, this.radius = 75.0, this.backgroundColor})
-      : super(key: key);
+  const FluttermojiCircleAvatar({super.key, this.radius = 75.0, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +31,13 @@ class FluttermojiCircleAvatar extends StatelessWidget {
         autoRemove: false,
         builder: (snapshot) {
           if (snapshot.fluttermoji.value.isEmpty) {
-            return CupertinoActivityIndicator();
+            return const CupertinoActivityIndicator();
           }
           return SvgPicture.string(
             snapshot.fluttermoji.value,
             height: radius * 1.6,
             semanticsLabel: "Your Fluttermoji",
-            placeholderBuilder: (context) => Center(
+            placeholderBuilder: (context) => const Center(
               child: CupertinoActivityIndicator(),
             ),
           );

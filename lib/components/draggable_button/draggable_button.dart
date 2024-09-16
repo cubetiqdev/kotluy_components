@@ -18,7 +18,7 @@ class DraggableButton extends StatefulWidget {
   final double securityRight;
 
   const DraggableButton(
-      {Key? key,
+      {super.key,
       required this.child,
       this.onDragStarted,
       this.onDragEnd,
@@ -27,8 +27,7 @@ class DraggableButton extends StatefulWidget {
       this.securityTop = 0,
       this.securityLeft = 0,
       this.onDragPositionUpdate,
-      this.securityRight = 0})
-      : super(key: key);
+      this.securityRight = 0});
 
   @override
   _DraggableButtonState createState() => _DraggableButtonState();

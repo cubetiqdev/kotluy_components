@@ -19,7 +19,7 @@ class SocialMediaButton extends StatelessWidget {
   final TextStyle? textStyle;
   final void Function()? onTap;
   const SocialMediaButton({
-    Key? key,
+    super.key,
     this.title = "",
     required this.image,
     this.borderColor,
@@ -35,7 +35,7 @@ class SocialMediaButton extends StatelessWidget {
     this.borderRadius,
     this.textStyle,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

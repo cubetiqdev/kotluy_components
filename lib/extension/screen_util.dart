@@ -144,7 +144,7 @@ extension BoxConstraintsExtension on BoxConstraints {
 
 class ScreenUtil {
   static const Size defaultSize = Size(360, 690);
-  static ScreenUtil _instance = ScreenUtil._();
+  static final ScreenUtil _instance = ScreenUtil._();
 
   /// UI设计中手机尺寸 , dp
   /// Size of the phone in UI Design , dp
@@ -273,7 +273,7 @@ class ScreenUtil {
 
   /// 每个逻辑像素的字体像素数，字体的缩放比例
   /// The number of font pixels for each logical pixel.
-  double get textScaleFactor =>
+  double get textSca =>
       _context != null ? MediaQuery.of(_context!).textScaleFactor : 1;
 
   /// 设备的像素密度
@@ -356,10 +356,11 @@ class ScreenUtil {
 
 extension on MediaQueryData? {
   MediaQueryData? nonEmptySizeOrNull() {
-    if (this?.size.isEmpty ?? true)
+    if (this?.size.isEmpty ?? true) {
       return null;
-    else
+    } else {
       return this;
+    }
   }
 }
 
@@ -393,7 +394,7 @@ class RebuildFactors {
 class ScreenUtilInit extends StatefulWidget {
   /// A helper widget that initializes [ScreenUtil]
   const ScreenUtilInit(
-      {Key? key,
+      {super.key,
       required this.builder,
       this.child,
       this.rebuildFactor = RebuildFactors.size,
@@ -401,8 +402,7 @@ class ScreenUtilInit extends StatefulWidget {
       this.splitScreenMode = false,
       this.minTextAdapt = false,
       this.useInheritedMediaQuery = false,
-      this.scaleByHeight = false})
-      : super(key: key);
+      this.scaleByHeight = false});
 
   final ScreenUtilInitBuilder builder;
   final Widget? child;
@@ -498,13 +498,13 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
                 splitScreenMode: widget.splitScreenMode,
                 minTextAdapt: widget.minTextAdapt,
                 scaleByHeight: widget.scaleByHeight);
-            return Container(
+            return SizedBox(
                 width: deviceSize.width,
                 height: deviceSize.height,
                 child: FittedBox(
                   fit: BoxFit.none,
                   alignment: Alignment.center,
-                  child: Container(
+                  child: SizedBox(
                     width: widget.scaleByHeight
                         ? (deviceSize.height * widget.designSize.width) /
                             widget.designSize.height
@@ -526,13 +526,13 @@ class _ScreenUtilInitState extends State<ScreenUtilInit>
     final deviceData = MediaQuery.maybeOf(_context);
 
     final deviceSize = deviceData?.size ?? widget.designSize;
-    return Container(
+    return SizedBox(
         width: deviceSize.width,
         height: deviceSize.height,
         child: FittedBox(
           fit: BoxFit.none,
           alignment: Alignment.center,
-          child: Container(
+          child: SizedBox(
             width: widget.scaleByHeight
                 ? (deviceSize.height * widget.designSize.width) /
                     widget.designSize.height

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter_components/constant/colors/default_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -113,7 +111,7 @@ class CTextField extends StatelessWidget {
           hintStyle: hintStyle ??
               KLabelTextRegular12.copyWith(color: ThemeColor.DARK_D4),
           contentPadding: contentPadding ??
-              EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
           fillColor: filledColor ?? ThemeColor.LIGHT_L3,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 25.0),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_components/extension/screen_util.dart';
 import 'package:lottie/lottie.dart';
@@ -9,8 +7,7 @@ class LoadingOverlay extends StatefulWidget {
   final double? width;
   final Widget? loading;
   const LoadingOverlay(
-      {Key? key, required this.child, this.height, this.width, this.loading})
-      : super(key: key);
+      {super.key, required this.child, this.height, this.width, this.loading});
 
   final Widget child;
 

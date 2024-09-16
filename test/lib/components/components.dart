@@ -3,7 +3,6 @@ import 'package:flutter_components/components/button_custom/animation_progress_b
 import 'package:flutter_components/components/dash_line/dash_line.dart';
 import 'package:flutter_components/components/draggable_button/draggable_button.dart';
 import 'package:flutter_components/components/pinput_button/pinput_button.dart';
-import 'package:flutter_components/constant/colors/default_color.dart';
 
 class Components extends StatefulWidget {
   const Components({super.key});
