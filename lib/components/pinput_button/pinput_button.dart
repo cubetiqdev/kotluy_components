@@ -93,10 +93,10 @@ class _PinPutCustomState extends State<PinPutCustom> {
       length: widget.length ?? 6,
       controller: widget.pinController,
       focusNode: widget.focusNode,
-      androidSmsAutofillMethod: widget.androidSmsAutofillMethod ??
-          AndroidSmsAutofillMethod.smsRetrieverApi,
-      listenForMultipleSmsOnAndroid:
-          widget.listenForMultipleSmsOnAndroid ?? true,
+      // androidSmsAutofillMethod: widget.androidSmsAutofillMethod ??
+      //     AndroidSmsAutofillMethod.smsRetrieverApi,
+      // listenForMultipleSmsOnAndroid:
+      //     widget.listenForMultipleSmsOnAndroid ?? true,
       defaultPinTheme: widget.defaultPinTheme ?? defaultPinTheme,
       validator: widget.validator,
       hapticFeedbackType: HapticFeedbackType.mediumImpact,
